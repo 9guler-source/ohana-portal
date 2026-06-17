@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WWVS — Who Whom Voting System</title>
+<title>Who Whom Voting System — WWVS</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -44,7 +44,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .cmp-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.35rem;opacity:0.55}
 .cmp-text{font-size:0.92rem;line-height:1.75;color:rgba(248,246,240,0.85)}
 
-/* dept cards */
 .dept-wrap{display:flex;align-items:stretch}
 @media(max-width:800px){.dept-wrap{flex-direction:column}}
 .dept-card{flex:1;background:rgba(255,255,255,0.05);border-radius:16px;padding:1.8rem;border:0.5px solid}
@@ -73,7 +72,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .dept-highlight{background:rgba(212,168,67,0.07);border:0.5px solid rgba(212,168,67,0.28);border-radius:14px;padding:1.5rem 2rem;margin-top:1.5rem;font-size:0.92rem;line-height:1.95;color:rgba(248,246,240,0.78)}
 .dept-highlight strong{color:var(--gold);font-weight:600}
 
-/* step cards */
 .step-list{display:flex;flex-direction:column;gap:0.5rem}
 .step-card{display:flex;gap:1.5rem;padding:1.8rem 1.8rem 1.8rem 2rem;border-left:3px solid;border-radius:0 14px 14px 0;background:rgba(255,255,255,0.03)}
 .step-card.step-blue{border-color:#4A6FBF}
@@ -129,58 +127,57 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
 <nav>
   <a class="nav-back" href="index.html">← Ohana</a>
   <div style="display:flex;gap:0.5rem;align-items:center">
-    <a href="wwvs.html" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:6px;border:0.5px solid rgba(212,168,67,0.4);color:#D4A843;text-decoration:none">KO</a>
+    <a href="wwvs.html" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">KO</a>
     <a href="wwvs-en.html" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">EN</a>
-    <a href="wwvs-ja.html" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">JA</a>
+    <a href="wwvs-ja.html" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:6px;border:0.5px solid rgba(212,168,67,0.4);color:#D4A843;text-decoration:none">JA</a>
     <a href="wwvs-es.html" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">ES</a>
     <a href="wwvs-zh-hans.html" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">简</a>
     <a href="wwvs-zh-hant.html" style="font-size:0.75rem;padding:0.3rem 0.6rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">繁</a>
   </div>
-  <a class="nav-vote-btn" href="https://wwvs-project-auth-server.vercel.app/?electionId=aaaaaaaa-0000-0000-0000-000000000001">투표 참여하기</a>
+  <a class="nav-vote-btn" href="https://wwvs-project-auth-server.vercel.app/?electionId=aaaaaaaa-0000-0000-0000-000000000001">参加する</a>
 </nav>
 
 <header class="hero">
-  <div class="hero-tag">전자투표 시스템</div>
-  <div class="hero-title">부정선거 논란을<br>이제 끝낼 수 있습니다</div>
-  <div class="hero-sub">Who Whom Voting System — 믿어달라 말하지 않습니다. 수학으로 증명합니다.</div>
-  <p class="hero-desc">투표 결과를 의심하십니까? WWVS는 선거 관리자를 믿지 않아도 됩니다.<br>누구나, 직접, 손으로 계산해서 결과가 맞는지 확인할 수 있습니다.</p>
+  <div class="hero-tag">電子投票システム</div>
+  <div class="hero-title">不正選挙の論争に、<br>今こそ終止符を打てます</div>
+  <div class="hero-sub">WWVS — 信じてくださいとは申しません。数学で証明します。</div>
+  <p class="hero-desc">秘密投票を守りながら、誰もが結果を検証できる次世代電子投票システム。</p>
 </header>
 
 <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
-<!-- 비교 섹션 -->
 <section class="section">
-  <div class="section-title">기존 선거의 문제 vs WWVS의 해답</div>
-  <div class="section-sub">세 가지 핵심 차이</div>
+  <div class="section-title">既存の選挙の問題点 vs. WWVSの解答</div>
+  <div class="section-sub">三つの核心的な違い</div>
   <div class="compare-list">
     <div class="compare-card">
       <div class="compare-old">
         <div class="cmp-badge bad">✗</div>
-        <div><div class="cmp-label">기존 선거</div><div class="cmp-text">투표함을 믿어주세요 — 개표 과정을 참관인 외에는 볼 수 없습니다</div></div>
+        <div><div class="cmp-label">既存の選挙</div><div class="cmp-text">投票箱を信じてください — 開票過程は立会人以外には見えません</div></div>
       </div>
       <div class="compare-new">
         <div class="cmp-badge good">✓</div>
-        <div><div class="cmp-label">WWVS</div><div class="cmp-text">모든 투표확인증이 공개됩니다 — 누구나 직접 세어서 합계를 확인할 수 있습니다</div></div>
+        <div><div class="cmp-label">WWVS</div><div class="cmp-text">すべての投票確認書が公開されます — 誰でも直接数えて合計を確認できます</div></div>
       </div>
     </div>
     <div class="compare-card">
       <div class="compare-old">
         <div class="cmp-badge bad">✗</div>
-        <div><div class="cmp-label">기존 선거</div><div class="cmp-text">집계 프로그램을 믿어주세요 — 소프트웨어 내부를 검증할 방법이 없습니다</div></div>
+        <div><div class="cmp-label">既存の選挙</div><div class="cmp-text">集計プログラムを信じてください — ソフトウェアの内部を検証する方法がありません</div></div>
       </div>
       <div class="compare-new">
         <div class="cmp-badge good">✓</div>
-        <div><div class="cmp-label">WWVS</div><div class="cmp-text">집계 프로그램이 필요 없습니다 — 투표확인증을 하나씩 직접 세면 됩니다</div></div>
+        <div><div class="cmp-label">WWVS</div><div class="cmp-text">集計プログラムは不要です — 投票確認書を一枚ずつ直接数えれば十分です</div></div>
       </div>
     </div>
     <div class="compare-card">
       <div class="compare-old">
         <div class="cmp-badge bad">✗</div>
-        <div><div class="cmp-label">기존 선거</div><div class="cmp-text">선거관리위원회를 믿어주세요 — 결과에 이의를 제기할 방법이 제한적입니다</div></div>
+        <div><div class="cmp-label">既存の選挙</div><div class="cmp-text">選挙管理委員会を信じてください — 結果に異議を唱える方法が限られています</div></div>
       </div>
       <div class="compare-new">
         <div class="cmp-badge good">✓</div>
-        <div><div class="cmp-label">WWVS</div><div class="cmp-text">내 표가 바뀌었는지 직접 확인합니다 — 투표확인증 번호로 즉시 검증 가능</div></div>
+        <div><div class="cmp-label">WWVS</div><div class="cmp-text">ご自身の票を直接確認します — 確認番号で即時検証が可能です</div></div>
       </div>
     </div>
   </div>
@@ -188,80 +185,76 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
 
 <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
-<!-- 3부서 구조 -->
 <section class="section">
-  <div class="section-title">왜 해킹해도 비밀이 유지되는가 — 세 개의 독립된 부서</div>
-  <div class="section-sub">분리된 데이터 — 수학적으로 결합 불가능한 구조</div>
+  <div class="section-title">ハッキングされても秘密が守られる理由 — 三つの独立した部署</div>
+  <div class="section-sub">分離されたデータ — 数学的に結合不可能な構造</div>
   <div class="dept-wrap">
 
-    <!-- 본인확인 부서 -->
     <div class="dept-card dept-blue">
-      <div class="dept-card-lbl">01 — 본인확인 부서</div>
-      <div class="dept-card-title">본인확인 부서 (인증서버)</div>
+      <div class="dept-card-lbl">01 — 本人確認部署</div>
+      <div class="dept-card-title">本人確認部署（認証サーバー）</div>
       <div class="dept-row">
-        <div class="dept-row-lbl know">✓ 아는 것</div>
-        <div class="dept-row-val">"이 사람이 명부에 있는 사람이다"</div>
+        <div class="dept-row-lbl know">✓ 知っていること</div>
+        <div class="dept-row-val">"この方は選挙人名簿に記載されています"</div>
       </div>
       <div class="dept-row">
-        <div class="dept-row-lbl dont">✗ 모르는 것</div>
-        <div class="dept-row-val dim">"이 사람이 무엇에 투표했는지"</div>
+        <div class="dept-row-lbl dont">✗ 知らないこと</div>
+        <div class="dept-row-val dim">"この方が何に投票したか"</div>
       </div>
       <div class="dept-row">
-        <div class="dept-row-lbl docs">📋 보관 서류</div>
+        <div class="dept-row-lbl docs">📋 保管書類</div>
         <ul class="dept-docs-list">
-          <li>선거인 명부</li>
-          <li>인증 기록</li>
-          <li>진행중 메모<span class="dept-docs-note">※ 투표 완료 즉시 삭제</span></li>
+          <li>選挙人名簿</li>
+          <li>認証記録</li>
+          <li>一時メモ<span class="dept-docs-note">※ 投票完了後即時削除</span></li>
         </ul>
       </div>
     </div>
 
     <div class="dept-conn">
-      <div class="dept-conn-text">↓ 원본 번호표 전달 후<br>연결 끊김 ✂</div>
+      <div class="dept-conn-text">↓ 元番号票を渡した後、接続が切断されます ✂</div>
     </div>
 
-    <!-- 투표소 -->
     <div class="dept-card dept-teal">
-      <div class="dept-card-lbl">02 — 투표소</div>
-      <div class="dept-card-title">투표소 (운영서버)</div>
+      <div class="dept-card-lbl">02 — 投票所</div>
+      <div class="dept-card-title">投票所（運営サーバー）</div>
       <div class="dept-row">
-        <div class="dept-row-lbl know">✓ 아는 것</div>
-        <div class="dept-row-val">"이 번호표를 가진 사람이 무엇을 선택했는지"</div>
+        <div class="dept-row-lbl know">✓ 知っていること</div>
+        <div class="dept-row-val">"この番号票の方がA案に投票した"</div>
       </div>
       <div class="dept-row">
-        <div class="dept-row-lbl dont">✗ 모르는 것</div>
-        <div class="dept-row-val dim">"이 번호표를 가진 사람이 누구인지"</div>
+        <div class="dept-row-lbl dont">✗ 知らないこと</div>
+        <div class="dept-row-val dim">"この番号票の持ち主が誰か"</div>
       </div>
       <div class="dept-row">
-        <div class="dept-row-lbl docs">📋 보관 서류</div>
+        <div class="dept-row-lbl docs">📋 保管書類</div>
         <ul class="dept-docs-list">
-          <li>번호표 사용 대장</li>
-          <li>F1·F2 암호화 보관</li>
+          <li>番号票使用台帳</li>
+          <li>F1·F2（暗号化保管）</li>
         </ul>
       </div>
     </div>
 
     <div class="dept-conn">
-      <div class="dept-conn-text">↓ 투표확인증 전달</div>
+      <div class="dept-conn-text">↓ 投票確認書を送付</div>
     </div>
 
-    <!-- 개표소 -->
     <div class="dept-card dept-coral">
-      <div class="dept-card-lbl">03 — 개표소</div>
-      <div class="dept-card-title">개표소 (개표서버)</div>
+      <div class="dept-card-lbl">03 — 開票所</div>
+      <div class="dept-card-title">開票所（開票サーバー）</div>
       <div class="dept-row">
-        <div class="dept-row-lbl know">✓ 아는 것</div>
-        <div class="dept-row-val">"이 공개용 번호는 A안에 투표한 표다"</div>
+        <div class="dept-row-lbl know">✓ 知っていること</div>
+        <div class="dept-row-val">"この公開番号はA案への票です"</div>
       </div>
       <div class="dept-row">
-        <div class="dept-row-lbl dont">✗ 모르는 것</div>
-        <div class="dept-row-val dim">"이 공개용 번호를 받은 사람이 누구인지"</div>
+        <div class="dept-row-lbl dont">✗ 知らないこと</div>
+        <div class="dept-row-val dim">"この公開番号を受け取ったのが誰か"</div>
       </div>
       <div class="dept-row">
-        <div class="dept-row-lbl docs">📋 보관 서류</div>
+        <div class="dept-row-lbl docs">📋 保管書類</div>
         <ul class="dept-docs-list">
-          <li>투표확인증 전체</li>
-          <li>집계 결과<span class="dept-docs-note">※ 선거 후 공개</span></li>
+          <li>投票確認書一覧</li>
+          <li>集計結果<span class="dept-docs-note">※ 選挙後公開</span></li>
         </ul>
       </div>
     </div>
@@ -269,75 +262,68 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
   </div>
 
   <div class="dept-highlight">
-    <strong>핵심:</strong> 어느 한 부서가 통째로 해킹당해도,
-    세 부서를 동시에 해킹해도
-    누가 무엇에 투표했는지 알아내는 것은
-    <strong>수학적으로 불가능합니다.</strong><br>
-    한 부서는 신원만, 다른 부서는 투표내용만,
-    나머지는 결과만 — 셋을 이을 연결고리가
-    애초에 존재하지 않습니다.
+    <strong>重要ポイント：</strong>どの部署が丸ごとハッキングされても、
+    三つの部署を同時にハッキングしない限り、
+    誰が何に投票したかを特定することは<strong>数学的に不可能です。</strong><br>
+    一つの部署は本人情報のみ、別の部署は投票内容のみ、
+    残りは結果のみ — 三者をつなぐ連結情報は存在しません。
   </div>
 </section>
 
 <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
-<!-- 투표 여정 -->
 <section class="section">
-  <div class="section-title">투표 한 건의 여정 — 비밀이 만들어지는 순간</div>
-  <div class="section-sub">다섯 단계로 완성되는 신뢰</div>
+  <div class="section-title">一票の旅路 — 秘密が生まれる瞬間</div>
+  <div class="section-sub">五つのステップで完成する信頼</div>
   <div class="step-list">
 
     <div class="step-card step-blue">
       <div class="step-num">①</div>
       <div class="step-body">
-        <div class="step-title">본인확인</div>
-        <div class="step-desc">휴대폰 번호를 입력하고 문자로 받은 인증번호(OTP)를 입력합니다.<br>
-          본인확인 부서가 선거인 명부에서 자격을 확인합니다.</div>
+        <div class="step-title">本人確認</div>
+        <div class="step-desc">携帯電話番号を入力し、SMSで受け取った認証番号（OTP）を入力します。<br>
+          本人確認部署が選挙人名簿で資格を確認します。</div>
       </div>
     </div>
 
     <div class="step-card step-blue">
       <div class="step-num">②</div>
       <div class="step-body">
-        <div class="step-title">번호표 발급 — 그리고 연결이 끊깁니다</div>
-        <div class="step-desc">자격이 확인되면 "원본 번호표"가 발급됩니다.<br>
-          이 순간부터 본인확인 부서와 투표자의 화면 사이의 연결이 영구히 끊깁니다.<br>
-          이후 본인확인 부서는 투표자가 무엇을 선택하는지 알 방법이 없습니다.</div>
-        <div class="step-emph-cut">✂ 이 순간이 비밀투표의 시작입니다</div>
+        <div class="step-title">番号票の発行 — そして接続が切断されます</div>
+        <div class="step-desc">資格が確認されると「元番号票」が発行されます。<br>
+          この瞬間から、本人確認部署と投票者の画面との接続は永久に切断されます。<br>
+          この後、本人確認部署は投票者が何を選択するかを知る方法がありません。</div>
+        <div class="step-emph-cut">✂ これが秘密投票の始まりです</div>
       </div>
     </div>
 
     <div class="step-card step-teal">
       <div class="step-num">③</div>
       <div class="step-body">
-        <div class="step-title">투표 제출</div>
-        <div class="step-desc">투표소에서 항목을 선택하고 재확인 팝업을 거쳐 최종 제출합니다.<br>
-          투표소는 "이 번호표로 A안에 투표했다"는 사실은 알지만,<br>
-          그 번호표의 주인이 누구인지는 처음부터 알지 못합니다.</div>
+        <div class="step-title">投票の提出</div>
+        <div class="step-desc">投票所で項目を選択し、確認ポップアップを経て最終提出します。<br>
+          投票所は「この番号票でA案に投票した」という事実は知っていますが、その番号票の持ち主が誰かは最初から知りません。</div>
       </div>
     </div>
 
     <div class="step-card step-teal">
       <div class="step-num">④</div>
       <div class="step-body">
-        <div class="step-title">번호표 교환 — 비밀의 핵심</div>
-        <div class="step-desc">투표가 제출되는 순간, 투표소는 원본 번호표를 "사용됨"으로 처리하고
-          즉석에서 완전히 새로운 번호표를 만듭니다.<br>
-          이 새 번호표는 투표소의 어떤 장부에도 적히지 않고,
-          만들어지는 즉시 투표확인증에 담겨 전달된 뒤 잊혀집니다.<br>
-          "원본 번호표 ↔ 새 번호표"의 연결 기록이 존재하지 않으므로,
-          투표소도 나중에 "이 사람이 어떤 표를 받았는지"를 추적할 수 없습니다.</div>
-        <div class="step-emph-coral">★ 바로 이 순간 — 세상 어디에도 신원과 투표내용을 잇는 연결고리가 남지 않습니다</div>
+        <div class="step-title">番号票の交換 — 秘密の核心</div>
+        <div class="step-desc">投票が提出された瞬間、投票所は元番号票を「使用済み」とし、その場でまったく新しい番号票を作成します。<br>
+          この新しい番号票は投票所のどの台帳にも記録されず、作成直後に投票確認書に収められて送付された後、忘れられます。<br>
+          「元番号票 ↔ 新番号票」の連結記録が存在しないため、投票所も後から「この方がどの確認書を受け取ったか」を追跡することはできません。</div>
+        <div class="step-emph-coral">★ まさにこの瞬間 — 世界のどこにも、本人情報と投票内容をつなぐ連結情報が残りません</div>
       </div>
     </div>
 
     <div class="step-card step-coral">
       <div class="step-num">⑤</div>
       <div class="step-body">
-        <div class="step-title">투표확인증 발급</div>
-        <div class="step-desc">새 번호표를 포함한 "투표확인증"이 투표자의 휴대폰과 개표소로 동시에 전달됩니다.<br>
-          투표자는 이 투표확인증의 공개용 번호를 복사해 보관합니다.<br>
-          선거가 끝난 뒤, 이 번호로 직접 검증 페이지에서 본인 투표를 확인할 수 있습니다.</div>
+        <div class="step-title">投票確認書の発行</div>
+        <div class="step-desc">新しい番号票を含む「投票確認書」が投票者の携帯電話と開票所に同時に送付されます。<br>
+          投票者はこの確認書の公開番号をコピーして保管します。<br>
+          選挙終了後、この番号で検証ページにて直接ご自身の投票を確認できます。</div>
       </div>
     </div>
 
@@ -346,69 +332,66 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
 
 <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
-<!-- 핵심 철학 -->
 <section class="section">
-  <div class="section-title">핵심 철학</div>
-  <div class="section-sub">세 가지 원칙이 신뢰를 만듭니다</div>
+  <div class="section-title">核心的な哲学</div>
+  <div class="section-sub">三つの原則が信頼を生む</div>
   <div class="phil-cards">
     <div class="phil-card teal">
       <div class="phil-icon">⊗</div>
-      <div class="phil-title">비밀투표 보장</div>
-      <div class="phil-desc">투표자 신원과 투표 내용이 연결되지 않는 3부서 분리 구조. 어떤 부서가 해킹당해도 누가 무엇에 투표했는지 알 수 없습니다.</div>
+      <div class="phil-title">秘密投票の保証</div>
+      <div class="phil-desc">投票者の本人情報と投票内容が連結されない三部署分離構造。どの部署がハッキングされても、誰が何に投票したかは分かりません。</div>
     </div>
     <div class="phil-card gold">
       <div class="phil-icon">◈</div>
-      <div class="phil-title">공개 검증</div>
-      <div class="phil-desc">투표가 끝나면 모든 투표확인증이 공개됩니다. 누구나 직접 계산해서 집계가 맞는지 확인할 수 있습니다.</div>
+      <div class="phil-title">公開検証</div>
+      <div class="phil-desc">投票が終わると、すべての投票確認書が公開されます。誰でも直接数えて集計が正しいかどうか確認できます。</div>
     </div>
     <div class="phil-card coral">
       <div class="phil-icon">✦</div>
-      <div class="phil-title">위조 불가</div>
-      <div class="phil-desc">오늘의 함수(F1·F2)로 암호화된 투표내역. F1·F2 공개 후 누구나 위조 여부를 수학적으로 검증할 수 있습니다.</div>
+      <div class="phil-title">改ざん不可</div>
+      <div class="phil-desc">本日の関数（F1·F2）で暗号化された投票内容。F1·F2の公開後、誰でも数学的に改ざんの有無を検証できます。</div>
     </div>
   </div>
 </section>
 
 <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
-<!-- 검증 방법 -->
 <section class="section">
-  <div class="section-title">선거 후 직접 확인하는 방법</div>
-  <div class="section-sub">투명한 결과 — 누구도 숨길 수 없습니다</div>
+  <div class="section-title">選挙後に直接確認する方法</div>
+  <div class="section-sub">透明な結果 — 誰も隠すことができません</div>
   <div class="verify-grid">
     <div class="verify-card">
-      <div class="verify-label">개인 검증</div>
-      <div class="verify-title">내 투표가 반영됐나?</div>
-      <div class="verify-desc">휴대폰에 저장된 공개용 번호를 검증 페이지에 입력하면 본인 투표가 정확히 반영되었는지 즉시 확인할 수 있습니다.</div>
+      <div class="verify-label">個人検証</div>
+      <div class="verify-title">私の投票は反映されましたか？</div>
+      <div class="verify-desc">携帯電話に保存した公開番号を検証ページに入力すると、ご自身の投票が正確に反映されているか即時確認できます。</div>
     </div>
     <div class="verify-card">
-      <div class="verify-label">집계 검증</div>
-      <div class="verify-title">집계가 맞나?</div>
-      <div class="verify-desc">공개된 모든 투표확인증을 직접 세어 공식 집계와 일치하는지 누구나 확인 가능합니다. 특별한 권한 없이, 브라우저 하나로.</div>
+      <div class="verify-label">集計検証</div>
+      <div class="verify-title">集計は正しいですか？</div>
+      <div class="verify-desc">公開されたすべての投票確認書を誰でも数えて、公式集計と一致するかどうか確認できます。</div>
     </div>
   </div>
 </section>
 
 <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
-<!-- 활용 분야 -->
 <section class="section">
-  <div class="section-title">어디에 쓸 수 있나</div>
-  <div class="section-sub">신뢰가 필요한 모든 의사결정에</div>
+  <div class="section-title">どこで使えますか？</div>
+  <div class="section-sub">信頼が必要なあらゆる意思決定に</div>
   <div class="use-grid">
-    <div class="use-item"><div class="use-icon">🏢</div><div class="use-label">주주총회<br>이사회</div></div>
-    <div class="use-item"><div class="use-icon">🗳️</div><div class="use-label">직능단체<br>선거</div></div>
-    <div class="use-item"><div class="use-icon">✈️</div><div class="use-label">재외국민<br>투표</div></div>
-    <div class="use-item"><div class="use-icon">🤝</div><div class="use-label">공동체<br>의사결정</div></div>
-    <div class="use-item"><div class="use-icon">⚡</div><div class="use-label">긴급<br>의사결정</div></div>
-    <div class="use-item"><div class="use-icon">📊</div><div class="use-label">여론조사</div></div>
+    <div class="use-item"><div class="use-icon">🏢</div><div class="use-label">株主総会<br>取締役会</div></div>
+    <div class="use-item"><div class="use-icon">🗳️</div><div class="use-label">職能団体<br>選挙</div></div>
+    <div class="use-item"><div class="use-icon">✈️</div><div class="use-label">在外国民<br>投票</div></div>
+    <div class="use-item"><div class="use-icon">🤝</div><div class="use-label">コミュニティの<br>意思決定</div></div>
+    <div class="use-item"><div class="use-icon">⚡</div><div class="use-label">緊急<br>意思決定</div></div>
+    <div class="use-item"><div class="use-icon">📊</div><div class="use-label">世論調査</div></div>
   </div>
 </section>
 
 <div class="cta-section">
-  <a class="cta-btn" href="https://wwvs-project-auth-server.vercel.app/?electionId=aaaaaaaa-0000-0000-0000-000000000001">지금 시뮬레이션 참여하기</a>
+  <a class="cta-btn" href="https://wwvs-project-auth-server.vercel.app/?electionId=aaaaaaaa-0000-0000-0000-000000000001">今すぐシミュレーションに参加</a>
   <br>
-  <a class="cta-back" href="index.html">← Ohana로 돌아가기</a>
+  <a class="cta-back" href="index.html">← Ohanaに戻る</a>
 </div>
 
 <footer>© 2026 Ohana · Who Whom Voting System</footer>
