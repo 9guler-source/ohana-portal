@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#D4A843;--coral:#E8715A;--teal:#00C4A0;--white:#F8F6F0;--muted:rgba(248,246,240,0.55);--card-border:rgba(212,168,67,0.25)}
+:root{--gold:#D4A843;--coral:#E8715A;--teal:#00C4A0;--indigo:#6C7FD9;--white:#F8F6F0;--muted:rgba(248,246,240,0.55);--card-border:rgba(212,168,67,0.25)}
 body{background:linear-gradient(160deg,#1B2456 0%,#12183A 40%,#1A1035 100%);color:var(--white);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;position:relative}
 #sky{position:fixed;inset:0;pointer-events:none;z-index:0}
 header{position:relative;z-index:10;text-align:center;padding:5rem 2rem 3rem}
@@ -31,6 +31,7 @@ header{position:relative;z-index:10;text-align:center;padding:5rem 2rem 3rem}
 .card-who{--accent:#00C4A0;--glow-color:rgba(0,196,160,0.15)}
 .card-portal{--accent:#D4A843;--glow-color:rgba(212,168,67,0.15)}
 .card-wwvs{--accent:#E8715A;--glow-color:rgba(232,113,90,0.15)}
+.card-survey{--accent:#6C7FD9;--glow-color:rgba(108,127,217,0.15)}
 footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.75rem;letter-spacing:0.15em;color:rgba(248,246,240,0.2);text-transform:uppercase}
 </style>
 </head>
@@ -78,6 +79,14 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
     <div class="card-subtitle">機場入口</div>
     <div class="card-desc">機場裡的旅伴。即使在陌生的旅途中，您也不必獨行 —— 為旅行者打造的智慧型入口網站。</div>
     <span class="card-cta">進入入口 →</span>
+  </a>
+  <a class="card card-survey" href="https://life-survey-one.vercel.app/" target="_self">
+    <div class="card-number">04 — 反思</div>
+    <div class="card-icon">◇</div>
+    <div class="card-title">SYS 人生航海檢視表</div>
+    <div class="card-subtitle">我的人生羅盤</div>
+    <div class="card-desc">回顧走過的路，描繪前方航向的40題人生檢視工具。支援9種語言，將結果貼到任意AI聊天機器人即可獲得深度解讀。</div>
+    <span class="card-cta">展開羅盤 →</span>
   </a>
   <div class="card card-wwvs" onclick="location.href='wwvs-zh-hant.html'" role="button" tabindex="0">
     <div class="card-number">03 — 民主</div>

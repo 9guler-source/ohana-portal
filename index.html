@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--gold:#D4A843;--coral:#E8715A;--teal:#00C4A0;--white:#F8F6F0;--muted:rgba(248,246,240,0.55);--card-border:rgba(212,168,67,0.25)}
+:root{--gold:#D4A843;--coral:#E8715A;--teal:#00C4A0;--indigo:#6C7FD9;--white:#F8F6F0;--muted:rgba(248,246,240,0.55);--card-border:rgba(212,168,67,0.25)}
 body{background:linear-gradient(160deg,#1B2456 0%,#12183A 40%,#1A1035 100%);color:var(--white);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;position:relative}
 #sky{position:fixed;inset:0;pointer-events:none;z-index:0}
 header{position:relative;z-index:10;text-align:center;padding:5rem 2rem 3rem}
@@ -31,6 +31,7 @@ header{position:relative;z-index:10;text-align:center;padding:5rem 2rem 3rem}
 .card-who{--accent:#00C4A0;--glow-color:rgba(0,196,160,0.15)}
 .card-portal{--accent:#D4A843;--glow-color:rgba(212,168,67,0.15)}
 .card-wwvs{--accent:#E8715A;--glow-color:rgba(232,113,90,0.15)}
+.card-survey{--accent:#6C7FD9;--glow-color:rgba(108,127,217,0.15)}
 footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.75rem;letter-spacing:0.15em;color:rgba(248,246,240,0.2);text-transform:uppercase}
 </style>
 </head>
@@ -79,6 +80,14 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
     <div class="card-subtitle">공항 Portal</div>
     <div class="card-desc">공항에서 만나는 동반자. 낯선 여행지에서도 혼자가 아닌 함께하는 경험 — 공항 여행자를 위한 스마트 포털.</div>
     <span class="card-cta">포털 입장하기 →</span>
+  </a>
+  <a class="card card-survey" href="https://life-survey-one.vercel.app/" target="_self">
+    <div class="card-number">04 — 성찰</div>
+    <div class="card-icon">◇</div>
+    <div class="card-title">SYS 인생 항해 점검표</div>
+    <div class="card-subtitle">나의 인생 나침반</div>
+    <div class="card-desc">지나온 길을 돌아보고 앞으로의 항로를 그려보는 40문항의 인생 점검 도구. 9개 언어를 지원하며, 결과를 AI 챗봇에 붙여넣으면 깊이 있는 해석을 받아볼 수 있습니다.</div>
+    <span class="card-cta">나침반 펼치기 →</span>
   </a>
   <div class="card card-wwvs" onclick="location.href='wwvs.html'" role="button" tabindex="0">
     <div class="card-number">03 — 민주주의</div>
