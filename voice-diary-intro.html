@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기억을 꼭 붙잡아!! — 찬란했던 나의 이야기</title>
+  <meta name="description" content="치매 예방과 생애 기억 보존을 위한 음성 녹음 서비스. 소중한 분의 목소리로 기록된 인생 이야기를 언제든 다시 들을 수 있습니다.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #ea580c;
+      --brand-dark: #c2410c;
+      --brand-light: #fed7aa;
+      --stone-50: #fafaf9;
+      --stone-100: #f5f5f4;
+      --stone-200: #e7e5e4;
+      --stone-400: #a8a29e;
+      --stone-600: #57534e;
+      --stone-800: #292524;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color: var(--stone-800);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    /* ── 히어로 ── */
+    .hero {
+      background: linear-gradient(160deg, #1c1917 0%, #292524 40%, #431407 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 24px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(234,88,12,0.3) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(234,88,12,0.25);
+      border: 1px solid rgba(234,88,12,0.5);
+      color: #fb923c;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 7vw, 56px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .hero h1 span { color: #fb923c; }
+    .hero-sub {
+      font-size: clamp(16px, 3vw, 20px);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brand);
+      color: white;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 700;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(234,88,12,0.4);
+      transition: all 0.2s;
+    }
+    .hero-cta:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(234,88,12,0.5); }
+    .hero-scroll {
+      margin-top: 60px;
+      color: rgba(255,255,255,0.35);
+      font-size: 13px;
+      position: relative;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ── 공통 섹션 ── */
+    section { padding: 72px 24px; }
+    .container { max-width: 760px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      background: #fff7ed;
+      color: var(--brand);
+      border: 1px solid #fed7aa;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      color: var(--stone-600);
+      line-height: 1.8;
+    }
+
+    /* ── 의의 섹션 ── */
+    .meaning { background: var(--stone-50); }
+    .meaning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .meaning-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 24px;
+      border: 1px solid var(--stone-200);
+      text-align: center;
+    }
+    .meaning-icon { font-size: 36px; margin-bottom: 14px; }
+    .meaning-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .meaning-card p { font-size: 14px; color: var(--stone-600); line-height: 1.65; }
+
+    /* ── 사회적 효과 ── */
+    .effect { background: linear-gradient(135deg, #431407, #1c1917); color: white; }
+    .effect .section-label { background: rgba(234,88,12,0.2); border-color: rgba(234,88,12,0.4); color: #fb923c; }
+    .effect .section-title { color: white; }
+    .effect .section-desc { color: rgba(255,255,255,0.7); }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .stat-num { font-size: 32px; font-weight: 800; color: #fb923c; margin-bottom: 6px; }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .effect-list {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .effect-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .effect-item .ei { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .effect-item p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+    /* ── 사용 대상 ── */
+    .who { background: white; }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .who-card {
+      border: 2px solid var(--stone-200);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .who-card:hover { border-color: var(--brand); transform: translateY(-3px); }
+    .who-card .wi { font-size: 40px; margin-bottom: 12px; }
+    .who-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .who-card p { font-size: 13px; color: var(--stone-600); }
+
+    /* ── 사용법 ── */
+    .howto { background: var(--stone-50); }
+    .howto-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .tab-btn {
+      padding: 9px 18px;
+      border-radius: 50px;
+      border: 2px solid var(--stone-200);
+      background: white;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--stone-600);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tab-btn.active { background: var(--brand); border-color: var(--brand); color: white; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .step-list { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--stone-200);
+      position: relative;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: white;
+      font-weight: 800;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .step-body p { font-size: 14px; color: var(--stone-600); line-height: 1.65; }
+    .step-tip {
+      margin-top: 8px;
+      background: #fff7ed;
+      border-left: 3px solid var(--brand);
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: #9a3412;
+    }
+
+    /* ── 보안/안심 ── */
+    .security { background: white; }
+    .sec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .sec-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 14px;
+      padding: 22px 18px;
+    }
+    .sec-card .si { font-size: 28px; margin-bottom: 10px; }
+    .sec-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: #14532d; }
+    .sec-card p { font-size: 13px; color: #166534; line-height: 1.6; }
+
+    /* ── CTA 하단 ── */
+    .final-cta {
+      background: linear-gradient(135deg, var(--brand), #dc2626);
+      color: white;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .final-cta h2 { font-size: clamp(26px, 5vw, 40px); font-weight: 800; margin-bottom: 16px; }
+    .final-cta p { font-size: 17px; opacity: 0.88; margin-bottom: 36px; }
+    .final-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      color: var(--brand);
+      text-decoration: none;
+      padding: 18px 44px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+    .final-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.3); }
+
+    /* ── 플로팅 버튼 ── */
+    .floating {
+      position: fixed;
+      bottom: 28px;
+      right: 20px;
+      z-index: 999;
+    }
+    .floating a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand);
+      color: white;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 6px 24px rgba(234,88,12,0.45);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .floating a:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(234,88,12,0.55); }
+    .pulse {
+      width: 8px; height: 8px; border-radius: 50%; background: #86efac;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.4)} }
+
+    /* ── 네비 ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stone-200);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+    .nav-logo { font-size: 16px; font-weight: 800; color: var(--brand); }
+    .nav-back {
+      font-size: 13px;
+      color: var(--stone-400);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-back:hover { color: var(--stone-600); }
+
+    /* ── 반응형 ── */
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 80px; }
+      section { padding: 56px 20px; }
+      .floating a { padding: 12px 18px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 네비게이션 -->
+<nav class="nav">
+  <span class="nav-logo">🎙️ 기억을 꼭 붙잡아!!</span>
+  <a href="https://ohana-portal.vercel.app" class="nav-back">← Ohana 포털로</a>
+</nav>
+
+<!-- 히어로 -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">VOICE DIARY · 음성 일기</div>
+    <h1>기억을 꼭<br><span>붙잡아!!</span></h1>
+    <p class="hero-sub">찬란했던 나의 이야기<br>목소리로 기록하고, 가족과 영원히 간직하다</p>
+    <a href="https://voice-diary-phi-two.vercel.app" class="hero-cta">
+      🎙️ 지금 바로 시작하기
+    </a>
+    <p class="hero-scroll">▼ 아래로 스크롤</p>
+  </div>
+</section>
+
+<!-- 의의 & 필요성 -->
+<section class="meaning">
+  <div class="container">
+    <div class="section-label">WHY · 왜 이 서비스인가</div>
+    <h2 class="section-title">기억은<br>목소리에 살아있습니다</h2>
+    <p class="section-desc">
+      우리 삶의 가장 소중한 순간들은 마음속에만 간직되다 사라집니다. 
+      치매가 찾아오면 그 기억들은 하나씩 지워지고, 
+      사랑하는 가족은 그분의 목소리조차 잊어가게 됩니다.<br><br>
+      <strong>기억을 꼭 붙잡아!!</strong>는 그 기억을 목소리로 기록해
+      세상에 영원히 남겨두는 서비스입니다.
+    </p>
+    <div class="meaning-grid">
+      <div class="meaning-card">
+        <div class="meaning-icon">🧠</div>
+        <h3>치매 예방</h3>
+        <p>자신의 생애 이야기를 회상하고 말하는 행위 자체가 뇌를 자극하여 치매 예방에 도움이 됩니다.</p>
+      </div>
+      <div class="meaning-card">
+        <div class="meaning-icon">🎙️</div>
+        <h3>기억 보존</h3>
+        <p>문자가 아닌 목소리로 기록합니다. 그분의 억양, 웃음, 감정이 고스란히 담깁니다.</p>
+      </div>
+      <div class="meaning-card">
+        <div class="meaning-icon">👨‍👩‍👧</div>
+        <h3>가족 연결</h3>
+        <p>등록된 가족(보호자)은 언제 어디서든 소중한 분의 목소리 기록에 접근할 수 있습니다.</p>
+      </div>
+      <div class="meaning-card">
+        <div class="meaning-icon">♾️</div>
+        <h3>영구 보관</h3>
+        <p>클라우드에 안전하게 저장되어 세대를 넘어 손자, 증손자도 들을 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 사회적 효과 -->
+<section class="effect">
+  <div class="container">
+    <div class="section-label">IMPACT · 사회적 효과</div>
+    <h2 class="section-title">고령화 사회를<br>위한 해답</h2>
+    <p class="section-desc">
+      대한민국은 이미 초고령사회로 진입하고 있습니다. 
+      치매 환자 수는 계속 증가하고 있으며, 
+      가족 간의 소통과 기억 공유는 더욱 중요해지고 있습니다.
+    </p>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">100만+</div>
+        <div class="stat-label">국내 치매 환자 수</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10명 중 1명</div>
+        <div class="stat-label">65세 이상 치매 유병률</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2배</div>
+        <div class="stat-label">20년 후 예상 증가율</div>
+      </div>
+    </div>
+    <div class="effect-list">
+      <div class="effect-item">
+        <div class="ei">🩺</div>
+        <p><strong>회상 치료 효과</strong> — 자신의 과거를 이야기하는 회상 요법(Reminiscence Therapy)은 인지 기능 유지와 우울감 감소에 효과적인 비약물 치료법으로 인정받고 있습니다.</p>
+      </div>
+      <div class="effect-item">
+        <div class="ei">📚</div>
+        <p><strong>구술 역사 보존</strong> — 개인의 삶이 곧 역사입니다. 평범한 시민의 목소리로 기록된 생애 이야기는 우리 사회의 소중한 문화유산이 됩니다.</p>
+      </div>
+      <div class="effect-item">
+        <div class="ei">🌏</div>
+        <p><strong>해외 거주 가족 연결</strong> — 한국, 미국, 일본, 캐나다 등 세계 어디에 있어도 타임존에 맞는 현지 시각으로 소중한 분의 기록을 열람할 수 있습니다.</p>
+      </div>
+      <div class="effect-item">
+        <div class="ei">💝</div>
+        <p><strong>사별 후에도 남는 목소리</strong> — 소중한 분이 돌아가신 후에도 그분의 목소리와 이야기는 영원히 가족 곁에 남습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 누구를 위한 서비스인가 -->
+<section class="who">
+  <div class="container">
+    <div class="section-label">FOR WHO · 이런 분들께</div>
+    <h2 class="section-title">모든 세대를<br>연결합니다</h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="wi">👴</div>
+        <h3>어르신 본인</h3>
+        <p>자신의 삶을 기록하고 싶은 분. 치매 예방을 원하는 분.</p>
+      </div>
+      <div class="who-card">
+        <div class="wi">👨‍👩‍👧</div>
+        <h3>자녀 · 가족</h3>
+        <p>부모님의 이야기를 기록해드리고 싶은 분. 언제든 목소리를 듣고 싶은 분.</p>
+      </div>
+      <div class="who-card">
+        <div class="wi">🏥</div>
+        <h3>요양 시설</h3>
+        <p>입소 어르신의 회상 치료 프로그램으로 활용할 수 있습니다.</p>
+      </div>
+      <div class="who-card">
+        <div class="wi">✈️</div>
+        <h3>해외 거주 가족</h3>
+        <p>멀리서도 부모님의 목소리 기록을 언제든 열람할 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 자세한 사용법 -->
+<section class="howto">
+  <div class="container">
+    <div class="section-label">HOW TO · 사용 방법</div>
+    <h2 class="section-title">처음이세요?<br>함께 시작해봐요</h2>
+    <p class="section-desc" style="margin-bottom:32px;">아래 탭을 눌러 각 기능의 사용 방법을 확인하세요.</p>
+
+    <!-- 탭 버튼 -->
+    <div class="howto-tabs">
+      <button class="tab-btn active" onclick="showTab('signup')">① 회원가입</button>
+      <button class="tab-btn" onclick="showTab('record')">② 녹음하기</button>
+      <button class="tab-btn" onclick="showTab('listen')">③ 연속 듣기</button>
+      <button class="tab-btn" onclick="showTab('setting')">④ 설정</button>
+      <button class="tab-btn" onclick="showTab('guardian')">⑤ 보호자 설정</button>
+    </div>
+
+    <!-- 회원가입 -->
+    <div id="tab-signup" class="tab-content active">
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>사이트 접속</h4>
+            <p>아래 "서비스 바로가기" 버튼을 눌러 site에 접속합니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>회원가입 선택</h4>
+            <p>로그인 화면 하단의 <strong>"회원가입"</strong> 링크를 누릅니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>정보 입력</h4>
+            <p>이름(선택), <strong>이메일 주소</strong>, <strong>생년월일</strong>(예: 19510208), 비밀번호(8자 이상)를 입력합니다.</p>
+            <div class="step-tip">💡 생년월일은 보호자 로그인에 사용되므로 정확하게 입력해주세요.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>이메일 확인 팝업</h4>
+            <p>"회원가입" 버튼을 누르면 입력하신 이메일과 생년월일을 확인하는 팝업이 나타납니다. <strong>"맞습니다, 가입하기"</strong>를 누르면 가입이 완료됩니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>가입 완료 &amp; 홈 화면</h4>
+            <p>가입이 완료되면 홈 화면으로 이동합니다. 이제 녹음을 시작할 수 있습니다!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 보호자 설정 -->
+    <div id="tab-guardian" class="tab-content">
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>내 생년월일 먼저 설정</h4>
+            <p>하단 메뉴의 <strong>설정(⚙️)</strong> → <strong>"내 생년월일"</strong> 항목에서 생년월일을 입력하고 저장합니다.</p>
+            <div class="step-tip">⚠️ 생년월일이 없으면 보호자를 추가할 수 없습니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>보호자 추가</h4>
+            <p>설정 → <strong>"가족 관리"</strong>에서 보호자 이름, 이메일, 생년월일(예: 19910812), 4자리 비밀번호를 입력하고 추가합니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>확인 팝업</h4>
+            <p>입력한 정보와 비밀번호를 확인하는 팝업이 나타납니다. <strong>비밀번호를 꼭 기록해두세요!</strong></p>
+            <div class="step-tip">💡 이 비밀번호를 보호자에게 직접 알려주세요.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>보호자 로그인 방법 (보호자가 직접)</h4>
+            <p>로그인 페이지 하단의 <strong>"보호자로 로그인"</strong>을 누른 후, 아래 5가지를 입력합니다.</p>
+            <p style="margin-top:8px;">① 사용자 이메일 &nbsp;② 사용자 생년월일<br>③ 보호자 이메일 &nbsp;④ 보호자 생년월일<br>⑤ 등록 시 설정한 4자리 비밀번호</p>
+            <div class="step-tip">🔒 5가지 모두 일치해야만 로그인됩니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>보호자 열람 화면</h4>
+            <p>로그인 성공 후 <strong>"사용자의 기록 열람 중"</strong> 배너와 함께 녹음 목록이 표시됩니다. 보호자는 녹음 열람만 가능하며 녹음이나 설정 변경은 불가합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 녹음하기 -->
+    <div id="tab-record" class="tab-content">
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>문항 선택</h4>
+            <p>홈 화면의 <strong>"오늘의 이야기 시작하기"</strong>를 누릅니다. 총 71개 문항 중 오늘 녹음할 것들을 선택합니다. 1~30개까지 자유롭게 선택 가능합니다.</p>
+            <div class="step-tip">💡 즐겨찾기(⭐) 문항을 미리 설정해두면 매번 편리하게 선택할 수 있습니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>질문 듣기</h4>
+            <p>녹음 화면에서 <strong>"질문 듣기"</strong>를 누르면 TTS(음성 합성)로 질문을 읽어줍니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>녹음 시작 &amp; 완료</h4>
+            <p>마이크 버튼을 눌러 녹음을 시작하고, 답변이 끝나면 정지합니다. 마음에 들지 않으면 다시 녹음할 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>다음 문항 &amp; 저장</h4>
+            <p>모든 문항 녹음 후 <strong>"저장하기"</strong>를 누르면 클라우드에 자동 저장됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 연속 듣기 -->
+    <div id="tab-listen" class="tab-content">
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>내 기록 열기</h4>
+            <p>하단 메뉴의 <strong>"내 기록(📋)"</strong>을 누릅니다. 날짜별로 세션 목록이 표시됩니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>세션 선택</h4>
+            <p>듣고 싶은 날짜의 세션을 누릅니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>재생 방식 선택</h4>
+            <p>두 가지 방식으로 들을 수 있습니다.</p>
+            <p style="margin-top:8px;">
+              <strong>▶ 전체 연속 재생</strong> — 모든 답변을 쉬지 않고 연속으로 재생<br>
+              <strong>🗣 문항+답변 함께 듣기</strong> — TTS로 질문을 먼저 읽어준 뒤 답변 재생
+            </p>
+            <div class="step-tip">💡 가족들과 함께 들을 때는 "문항+답변 함께 듣기"가 더 좋습니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>자유이야기 탭</h4>
+            <p>내 기록 화면의 <strong>"자유이야기"</strong> 탭에서는 자유 형식으로 녹음한 기록들을 모아서 들을 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 설정 -->
+    <div id="tab-setting" class="tab-content">
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>설정 메뉴 열기</h4>
+            <p>하단 메뉴의 <strong>"설정(⚙️)"</strong>을 누릅니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>내 생년월일 설정</h4>
+            <p>보호자 로그인에 필요한 생년월일을 입력합니다. (예: 19510208)</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>가족 관리</h4>
+            <p>보호자를 추가하거나 삭제할 수 있습니다. 삭제 즉시 해당 보호자의 접근이 차단됩니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>즐겨찾는 문항</h4>
+            <p>자주 녹음하는 문항을 즐겨찾기로 설정해두면 다음번에 빠르게 선택할 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>비밀번호 변경</h4>
+            <p>로그인 비밀번호를 변경할 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 보안 & 안심 -->
+<section class="security">
+  <div class="container">
+    <div class="section-label">SECURITY · 안전하게</div>
+    <h2 class="section-title">소중한 기록,<br>안전하게 보관합니다</h2>
+    <div class="sec-grid">
+      <div class="sec-card">
+        <div class="si">🔐</div>
+        <h3>5중 보호자 인증</h3>
+        <p>사용자 이메일·생년월일, 보호자 이메일·생년월일, 4자리 비밀번호 — 5가지 모두 일치해야만 접근 가능합니다.</p>
+      </div>
+      <div class="sec-card">
+        <div class="si">☁️</div>
+        <h3>클라우드 암호화 저장</h3>
+        <p>모든 음성 파일은 Supabase 클라우드에 암호화되어 저장됩니다.</p>
+      </div>
+      <div class="sec-card">
+        <div class="si">⚡</div>
+        <h3>즉시 접근 차단</h3>
+        <p>보호자를 삭제하는 순간 해당 보호자의 접근이 즉시 차단됩니다. 대기 시간이 없습니다.</p>
+      </div>
+      <div class="sec-card">
+        <div class="si">🌐</div>
+        <h3>타임존 자동 감지</h3>
+        <p>한국, 미국, 일본 등 어디서 접속해도 기기의 현지 시각으로 날짜/시간이 자동 표시됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 최종 CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>지금 바로 시작하세요</h2>
+    <p>소중한 분의 목소리를 오늘부터 기록하세요.<br>무료로 시작할 수 있습니다.</p>
+    <a href="https://voice-diary-phi-two.vercel.app" class="final-btn">
+      🎙️ 기억을 꼭 붙잡아!! 시작하기
+    </a>
+  </div>
+</section>
+
+<!-- 플로팅 바로가기 버튼 -->
+<div class="floating">
+  <a href="https://voice-diary-phi-two.vercel.app">
+    <div class="pulse"></div>
+    서비스 바로가기
+  </a>
+</div>
+
+<script>
+function showTab(name) {
+  // 모든 탭 숨기기
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  // 선택한 탭 보이기
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
