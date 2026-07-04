@@ -358,6 +358,241 @@
       section { padding: 56px 20px; }
       .floating a { padding: 12px 18px; font-size: 14px; }
     }
+
+    /* ── 서비스 선택 섹션 ── */
+    .service-select {
+      background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      padding: 80px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-select::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(99,102,241,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 50%, rgba(234,88,12,0.12) 0%, transparent 60%);
+    }
+    .service-select .container { position: relative; z-index: 1; }
+    .ss-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: rgba(165,180,252,0.8);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .ss-title {
+      text-align: center;
+      font-size: clamp(26px,4.5vw,42px);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+    .ss-subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 56px;
+    }
+    .ss-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    @media(max-width: 680px) { .ss-grid { grid-template-columns: 1fr; max-width: 440px; } }
+
+    .ss-card {
+      border-radius: 24px;
+      padding: 36px 30px 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .ss-card:hover { transform: translateY(-6px); }
+
+    /* 클라우드 카드 */
+    .ss-cloud {
+      background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
+    }
+    /* 프라이버시 카드 */
+    .ss-privacy {
+      background: linear-gradient(145deg, rgba(16,185,129,0.15) 0%, rgba(5,150,105,0.08) 100%);
+      border: 1px solid rgba(52,211,153,0.3);
+      box-shadow: 0 8px 40px rgba(16,185,129,0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .ss-new-tag {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: linear-gradient(135deg,#f59e0b,#ea580c);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(245,158,11,0.5);
+    }
+
+    .ss-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .ss-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    .ss-cloud .ss-icon-wrap { background: rgba(234,88,12,0.2); }
+    .ss-privacy .ss-icon-wrap { background: rgba(16,185,129,0.2); }
+
+    .ss-card h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+    .ss-card > p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 24px; }
+
+    .ss-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .ss-features li {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ss-features li .chk {
+      width: 20px; height: 20px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+    .ss-cloud .chk { background: rgba(234,88,12,0.25); color: #fb923c; }
+    .ss-privacy .chk { background: rgba(16,185,129,0.25); color: #34d399; }
+
+    .ss-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin-bottom: 24px;
+    }
+
+    .ss-btn {
+      display: block;
+      text-align: center;
+      padding: 16px 24px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all .2s;
+      letter-spacing: .3px;
+    }
+    .ss-btn:hover { transform: translateY(-2px); }
+    .ss-btn-cloud {
+      background: linear-gradient(135deg, #ea580c, #c2410c);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(234,88,12,0.45);
+    }
+    .ss-btn-cloud:hover { box-shadow: 0 10px 32px rgba(234,88,12,0.6); }
+    .ss-btn-privacy {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(16,185,129,0.4);
+    }
+    .ss-btn-privacy:hover { box-shadow: 0 10px 32px rgba(16,185,129,0.55); }
+
+    .ss-note {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 40px;
+      line-height: 1.7;
+    }
+
+    /* 플로팅 버튼 업데이트 */
+    .floating-wrap {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .fl-popup {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      animation: fadeUp .2s ease;
+    }
+    .fl-popup.open { display: flex; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .fl-opt {
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      text-align: center;
+      transition: transform .15s;
+    }
+    .fl-opt:hover { transform: translateX(-3px); }
+    .fl-cloud { background: linear-gradient(135deg,#ea580c,#c2410c); color: #fff; }
+    .fl-privacy { background: linear-gradient(135deg,#10b981,#059669); color: #fff; }
+    .fl-main-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(234,88,12,0.5);
+      transition: all .2s;
+    }
+    .fl-main-btn:hover { box-shadow: 0 12px 36px rgba(234,88,12,0.65); transform: translateY(-2px); }
+    .fl-pulse {
+      width: 10px; height: 10px; border-radius: 50%; background: #fff;
+      animation: flpulse 1.5s infinite;
+    }
+    @keyframes flpulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.7)} }
   </style>
 </head>
 <body>
@@ -388,7 +623,7 @@
 <section class="meaning">
   <div class="container">
     <div class="section-label" data-i18n="why_label">WHY · 왜 이 서비스인가</div>
-    <h2 class="section-title">나의 목소리로<br>나를 발견합니다</h2>
+    <div data-i18n-block="why_content"><h2 class="section-title">나의 목소리로<br>나를 발견합니다</h2>
     <p class="section-desc">
       말한다는 것은 단순히 기록을 남기는 행위가 아닙니다.
       자신의 삶을 목소리로 표현하는 순간, 우리는 비로소
@@ -429,13 +664,15 @@
         <p>클라우드에 안전하게 저장되어 세대를 넘어 손자, 증손자도 들을 수 있습니다.</p>
       </div>
     </div>
+</div>
   </div>
 </section>
 
 <!-- 사회적 효과 -->
 <section class="effect">
   <div class="container">
-    <div class="section-label">IMPACT · 사회적 효과</div>
+    <div class="section-label" data-i18n="effect_label">IMPACT · 사회적 효과</div>
+    <div data-i18n-block="effect_content">
     <h2 class="section-title">고령화 사회를<br>위한 해답</h2>
     <p class="section-desc">
       대한민국은 이미 초고령사회로 진입하고 있습니다. 
@@ -478,13 +715,15 @@
         <p><strong>사별 후에도 남는 목소리</strong> — 소중한 분이 돌아가신 후에도 그분의 목소리와 이야기는 영원히 가족 곁에 남습니다.</p>
       </div>
     </div>
+</div>
   </div>
 </section>
 
 <!-- 누구를 위한 서비스인가 -->
 <section class="who">
   <div class="container">
-    <div class="section-label">FOR WHO · 이런 분들께</div>
+    <div class="section-label" data-i18n="who_label">FOR WHO · 이런 분들께</div>
+    <div data-i18n-block="who_content">
     <h2 class="section-title">모든 세대를<br>연결합니다</h2>
     <div class="who-grid">
       <div class="who-card">
@@ -508,15 +747,16 @@
         <p>멀리서도 부모님의 목소리 기록을 언제든 열람할 수 있습니다.</p>
       </div>
     </div>
+</div>
   </div>
 </section>
 
 <!-- 자세한 사용법 -->
 <section class="howto">
   <div class="container">
-    <div class="section-label">HOW TO · 사용 방법</div>
-    <h2 class="section-title">처음이세요?<br>함께 시작해봐요</h2>
-    <p class="section-desc" style="margin-bottom:32px;">아래 탭을 눌러 각 기능의 사용 방법을 확인하세요.</p>
+    <div class="section-label" data-i18n="howto_label">HOW TO · 사용 방법</div>
+    <h2 class="section-title" data-i18n="howto_title">처음이세요?<br>함께 시작해봐요</h2>
+    <p class="section-desc" style="margin-bottom:32px;" data-i18n="howto_sub">아래 탭을 눌러 각 기능의 사용 방법을 확인하세요.</p>
 
     <!-- 탭 버튼 -->
     <div class="howto-tabs">
@@ -529,7 +769,7 @@
 
     <!-- 회원가입 -->
     <div id="tab-signup" class="tab-content active">
-      <div class="step-list">
+      <div data-i18n-block="tab_signup"><div class="step-list">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
@@ -566,12 +806,12 @@
             <p>가입이 완료되면 홈 화면으로 이동합니다. 이제 녹음을 시작할 수 있습니다!</p>
           </div>
         </div>
-      </div>
+      </div></div>
     </div>
 
     <!-- 보호자 설정 -->
     <div id="tab-guardian" class="tab-content">
-      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:12px 16px; margin-bottom:20px;">
+      <div data-i18n-block="tab_guardian"><div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:12px 16px; margin-bottom:20px;">
         <p style="font-size:13px; color:#1e40af; margin:0;">
           💡 <strong>보호자 등록은 선택 사항입니다.</strong> 필수적으로 등록해야 하는 것이 아니며, 필요하신 분만 설정하시면 됩니다.
         </p>
@@ -617,12 +857,12 @@
             <p>로그인 성공 후 <strong>"사용자의 기록 열람 중"</strong> 배너와 함께 녹음 목록이 표시됩니다. 보호자는 녹음 열람만 가능하며 녹음이나 설정 변경은 불가합니다.</p>
           </div>
         </div>
-      </div>
+      </div></div>
     </div>
 
     <!-- 녹음하기 -->
     <div id="tab-record" class="tab-content">
-      <div class="step-list">
+      <div data-i18n-block="tab_record"><div class="step-list">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
@@ -659,12 +899,12 @@
             · <strong>클라우드 저장</strong>: 자동으로 서버에 업로드됩니다.</p>
           </div>
         </div>
-      </div>
+      </div></div>
     </div>
 
     <!-- 연속 듣기 -->
     <div id="tab-listen" class="tab-content">
-      <div style="background:#fef2f2; border:1px solid #fca5a5; border-radius:10px; padding:12px 16px; margin-bottom:20px;">
+      <div data-i18n-block="tab_listen"><div style="background:#fef2f2; border:1px solid #fca5a5; border-radius:10px; padding:12px 16px; margin-bottom:20px;">
         <p style="font-size:13px; color:#b91c1c; margin:0;">
           ⚠️ 연속 듣기는 <strong>"voice-diary에 저장"</strong>을 선택해 클라우드에 업로드한 녹음에서만 사용 가능합니다. <strong>"내 폰에 저장"</strong>으로 저장한 파일은 이 기능을 사용할 수 없습니다.
         </p>
@@ -703,12 +943,12 @@
             <p>내 기록 화면의 <strong>"자유이야기"</strong> 탭에서는 자유 형식으로 녹음한 기록들을 모아서 들을 수 있습니다.</p>
           </div>
         </div>
-      </div>
+      </div></div>
     </div>
 
     <!-- 설정 -->
     <div id="tab-setting" class="tab-content">
-      <div class="step-list">
+      <div data-i18n-block="tab_setting"><div class="step-list">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
@@ -756,7 +996,7 @@
             <p>로그인 비밀번호를 변경할 수 있습니다.</p>
           </div>
         </div>
-      </div>
+      </div></div>
     </div>
 
   </div>
@@ -765,7 +1005,8 @@
 <!-- 보안 & 안심 -->
 <section class="security">
   <div class="container">
-    <div class="section-label">SECURITY · 안전하게</div>
+    <div class="section-label" data-i18n="sec_label">SECURITY · 안전하게</div>
+    <div data-i18n-block="security_content">
     <h2 class="section-title">소중한 기록,<br>안전하게 보관합니다</h2>
     <div class="sec-grid">
       <div class="sec-card">
@@ -801,231 +1042,613 @@
         혹시 이런 부분이 마음에 걸리시는 분은 <strong>절대 사용하지 마시기를 당부드립니다.</strong>
       </p>
     </div>
+</div>
   </div>
 </section>
 
 <!-- 최종 CTA -->
-<section class="final-cta">
+<!-- 서비스 선택 섹션 -->
+<section class="service-select" id="service-select">
   <div class="container">
-    <h2 data-i18n="final_title">지금 바로 시작하세요</h2>
-    <p data-i18n="final_desc">오늘의 한 마디가 쌓여 나만의 자서전이 됩니다.<br>소중한 분의 목소리를 지금부터 기록하세요. 무료로 시작할 수 있습니다.</p>
-    <a href="https://voice-diary-phi-two.vercel.app" class="final-btn">
-      <span data-i18n="final_btn">🎙️ 기억을 꼭 붙잡아!! 시작하기</span>
-    </a>
+    <div class="ss-label">START · 지금 시작하세요</div>
+    <h2 class="ss-title">어떤 방식으로<br>시작하시겠어요?</h2>
+    <p class="ss-subtitle">두 가지 버전 중 원하시는 방식을 선택하세요</p>
+
+    <div class="ss-grid">
+      <!-- 클라우드 버전 -->
+      <div class="ss-card ss-cloud">
+        <div class="ss-badge">☁️ &nbsp;클라우드 버전</div>
+        <div class="ss-icon-wrap">☁️</div>
+        <h3>연결하고, 공유하고,<br>기억하다</h3>
+        <p>가족과 함께, 어느 기기에서든 접근</p>
+        <ul class="ss-features">
+          <li><span class="chk">✓</span>로그인 후 이용 (이메일 가입)</li>
+          <li><span class="chk">✓</span>클라우드에 안전하게 저장</li>
+          <li><span class="chk">✓</span>보호자(가족)와 공유 가능</li>
+          <li><span class="chk">✓</span>연속 듣기 기능</li>
+          <li><span class="chk">✓</span>어느 기기에서든 언제든 접근</li>
+        </ul>
+        <div class="ss-divider"></div>
+        <a href="https://voice-diary-phi-two.vercel.app" class="ss-btn ss-btn-cloud">
+          ☁️ 클라우드 버전 시작하기
+        </a>
+      </div>
+
+      <!-- 프라이버시 버전 -->
+      <div class="ss-card ss-privacy">
+        <div class="ss-new-tag">NEW</div>
+        <div class="ss-badge">🛡️ &nbsp;완전 프라이버시 버전</div>
+        <div class="ss-icon-wrap">🔒</div>
+        <h3>로그인 없이,<br>완전 비공개</h3>
+        <p>서버 없이, 내 기기에만 저장</p>
+        <ul class="ss-features">
+          <li><span class="chk">✓</span>로그인 불필요 · 즉시 시작</li>
+          <li><span class="chk">✓</span>서버에 전혀 업로드 안 됨</li>
+          <li><span class="chk">✓</span>녹음이 내 기기에만 저장</li>
+          <li><span class="chk">✓</span>도청 위험 전혀 없음</li>
+          <li><span class="chk">✓</span>오프라인에서도 작동</li>
+        </ul>
+        <div class="ss-divider"></div>
+        <a href="https://steady-starburst-5ba091.netlify.app" class="ss-btn ss-btn-privacy">
+          🛡️ 프라이버시 버전 시작하기
+        </a>
+      </div>
+    </div>
+
+    <p class="ss-note">
+      두 버전 모두 71개 문항으로 동일하게 구성되어 있습니다<br>
+      클라우드 버전은 가족 공유를, 프라이버시 버전은 완전한 비공개를 원하시는 분께 적합합니다
+    </p>
   </div>
 </section>
 
-<!-- 플로팅 바로가기 버튼 -->
-<div class="floating">
-  <a href="https://voice-diary-phi-two.vercel.app">
-    <div class="pulse"></div>
-    <span data-i18n="floating_btn">서비스 바로가기</span>
-  </a>
+<!-- 플로팅 버튼 (두 버전 선택) -->
+<div class="floating-wrap">
+  <div class="fl-popup" id="fl-popup">
+    <a href="https://steady-starburst-5ba091.netlify.app" class="fl-opt fl-privacy">🛡️ 프라이버시 버전</a>
+    <a href="https://voice-diary-phi-two.vercel.app" class="fl-opt fl-cloud">☁️ 클라우드 버전</a>
+  </div>
+  <button class="fl-main-btn" onclick="toggleFloat(event)">
+    <div class="fl-pulse"></div>
+    <span id="fl-label">서비스 선택</span>
+    <span id="fl-arrow">▲</span>
+  </button>
 </div>
 
 <script>
-// ── 언어 전환 시스템 ──────────────────────────────────────────────
-const LANGS = {
-  ko: { flag: '🇰🇷', name: '한국어' },
-  ja: { flag: '🇯🇵', name: '日本語' },
-  en: { flag: '🇺🇸', name: 'English' },
-  es: { flag: '🇪🇸', name: 'Español' },
-  'zh-hans': { flag: '🇨🇳', name: '简体中文' },
-  'zh-hant': { flag: '🇹🇼', name: '繁體中文' },
+const LANGS={ko:{flag:'🇰🇷',name:'한국어'},ja:{flag:'🇯🇵',name:'日本語'},en:{flag:'🇺🇸',name:'English'},es:{flag:'🇪🇸',name:'Español'},'zh-hans':{flag:'🇨🇳',name:'简体中文'},'zh-hant':{flag:'🇹🇼',name:'繁體中文'}};
+const HTML_LANG={ko:'ko',ja:'ja',en:'en',es:'es','zh-hans':'zh-Hans','zh-hant':'zh-Hant'};
+
+const T={
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  한국어                                                       ║
+// ╚══════════════════════════════════════════════════════════════╝
+ko:{
+  page_title:'기억을 꼭 붙잡아!! — 찬란했던 나의 이야기',
+  nav_back:'← Ohana 포털로',
+  hero_badge:'VOICE DIARY · 음성 일기',
+  hero_h1:'기억을 꼭<br><span>붙잡아!!</span>',
+  hero_sub:'찬란했던 나의 이야기<br>목소리로 기록하고, 나를 돌아보며, 가족과 영원히 간직하다',
+  hero_cta:'🎙️ 지금 바로 시작하기',
+  hero_scroll:'▼ 아래로 스크롤',
+  why_label:'WHY · 왜 이 서비스인가',
+  effect_label:'IMPACT · 사회적 효과',
+  who_label:'FOR WHO · 이런 분들께',
+  howto_label:'HOW TO · 사용 방법',
+  howto_title:'처음이세요?<br>함께 시작해봐요',
+  howto_sub:'아래 탭을 눌러 각 기능의 사용 방법을 확인하세요.',
+  sec_label:'SECURITY · 안전하게',
+  tab1:'① 회원가입', tab2:'② 녹음하기', tab3:'③ 연속 듣기', tab4:'④ 설정', tab5:'⑤ 보호자 설정',
+  final_title:'지금 바로 시작하세요',
+  final_desc:'오늘의 한 마디가 쌓여 나만의 자서전이 됩니다.<br>소중한 분의 목소리를 지금부터 기록하세요. 무료로 시작할 수 있습니다.',
+  final_btn:'🎙️ 기억을 꼭 붙잡아!! 시작하기',
+  floating_btn:'서비스 바로가기',
+},
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  日本語                                                       ║
+// ╚══════════════════════════════════════════════════════════════╝
+ja:{
+  page_title:'記憶をしっかりつかもう！！— 輝かしかった私の物語',
+  nav_back:'← Ohanaポータルへ',
+  hero_badge:'VOICE DIARY · 音声日記',
+  hero_h1:'記憶を<br><span>しっかりつかもう！！</span>',
+  hero_sub:'輝かしかった私の物語<br>声で記録し、自分を振り返り、家族と永遠に大切にする',
+  hero_cta:'🎙️ 今すぐ始める',
+  hero_scroll:'▼ スクロールして続きを見る',
+  why_label:'WHY · なぜこのサービスなのか',
+  effect_label:'IMPACT · 社会的な効果',
+  who_label:'FOR WHO · こんな方に',
+  howto_label:'HOW TO · 使い方',
+  howto_title:'初めてですか？<br>一緒に始めましょう',
+  howto_sub:'下のタブをタップして各機能の使い方をご確認ください。',
+  sec_label:'SECURITY · 安心・安全',
+  tab1:'① アカウント登録', tab2:'② 録音する', tab3:'③ 連続再生', tab4:'④ 設定', tab5:'⑤ 保護者の設定',
+  final_title:'今すぐ始めましょう',
+  final_desc:'今日の一言が積み重なって、私だけの自伝が完成します。<br>大切な方の声を今から記録してください。無料でお始めいただけます。',
+  final_btn:'🎙️ 記憶をしっかりつかもう！！を始める',
+  floating_btn:'サービスへ',
+  why_content:`<h2 class="section-title">私の声で<br>自分を発見します</h2>
+    <p class="section-desc">話すということは、単に記録を残す行為ではありません。自分の人生を声で表現する瞬間、私たちは初めて、自分が何を大切にし、何を望み、どのように生きてきたかを振り返ることができます。</p>
+    <h2 class="section-title" style="margin-top:32px;">記憶は<br>声の中に生きています</h2>
+    <p class="section-desc">人生で最も大切な瞬間は、心の中だけに秘められて消えていきます。認知症になると、その記憶は一つひとつ消えていき、愛する家族はその方の声さえ忘れてしまいます。<br><br><strong>記憶をしっかりつかもう！！</strong>は、その記憶を声で記録し、自分自身を理解する鏡となり、世界に永遠に残すサービスです。</p>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-icon">📖</div><h3>私だけの自伝</h3><p>自分の人生を声で記録しながら、何を大切にしているか、何を望んでいるか、どのくらい満足しているか、これからどう生きたいかを見直すきっかけになります。毎年記録が積み重なると、世界に一つだけの私の自伝が完成します。</p></div>
+      <div class="meaning-card"><div class="meaning-icon">🧠</div><h3>認知症予防</h3><p>自分の人生の話を回想して話す行為そのものが脳を刺激し、認知症予防に役立ちます。</p></div>
+      <div class="meaning-card"><div class="meaning-icon">🎙️</div><h3>記憶の保存</h3><p>文字ではなく声で記録します。その方のイントネーション、笑い声、感情がそのまま残ります。</p></div>
+      <div class="meaning-card"><div class="meaning-icon">👨‍👩‍👧</div><h3>家族のつながり</h3><p>登録された家族（保護者）は、いつでもどこでも大切な方の声の記録にアクセスできます。</p></div>
+      <div class="meaning-card"><div class="meaning-icon">♾️</div><h3>永久保存</h3><p>クラウドに安全に保存され、世代を超えて孫やひ孫も聴くことができます。</p></div>
+    </div>`,
+  effect_content:`<h2 class="section-title">高齢化社会への<br>答え</h2>
+    <p class="section-desc">日本も韓国と同様に超高齢社会に入っています。認知症患者数は増え続けており、家族間のコミュニケーションと記憶の共有がますます重要になっています。</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">約600万人</div><div class="stat-label">日本の認知症患者数</div></div>
+      <div class="stat-card"><div class="stat-num">7人に1人</div><div class="stat-label">65歳以上の認知症有病率</div></div>
+      <div class="stat-card"><div class="stat-num">2倍</div><div class="stat-label">20年後の予測増加率</div></div>
+    </div>
+    <div class="effect-list">
+      <div class="effect-item"><div class="ei">📖</div><p><strong>人生を振り返る鏡</strong> — 自分の話を声で話す過程で、本当に望んでいること、大切にしていること、これからどう生きたいかを自然に振り返ることができます。毎年続けると、世界に一つだけの生きた自伝が完成します。</p></div>
+      <div class="effect-item"><div class="ei">🩺</div><p><strong>回想療法の効果</strong> — 自分の過去を話す回想療法（Reminiscence Therapy）は、認知機能の維持とうつ症状の軽減に効果的な非薬物療法として認められています。</p></div>
+      <div class="effect-item"><div class="ei">📚</div><p><strong>口述歴史の保存</strong> — 個人の人生がそのまま歴史です。普通の市民の声で記録された生涯の物語は、社会の大切な文化遺産になります。</p></div>
+      <div class="effect-item"><div class="ei">🌏</div><p><strong>海外在住の家族をつなぐ</strong> — 韓国、米国、日本、カナダなど、世界のどこにいても、タイムゾーンに合わせた現地時刻で記録を閲覧できます。</p></div>
+      <div class="effect-item"><div class="ei">💝</div><p><strong>旅立った後も残る声</strong> — 大切な方が亡くなられた後も、その方の声と物語は永遠に家族の傍に残ります。</p></div>
+    </div>`,
+  who_content:`<h2 class="section-title">すべての世代を<br>つなぎます</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="wi">👴</div><h3>ご高齢の方ご本人</h3><p>自分の人生を記録したい方。認知症予防を望む方。</p></div>
+      <div class="who-card"><div class="wi">👨‍👩‍👧</div><h3>お子様・ご家族</h3><p>親御さんの話を記録してさしあげたい方。いつでも声を聴きたい方。</p></div>
+      <div class="who-card"><div class="wi">🏥</div><h3>介護施設</h3><p>入居者の方の回想療法プログラムとして活用できます。</p></div>
+      <div class="who-card"><div class="wi">✈️</div><h3>海外在住のご家族</h3><p>遠くにいても親御さんの声の記録をいつでも閲覧できます。</p></div>
+    </div>`,
+  security_content:`<h2 class="section-title">大切な記録を<br>安全に保管します</h2>
+    <div class="sec-grid">
+      <div class="sec-card"><div class="si">🔐</div><h3>5重保護者認証</h3><p>利用者のメール・生年月日、保護者のメール・生年月日、4桁のパスワード — 5つすべてが一致した場合のみアクセス可能です。</p></div>
+      <div class="sec-card"><div class="si">☁️</div><h3>クラウド暗号化保存</h3><p>すべての音声ファイルはSupabaseクラウドに暗号化して保存されます。</p></div>
+      <div class="sec-card"><div class="si">⚡</div><h3>即時アクセス遮断</h3><p>保護者を削除した瞬間、その保護者のアクセスが即座に遮断されます。待ち時間はありません。</p></div>
+      <div class="sec-card"><div class="si">🌐</div><h3>タイムゾーン自動検知</h3><p>韓国、米国、日本など、どこからアクセスしても端末の現地時刻で日時が自動表示されます。</p></div>
+    </div>
+    <div style="margin-top:20px;background:#f0fdf4;border:1.5px solid #86efac;border-radius:16px;padding:24px 22px;">
+      <p style="font-size:22px;margin-bottom:10px;">🛡️</p>
+      <h3 style="font-size:16px;font-weight:800;color:#14532d;margin-bottom:10px;">録音内容は絶対に閲覧されません</h3>
+      <p style="font-size:14px;color:#166534;line-height:1.75;margin:0;">このプログラムで録音した内容は<strong>管理者が絶対に閲覧することはできず</strong>、このプログラムを実行することで盗聴などの危険が生じることは一切ありません。安心してご利用ください。<br><br>この点が気になる方は<strong>絶対にご使用にならないようお願いいたします。</strong></p>
+    </div>`,
+  tab_signup:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>サイトへアクセス</h4><p>下の「サービスへ」ボタンをタップしてサイトにアクセスします。</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>新規登録を選択</h4><p>ログイン画面下部の<strong>「新規登録」</strong>リンクをタップします。</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>情報を入力</h4><p>お名前（任意）、<strong>メールアドレス</strong>、<strong>生年月日</strong>（例：19510208）、パスワード（8文字以上）を入力します。</p><div class="step-tip">⚠️ パスワードを忘れた場合は絶対に再設定できませんのでご注意ください。</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>確認ポップアップ</h4><p>「新規登録」ボタンをタップすると、入力したメールアドレスと生年月日を確認するポップアップが表示されます。<strong>「正しい、登録する」</strong>をタップすると登録完了です。</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>登録完了・ホーム画面</h4><p>登録完了後、ホーム画面に移動します。録音を始められます！</p></div></div>
+  </div>`,
+  tab_record:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>質問を選ぶ</h4><p>ホーム画面の<strong>「今日のお話を始める」</strong>をタップします。全71問の中から今日録音する質問を選びます。1〜30問まで自由に選べます。</p><div class="step-tip">💡 お気に入り(⭐)の質問を事前に設定しておくと毎回便利に選べます。</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>保存方法を選択</h4><p>録音前に2つの保存方法のいずれかを選択します。</p><p style="margin-top:8px;">📱 <strong>スマートフォンに保存</strong> — 録音ファイルを端末に直接ダウンロード。サーバーにアップロードされません。<br>☁️ <strong>voice-diaryに保存</strong> — クラウドに保存。連続再生、保護者閲覧、どの端末からもアクセス可能。</p><div class="step-tip">⚠️ <strong>スマートフォンに保存</strong>を選ぶと連続再生と保護者閲覧機能は使えません。</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>質問を聴いて録音</h4><p>TTS（音声合成）で質問を読み上げた後、マイクボタンをタップして録音を開始します。答え終わったら停止し、気に入らない場合は録り直せます。</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>次の質問・保存</h4><p>全質問の録音後、保存ボタンをタップします。<br>· <strong>スマートフォン保存</strong>：各録音ファイルのダウンロード画面が表示されます。<br>· <strong>クラウド保存</strong>：自動的にサーバーにアップロードされます。</p></div></div>
+  </div>`,
+  tab_listen:`<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:12px 16px;margin-bottom:20px;"><p style="font-size:13px;color:#b91c1c;margin:0;">⚠️ 連続再生は<strong>「voice-diaryに保存」</strong>を選択してクラウドにアップロードした録音のみ使用できます。<strong>「スマートフォンに保存」</strong>したファイルはこの機能を使用できません。</p></div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>記録を開く</h4><p>下部メニューの<strong>「記録(📋)」</strong>をタップします。日付別にセッションのリストが表示されます。</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>セッションを選択</h4><p>聴きたい日付のセッションをタップします。</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>再生方式を選択</h4><p>2つの方式で聴けます。</p><p style="margin-top:8px;"><strong>▶ 全て連続再生</strong> — 全ての回答を休まず連続再生<br><strong>🗣 質問と答えを一緒に聴く</strong> — TTSで質問を先に読み上げてから回答を再生</p><div class="step-tip">💡 ご家族と一緒に聴くときは「質問と答えを一緒に聴く」がおすすめです。</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>フリートークタブ</h4><p>記録画面の<strong>「フリートーク」</strong>タブでは、自由形式で録音した記録をまとめて聴けます。</p></div></div>
+  </div>`,
+  tab_setting:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>設定メニューを開く</h4><p>下部メニューの<strong>「設定(⚙️)」</strong>をタップします。</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>保存容量の確認</h4><p>設定画面上部に現在の<strong>クラウド保存容量</strong>がゲージバーで表示されます。</p><div class="step-tip">☁️ 表示された容量は<strong>「voice-diaryに保存」</strong>を選択した場合に使用されるクラウド容量です。<br>📱 <strong>「スマートフォンに保存」</strong>を選択するとクラウド容量とは関係なく端末に直接保存されるため容量制限はありません。<br>💡 1MBは約<strong>1分30秒</strong>分の録音が可能な容量です。</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>生年月日の設定</h4><p>保護者ログインに必要な生年月日を入力します。（例：19510208）</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>家族管理</h4><p>保護者を追加または削除できます。削除するとすぐにその保護者のアクセスが遮断されます。</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>お気に入りの質問</h4><p>よく録音する質問をお気に入りに設定しておくと、次回から素早く選べます。</p></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><h4>パスワード変更</h4><p>ログインパスワードを変更できます。</p></div></div>
+  </div>`,
+  tab_guardian:`<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 16px;margin-bottom:20px;"><p style="font-size:13px;color:#1e40af;margin:0;">💡 <strong>保護者の登録は任意です。</strong>必須ではなく、必要な方のみ設定してください。</p></div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>生年月日を先に設定</h4><p>下部メニューの<strong>設定(⚙️)</strong> → <strong>「生年月日」</strong>で生年月日を入力して保存します。</p><div class="step-tip">⚠️ 生年月日がないと保護者を追加できません。</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>保護者を追加</h4><p>設定 → <strong>「家族管理」</strong>で保護者の名前、メール、生年月日（例：19910812）、4桁のパスワードを入力して追加します。</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>確認ポップアップ</h4><p>入力した情報とパスワードを確認するポップアップが表示されます。<strong>パスワードを必ず記録してください！</strong></p><div class="step-tip">⚠️ パスワードを忘れた場合は絶対に再設定できませんのでご注意ください。</div><div class="step-tip">💡 このパスワードを保護者に直接お伝えください。</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>保護者のログイン方法（保護者が直接）</h4><p>ログインページ下部の<strong>「保護者としてログイン」</strong>をタップし、以下の5つを入力します。</p><p style="margin-top:8px;">① 利用者のメール &nbsp;② 利用者の生年月日<br>③ 保護者のメール &nbsp;④ 保護者の生年月日<br>⑤ 登録時に設定した4桁のパスワード</p><div class="step-tip">🔒 5つすべてが一致した場合のみログインできます。</div></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>保護者の閲覧画面</h4><p>ログイン成功後、<strong>「利用者の記録を閲覧中」</strong>バナーと共に録音リストが表示されます。保護者は録音の閲覧のみ可能で、録音や設定変更はできません。</p></div></div>
+  </div>`,
+},
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  English                                                      ║
+// ╚══════════════════════════════════════════════════════════════╝
+en:{
+  page_title:'Hold On to Your Memories!! — The Story of My Brilliant Life',
+  nav_back:'← Back to Ohana Portal',
+  hero_badge:'VOICE DIARY · Voice Journal',
+  hero_h1:'Hold On to<br><span>Your Memories!!</span>',
+  hero_sub:'The story of my brilliant life<br>Record in your voice, reflect on yourself, and cherish forever with family',
+  hero_cta:'🎙️ Start Now',
+  hero_scroll:'▼ Scroll down',
+  why_label:'WHY · Why This Service',
+  effect_label:'IMPACT · Social Impact',
+  who_label:'FOR WHO · Who Is This For',
+  howto_label:'HOW TO · How to Use',
+  howto_title:'First time?<br>Let\'s get started',
+  howto_sub:'Tap the tabs below to learn how to use each feature.',
+  sec_label:'SECURITY · Stay Safe',
+  tab1:'① Sign Up', tab2:'② Recording', tab3:'③ Playback', tab4:'④ Settings', tab5:'⑤ Guardian Setup',
+  final_title:'Start Today',
+  final_desc:'Each word you speak builds your own autobiography.<br>Start recording your precious voice now. It\'s free.',
+  final_btn:'🎙️ Start Hold On to Your Memories!!',
+  floating_btn:'Go to Service',
+  why_content:`<h2 class="section-title">Discover Yourself<br>Through Your Voice</h2>
+    <p class="section-desc">Speaking is not just an act of leaving a record. The moment you express your life in your own voice, you naturally begin to reflect on what you value, what you want, and how you have lived.</p>
+    <h2 class="section-title" style="margin-top:32px;">Memories Live<br>in Your Voice</h2>
+    <p class="section-desc">The most precious moments of our lives are quietly preserved in our hearts before fading away. When dementia comes, those memories disappear one by one, and even the voice of your loved one becomes forgotten.<br><br><strong>Hold On to Your Memories!!</strong> records those memories in your own voice — becoming a mirror to understand yourself, and leaving them preserved forever in the world.</p>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-icon">📖</div><h3>Your Own Autobiography</h3><p>Recording your life story in your own voice becomes an opportunity to reflect on what matters to you, what you want, how satisfied you are, and how you want to live going forward. As records accumulate each year, your one-of-a-kind autobiography is completed.</p></div>
+      <div class="meaning-card"><div class="meaning-icon">🧠</div><h3>Dementia Prevention</h3><p>The act of recalling and narrating your life story stimulates the brain and helps prevent dementia.</p></div>
+      <div class="meaning-card"><div class="meaning-icon">🎙️</div><h3>Memory Preservation</h3><p>Recorded in voice, not text. Their intonation, laughter, and emotions are all captured.</p></div>
+      <div class="meaning-card"><div class="meaning-icon">👨‍👩‍👧</div><h3>Family Connection</h3><p>Registered family members (guardians) can access the voice recordings of their loved ones anytime, anywhere.</p></div>
+      <div class="meaning-card"><div class="meaning-icon">♾️</div><h3>Permanent Storage</h3><p>Safely stored in the cloud, grandchildren and great-grandchildren can listen across generations.</p></div>
+    </div>`,
+  effect_content:`<h2 class="section-title">An Answer for<br>an Aging Society</h2>
+    <p class="section-desc">Many countries around the world are entering super-aged societies. The number of dementia patients continues to grow, and sharing memories within families is becoming more important than ever.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">1M+</div><div class="stat-label">Dementia patients in Korea</div></div>
+      <div class="stat-card"><div class="stat-num">1 in 10</div><div class="stat-label">Dementia prevalence over 65</div></div>
+      <div class="stat-card"><div class="stat-num">×2</div><div class="stat-label">Expected increase in 20 years</div></div>
+    </div>
+    <div class="effect-list">
+      <div class="effect-item"><div class="ei">📖</div><p><strong>A Mirror to Reflect on Life</strong> — In the process of telling your story aloud, you naturally revisit what you truly want, what you cherish, and how you want to live. Recording consistently each year creates a living autobiography unlike any other.</p></div>
+      <div class="effect-item"><div class="ei">🩺</div><p><strong>Reminiscence Therapy</strong> — Reminiscence Therapy — speaking about one's past — is recognized as an effective non-pharmacological treatment for maintaining cognitive function and reducing depression.</p></div>
+      <div class="effect-item"><div class="ei">📚</div><p><strong>Oral History Preservation</strong> — Every person's life is history. Life stories recorded in the voices of ordinary people become precious cultural heritage for society.</p></div>
+      <div class="effect-item"><div class="ei">🌏</div><p><strong>Connecting Overseas Families</strong> — Wherever you are in the world — Korea, the US, Japan, Canada — you can access recordings in your local time zone.</p></div>
+      <div class="effect-item"><div class="ei">💝</div><p><strong>A Voice That Lives On</strong> — Even after your loved one passes away, their voice and stories remain with the family forever.</p></div>
+    </div>`,
+  who_content:`<h2 class="section-title">Connecting<br>All Generations</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="wi">👴</div><h3>Elderly Users Themselves</h3><p>For those who want to record their life story. For those seeking dementia prevention.</p></div>
+      <div class="who-card"><div class="wi">👨‍👩‍👧</div><h3>Children & Family</h3><p>For those who want to record their parents' stories. For those who want to hear their voice anytime.</p></div>
+      <div class="who-card"><div class="wi">🏥</div><h3>Care Facilities</h3><p>Can be used as a reminiscence therapy program for residents.</p></div>
+      <div class="who-card"><div class="wi">✈️</div><h3>Overseas Family Members</h3><p>Even from far away, you can access your parents' voice recordings anytime.</p></div>
+    </div>`,
+  security_content:`<h2 class="section-title">Your Precious Records,<br>Kept Safely</h2>
+    <div class="sec-grid">
+      <div class="sec-card"><div class="si">🔐</div><h3>5-Layer Guardian Verification</h3><p>User email & date of birth, guardian email & date of birth, 4-digit PIN — all 5 must match to gain access.</p></div>
+      <div class="sec-card"><div class="si">☁️</div><h3>Cloud Encrypted Storage</h3><p>All voice files are encrypted and stored in Supabase cloud.</p></div>
+      <div class="sec-card"><div class="si">⚡</div><h3>Instant Access Revocation</h3><p>The moment a guardian is removed, their access is instantly blocked. No waiting period.</p></div>
+      <div class="sec-card"><div class="si">🌐</div><h3>Automatic Timezone Detection</h3><p>Wherever you connect from — Korea, the US, Japan — dates and times are automatically displayed in your local time.</p></div>
+    </div>
+    <div style="margin-top:20px;background:#f0fdf4;border:1.5px solid #86efac;border-radius:16px;padding:24px 22px;">
+      <p style="font-size:22px;margin-bottom:10px;">🛡️</p>
+      <h3 style="font-size:16px;font-weight:800;color:#14532d;margin-bottom:10px;">Your Recordings Are Never Accessed</h3>
+      <p style="font-size:14px;color:#166534;line-height:1.75;margin:0;">The recordings made in this program <strong>cannot be accessed by administrators under any circumstances</strong>, and there is absolutely no risk of eavesdropping or any other danger from using this program. Please use it with confidence.<br><br>If you have any concerns about this, <strong>please do not use this service.</strong></p>
+    </div>`,
+  tab_signup:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Access the Site</h4><p>Tap the "Go to Service" button below to access the site.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Select Sign Up</h4><p>Tap the <strong>"Sign Up"</strong> link at the bottom of the login screen.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Enter Your Information</h4><p>Enter your name (optional), <strong>email address</strong>, <strong>date of birth</strong> (e.g. 19510208), and password (8+ characters).</p><div class="step-tip">⚠️ Please note: passwords cannot be reset if forgotten.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Confirmation Popup</h4><p>After tapping "Sign Up", a popup will appear to confirm your email and date of birth. Tap <strong>"Correct, Sign Up"</strong> to complete registration.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Registration Complete & Home</h4><p>After registration, you'll be taken to the home screen. Start recording!</p></div></div>
+  </div>`,
+  tab_record:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Select Questions</h4><p>Tap <strong>"Start Today's Story"</strong> on the home screen. Select from 71 questions — choose 1 to 30.</p><div class="step-tip">💡 Set favorite (⭐) questions in advance for quick selection each time.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Choose Save Method</h4><p>Before recording, choose one of two save methods:</p><p style="margin-top:8px;">📱 <strong>Save to Phone</strong> — Direct download to device. Not uploaded to server.<br>☁️ <strong>Save to voice-diary</strong> — Cloud storage. Continuous playback, guardian access, accessible from any device.</p><div class="step-tip">⚠️ Choosing <strong>Save to Phone</strong> disables continuous playback and guardian access.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Listen & Record</h4><p>After TTS reads the question, tap the microphone button to start recording. Stop when done, and re-record if needed.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Save</h4><p>After recording all questions, tap the save button.<br>· <strong>Phone:</strong> A download screen appears for each recording.<br>· <strong>Cloud:</strong> Automatically uploaded to the server.</p></div></div>
+  </div>`,
+  tab_listen:`<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:12px 16px;margin-bottom:20px;"><p style="font-size:13px;color:#b91c1c;margin:0;">⚠️ Continuous playback is only available for recordings saved with <strong>"Save to voice-diary"</strong>. Files saved with <strong>"Save to Phone"</strong> cannot use this feature.</p></div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Open My Records</h4><p>Tap <strong>"Records (📋)"</strong> in the bottom menu. Sessions are listed by date.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Select a Session</h4><p>Tap the session from the date you want to hear.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Choose Playback Mode</h4><p>Two playback modes are available:</p><p style="margin-top:8px;"><strong>▶ Play All</strong> — Continuous playback of all answers without stopping<br><strong>🗣 Play with Questions</strong> — TTS reads each question, then plays the answer</p><div class="step-tip">💡 "Play with Questions" is great for listening with family.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Free Talk Tab</h4><p>The <strong>"Free Talk"</strong> tab in My Records collects all free-format recordings for easy listening.</p></div></div>
+  </div>`,
+  tab_setting:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Open Settings</h4><p>Tap <strong>"Settings (⚙️)"</strong> in the bottom menu.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Check Storage</h4><p>Your current <strong>cloud storage usage</strong> is displayed as a gauge bar at the top of Settings.</p><div class="step-tip">☁️ The displayed capacity is used when you choose <strong>"Save to voice-diary"</strong>.<br>📱 Choosing <strong>"Save to Phone"</strong> saves directly to your device with no storage limit.<br>💡 1MB holds approximately <strong>1 minute 30 seconds</strong> of recording.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Set Date of Birth</h4><p>Enter your date of birth required for guardian login. (e.g. 19510208)</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Family Management</h4><p>Add or remove guardians. Access is revoked immediately upon deletion.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Favorite Questions</h4><p>Save frequently recorded questions as favorites for quick selection next time.</p></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><h4>Change Password</h4><p>Change your login password here.</p></div></div>
+  </div>`,
+  tab_guardian:`<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 16px;margin-bottom:20px;"><p style="font-size:13px;color:#1e40af;margin:0;">💡 <strong>Guardian registration is optional.</strong> It is not required — only set it up if needed.</p></div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Set Your Date of Birth First</h4><p>In <strong>Settings (⚙️)</strong> → <strong>"Date of Birth"</strong>, enter and save your date of birth.</p><div class="step-tip">⚠️ You cannot add a guardian without setting your date of birth.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Add Guardian</h4><p>Go to Settings → <strong>"Family"</strong> and enter the guardian's name, email, date of birth (e.g. 19910812), and a 4-digit PIN.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Confirmation Popup</h4><p>A popup will appear to confirm the information and PIN. <strong>Please write down the PIN!</strong></p><div class="step-tip">⚠️ The PIN cannot be reset if forgotten.</div><div class="step-tip">💡 Share this PIN directly with the guardian.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>How the Guardian Logs In</h4><p>Tap <strong>"Guardian Login"</strong> at the bottom of the login page, then enter these 5 items:</p><p style="margin-top:8px;">① User's email &nbsp;② User's date of birth<br>③ Guardian's email &nbsp;④ Guardian's date of birth<br>⑤ The 4-digit PIN set at registration</p><div class="step-tip">🔒 All 5 must match to log in.</div></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Guardian View Screen</h4><p>After successful login, the recording list appears with a banner showing <strong>"Viewing user's records"</strong>. Guardians can only view recordings — no recording or settings changes allowed.</p></div></div>
+  </div>`,
+},
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  Español                                                      ║
+// ╚══════════════════════════════════════════════════════════════╝
+es:{
+  page_title:'¡¡Aferra tus Recuerdos!! — La historia de mi brillante vida',
+  nav_back:'← Volver al portal Ohana',
+  hero_badge:'VOICE DIARY · Diario de Voz',
+  hero_h1:'¡¡Aferra<br><span>tus Recuerdos!!</span>',
+  hero_sub:'La historia de mi brillante vida<br>Graba con tu voz, reflexiona y comparte para siempre con tu familia',
+  hero_cta:'🎙️ Comenzar ahora',
+  hero_scroll:'▼ Desplázate hacia abajo',
+  why_label:'WHY · Por qué este servicio',
+  effect_label:'IMPACT · Impacto social',
+  who_label:'FOR WHO · Para quién es',
+  howto_label:'HOW TO · Cómo usar',
+  howto_title:'¿Es la primera vez?<br>Empecemos juntos',
+  howto_sub:'Toque las pestañas de abajo para ver cómo usar cada función.',
+  sec_label:'SECURITY · Seguridad',
+  tab1:'① Registro', tab2:'② Grabación', tab3:'③ Reproducción', tab4:'④ Ajustes', tab5:'⑤ Tutor',
+  final_title:'Empiece hoy',
+  final_desc:'Cada palabra que dice construye su propia autobiografía.<br>Comience a grabar su preciosa voz ahora. Es gratuito.',
+  final_btn:'🎙️ Comenzar ¡¡Aferra tus Recuerdos!!',
+  floating_btn:'Ir al servicio',
+  why_content:`<h2 class="section-title">Descúbrase<br>a través de su voz</h2>
+    <p class="section-desc">Hablar no es solo un acto de dejar un registro. En el momento en que expresa su vida con su propia voz, naturalmente comienza a reflexionar sobre lo que valora, lo que desea y cómo ha vivido.</p>
+    <h2 class="section-title" style="margin-top:32px;">Los recuerdos viven<br>en su voz</h2>
+    <p class="section-desc">Los momentos más preciosos de nuestra vida se guardan solo en el corazón antes de desvanecerse. Cuando llega la demencia, esos recuerdos desaparecen uno a uno, y la voz de su ser querido también se olvida.<br><br><strong>¡¡Aferra tus Recuerdos!!</strong> registra esos recuerdos en su propia voz, convirtiéndose en un espejo para comprenderse y dejándolos preservados para siempre.</p>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-icon">📖</div><h3>Su propia autobiografía</h3><p>Grabar su historia de vida en su propia voz se convierte en una oportunidad para reflexionar sobre lo que le importa y cómo quiere vivir en el futuro. Cada año que acumula registros, su autobiografía única se completa.</p></div>
+      <div class="meaning-card"><div class="meaning-icon">🧠</div><h3>Prevención de demencia</h3><p>El acto de recordar y narrar su historia de vida estimula el cerebro y ayuda a prevenir la demencia.</p></div>
+      <div class="meaning-card"><div class="meaning-icon">🎙️</div><h3>Preservación de recuerdos</h3><p>Grabado en voz, no en texto. Su entonación, risa y emociones quedan capturadas.</p></div>
+      <div class="meaning-card"><div class="meaning-icon">👨‍👩‍👧</div><h3>Conexión familiar</h3><p>Los familiares registrados (tutores) pueden acceder a las grabaciones de voz de su ser querido en cualquier momento y lugar.</p></div>
+      <div class="meaning-card"><div class="meaning-icon">♾️</div><h3>Almacenamiento permanente</h3><p>Guardado de forma segura en la nube, nietos y bisnietos podrán escucharlo a través de generaciones.</p></div>
+    </div>`,
+  effect_content:`<h2 class="section-title">Una respuesta para<br>la sociedad envejecida</h2>
+    <p class="section-desc">Muchos países del mundo están entrando en sociedades superenvejecidas. El número de pacientes con demencia sigue creciendo y compartir recuerdos en familia es cada vez más importante.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">1M+</div><div class="stat-label">Pacientes con demencia en Corea</div></div>
+      <div class="stat-card"><div class="stat-num">1 de 10</div><div class="stat-label">Prevalencia en mayores de 65</div></div>
+      <div class="stat-card"><div class="stat-num">×2</div><div class="stat-label">Aumento esperado en 20 años</div></div>
+    </div>
+    <div class="effect-list">
+      <div class="effect-item"><div class="ei">📖</div><p><strong>Un espejo para reflexionar</strong> — Al contar su historia en voz alta, reflexiona sobre lo que realmente quiere, lo que aprecia y cómo quiere vivir. Grabar cada año crea una autobiografía viva única en el mundo.</p></div>
+      <div class="effect-item"><div class="ei">🩺</div><p><strong>Efecto de terapia de reminiscencia</strong> — Hablar sobre el propio pasado es reconocido como un tratamiento no farmacológico eficaz para mantener las funciones cognitivas y reducir la depresión.</p></div>
+      <div class="effect-item"><div class="ei">📚</div><p><strong>Preservación de historia oral</strong> — La vida de cada persona es historia. Las historias de vida grabadas en las voces de ciudadanos ordinarios se convierten en un valioso patrimonio cultural.</p></div>
+      <div class="effect-item"><div class="ei">🌏</div><p><strong>Conectar a familias en el extranjero</strong> — Donde sea que esté en el mundo, puede acceder a las grabaciones con la hora local de su zona horaria.</p></div>
+      <div class="effect-item"><div class="ei">💝</div><p><strong>Una voz que perdura</strong> — Incluso después del fallecimiento de su ser querido, su voz e historias permanecen para siempre junto a la familia.</p></div>
+    </div>`,
+  who_content:`<h2 class="section-title">Conectando<br>todas las generaciones</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="wi">👴</div><h3>Personas mayores</h3><p>Para quienes desean registrar su historia de vida. Para quienes buscan prevenir la demencia.</p></div>
+      <div class="who-card"><div class="wi">👨‍👩‍👧</div><h3>Hijos y familiares</h3><p>Para quienes desean grabar las historias de sus padres. Para quienes quieren escuchar su voz en cualquier momento.</p></div>
+      <div class="who-card"><div class="wi">🏥</div><h3>Centros de cuidado</h3><p>Puede utilizarse como programa de terapia de reminiscencia para residentes.</p></div>
+      <div class="who-card"><div class="wi">✈️</div><h3>Familiares en el extranjero</h3><p>Incluso desde lejos, puede acceder a las grabaciones de voz de sus padres en cualquier momento.</p></div>
+    </div>`,
+  security_content:`<h2 class="section-title">Sus preciosos registros,<br>guardados con seguridad</h2>
+    <div class="sec-grid">
+      <div class="sec-card"><div class="si">🔐</div><h3>Verificación de 5 capas</h3><p>Email y fecha de nacimiento del usuario, email y fecha de nacimiento del tutor, PIN de 4 dígitos — los 5 deben coincidir para acceder.</p></div>
+      <div class="sec-card"><div class="si">☁️</div><h3>Almacenamiento cifrado en nube</h3><p>Todos los archivos de voz se almacenan cifrados en la nube de Supabase.</p></div>
+      <div class="sec-card"><div class="si">⚡</div><h3>Revocación de acceso inmediata</h3><p>En el momento en que se elimina un tutor, su acceso se bloquea inmediatamente. Sin tiempo de espera.</p></div>
+      <div class="sec-card"><div class="si">🌐</div><h3>Detección automática de zona horaria</h3><p>Donde sea que se conecte, las fechas y horas se muestran automáticamente en su hora local.</p></div>
+    </div>
+    <div style="margin-top:20px;background:#f0fdf4;border:1.5px solid #86efac;border-radius:16px;padding:24px 22px;">
+      <p style="font-size:22px;margin-bottom:10px;">🛡️</p>
+      <h3 style="font-size:16px;font-weight:800;color:#14532d;margin-bottom:10px;">Sus grabaciones nunca son accedidas</h3>
+      <p style="font-size:14px;color:#166534;line-height:1.75;margin:0;">El contenido grabado en este programa <strong>no puede ser accedido por administradores bajo ninguna circunstancia</strong>, y no existe ningún riesgo de interceptación o peligro al usar este programa. Úselo con confianza.<br><br>Si tiene alguna preocupación al respecto, <strong>le rogamos que no utilice este servicio.</strong></p>
+    </div>`,
+  tab_signup:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Acceder al sitio</h4><p>Toque el botón "Ir al servicio" para acceder al sitio.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Seleccionar Registro</h4><p>Toque el enlace <strong>"Registrarse"</strong> en la parte inferior de la pantalla de inicio de sesión.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Ingresar información</h4><p>Ingrese su nombre (opcional), <strong>correo electrónico</strong>, <strong>fecha de nacimiento</strong> (ej. 19510208) y contraseña (mínimo 8 caracteres).</p><div class="step-tip">⚠️ Tenga en cuenta: la contraseña no puede restablecerse si se olvida.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Ventana de confirmación</h4><p>Después de tocar "Registrarse", aparecerá una ventana para confirmar su correo y fecha de nacimiento. Toque <strong>"Correcto, registrarme"</strong> para completar el registro.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Registro completo</h4><p>Tras el registro, irá a la pantalla de inicio. ¡Puede comenzar a grabar!</p></div></div>
+  </div>`,
+  tab_record:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Seleccionar preguntas</h4><p>Toque <strong>"Comenzar historia de hoy"</strong> en la pantalla de inicio. Seleccione de 1 a 30 preguntas de las 71 disponibles.</p><div class="step-tip">💡 Configure preguntas favoritas (⭐) con anticipación para seleccionarlas fácilmente.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Elegir método de guardado</h4><p>Antes de grabar, elija uno de los dos métodos:</p><p style="margin-top:8px;">📱 <strong>Guardar en teléfono</strong> — Descarga directa al dispositivo. Sin subida al servidor.<br>☁️ <strong>Guardar en voice-diary</strong> — Almacenamiento en nube. Reproducción continua, acceso del tutor, desde cualquier dispositivo.</p><div class="step-tip">⚠️ Elegir <strong>Guardar en teléfono</strong> desactiva la reproducción continua y el acceso del tutor.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Escuchar y grabar</h4><p>Después de que TTS lea la pregunta, toque el micrófono para comenzar a grabar. Detenga cuando termine y vuelva a grabar si es necesario.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Guardar</h4><p>Después de grabar todas las preguntas, toque el botón guardar.<br>· <strong>Teléfono:</strong> Aparece una pantalla de descarga para cada grabación.<br>· <strong>Nube:</strong> Se sube automáticamente al servidor.</p></div></div>
+  </div>`,
+  tab_listen:`<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:12px 16px;margin-bottom:20px;"><p style="font-size:13px;color:#b91c1c;margin:0;">⚠️ La reproducción continua solo está disponible para grabaciones guardadas con <strong>"Guardar en voice-diary"</strong>. Los archivos guardados con <strong>"Guardar en teléfono"</strong> no pueden usar esta función.</p></div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Abrir Mis registros</h4><p>Toque <strong>"Registros (📋)"</strong> en el menú inferior. Las sesiones aparecen por fecha.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Seleccionar sesión</h4><p>Toque la sesión de la fecha que desea escuchar.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Elegir modo de reproducción</h4><p>Hay dos modos disponibles:</p><p style="margin-top:8px;"><strong>▶ Reproducir todo</strong> — Reproducción continua de todas las respuestas<br><strong>🗣 Reproducir con preguntas</strong> — TTS lee cada pregunta y luego reproduce la respuesta</p><div class="step-tip">💡 "Reproducir con preguntas" es ideal para escuchar en familia.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Pestaña de charla libre</h4><p>La pestaña <strong>"Charla libre"</strong> en Mis registros reúne todas las grabaciones en formato libre.</p></div></div>
+  </div>`,
+  tab_setting:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Abrir Ajustes</h4><p>Toque <strong>"Ajustes (⚙️)"</strong> en el menú inferior.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Verificar almacenamiento</h4><p>Su <strong>uso de almacenamiento en nube</strong> actual se muestra como barra de progreso en la parte superior de Ajustes.</p><div class="step-tip">☁️ La capacidad mostrada es la que se usa al elegir <strong>"Guardar en voice-diary"</strong>.<br>📱 Elegir <strong>"Guardar en teléfono"</strong> guarda directamente en el dispositivo sin límite de capacidad.<br>💡 1MB equivale a aproximadamente <strong>1 minuto 30 segundos</strong> de grabación.</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Configurar fecha de nacimiento</h4><p>Ingrese su fecha de nacimiento requerida para el inicio de sesión del tutor. (ej. 19510208)</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Gestión familiar</h4><p>Agregue o elimine tutores. El acceso se revoca inmediatamente al eliminar.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Preguntas favoritas</h4><p>Guarde como favoritas las preguntas que graba con frecuencia para seleccionarlas rápidamente la próxima vez.</p></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><h4>Cambiar contraseña</h4><p>Cambie su contraseña de inicio de sesión aquí.</p></div></div>
+  </div>`,
+  tab_guardian:`<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 16px;margin-bottom:20px;"><p style="font-size:13px;color:#1e40af;margin:0;">💡 <strong>El registro de tutor es opcional.</strong> No es obligatorio — configúrelo solo si lo necesita.</p></div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Configure su fecha de nacimiento primero</h4><p>En <strong>Ajustes (⚙️)</strong> → <strong>"Fecha de nacimiento"</strong>, ingrese y guarde su fecha de nacimiento.</p><div class="step-tip">⚠️ No puede agregar un tutor sin configurar su fecha de nacimiento.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Agregar tutor</h4><p>Vaya a Ajustes → <strong>"Familia"</strong> e ingrese el nombre, correo, fecha de nacimiento (ej. 19910812) y PIN de 4 dígitos del tutor.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Ventana de confirmación</h4><p>Aparecerá una ventana para confirmar la información y el PIN. <strong>¡Anote el PIN!</strong></p><div class="step-tip">⚠️ El PIN no puede restablecerse si se olvida.</div><div class="step-tip">💡 Comparta este PIN directamente con el tutor.</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Cómo inicia sesión el tutor</h4><p>Toque <strong>"Inicio de sesión de tutor"</strong> en la parte inferior de la página de inicio de sesión, luego ingrese estos 5 elementos:</p><p style="margin-top:8px;">① Correo del usuario &nbsp;② Fecha de nacimiento del usuario<br>③ Correo del tutor &nbsp;④ Fecha de nacimiento del tutor<br>⑤ PIN de 4 dígitos establecido al registrarse</p><div class="step-tip">🔒 Los 5 deben coincidir para iniciar sesión.</div></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Pantalla del tutor</h4><p>Tras iniciar sesión, aparece la lista de grabaciones con el banner <strong>"Viendo registros del usuario"</strong>. El tutor solo puede ver grabaciones — no puede grabar ni cambiar ajustes.</p></div></div>
+  </div>`,
+},
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  简体中文                                                      ║
+// ╚══════════════════════════════════════════════════════════════╝
+'zh-hans':{
+  page_title:'紧握记忆！！— 我辉煌人生的故事',
+  nav_back:'← 返回Ohana门户',
+  hero_badge:'VOICE DIARY · 语音日记',
+  hero_h1:'紧握<br><span>记忆！！</span>',
+  hero_sub:'我辉煌人生的故事<br>用声音记录，回顾自己，与家人永远珍藏',
+  hero_cta:'🎙️ 立即开始',
+  hero_scroll:'▼ 向下滚动',
+  why_label:'WHY · 为什么选择这个服务',
+  effect_label:'IMPACT · 社会效益',
+  who_label:'FOR WHO · 适合哪些人',
+  howto_label:'HOW TO · 使用方法',
+  howto_title:'第一次使用？<br>一起开始吧',
+  howto_sub:'点击下方标签查看各功能的使用方法。',
+  sec_label:'SECURITY · 安全保障',
+  tab1:'① 注册', tab2:'② 录音', tab3:'③ 连续播放', tab4:'④ 设置', tab5:'⑤ 监护人设置',
+  final_title:'立即开始',
+  final_desc:'每一句话的积累成就您的自传。<br>现在就开始记录您珍贵的声音吧。免费使用。',
+  final_btn:'🎙️ 开始使用紧握记忆！！',
+  floating_btn:'前往服务',
+  why_content:`<h2 class="section-title">通过声音<br>发现自己</h2>
+    <p class="section-desc">说话不仅仅是留下记录的行为。当您用自己的声音表达人生时，您自然会开始思考自己珍视什么、想要什么、以及如何生活。</p>
+    <h2 class="section-title" style="margin-top:32px;">记忆<br>活在声音里</h2>
+    <p class="section-desc">我们人生中最珍贵的时刻只保存在心中，然后慢慢消逝。当认知症来临，那些记忆一个个消失，连挚爱的家人也会忘记他们的声音。<br><br><strong>紧握记忆！！</strong>用声音记录这些记忆，成为了解自己的镜子，让它们永远留存于世。</p>
+    <div class="meaning-grid">
+      <div class="meaning-card"><div class="meaning-icon">📖</div><h3>我的自传</h3><p>用声音记录自己的人生，成为检视自己重视什么、想要什么、对生活满意程度以及未来希望如何生活的契机。每年积累的记录，将完成世界上独一无二的自传。</p></div>
+      <div class="meaning-card"><div class="meaning-icon">🧠</div><h3>预防认知症</h3><p>回忆并讲述自己人生故事的行为本身就能刺激大脑，有助于预防认知症。</p></div>
+      <div class="meaning-card"><div class="meaning-icon">🎙️</div><h3>保存记忆</h3><p>用声音而非文字记录。他们的语调、笑声和情感都原原本本地保留下来。</p></div>
+      <div class="meaning-card"><div class="meaning-icon">👨‍👩‍👧</div><h3>连接家人</h3><p>已注册的家人（监护人）可以随时随地访问挚爱之人的语音记录。</p></div>
+      <div class="meaning-card"><div class="meaning-icon">♾️</div><h3>永久保存</h3><p>安全保存在云端，跨越世代，孙子、曾孙也可以聆听。</p></div>
+    </div>`,
+  effect_content:`<h2 class="section-title">应对<br>老龄化社会的答案</h2>
+    <p class="section-desc">世界上许多国家都在进入超老龄化社会。认知症患者人数持续增加，家庭成员之间的沟通和记忆共享变得越来越重要。</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">100万+</div><div class="stat-label">韩国认知症患者人数</div></div>
+      <div class="stat-card"><div class="stat-num">10人中1人</div><div class="stat-label">65岁以上认知症患病率</div></div>
+      <div class="stat-card"><div class="stat-num">2倍</div><div class="stat-label">20年后预计增长率</div></div>
+    </div>
+    <div class="effect-list">
+      <div class="effect-item"><div class="ei">📖</div><p><strong>回顾人生的镜子</strong> — 在大声讲述自己故事的过程中，您自然会回顾真正想要的、珍视的和希望如何生活。每年坚持记录，将完成独一无二的活的自传。</p></div>
+      <div class="effect-item"><div class="ei">🩺</div><p><strong>回忆疗法效果</strong> — 讲述过去的回忆疗法（Reminiscence Therapy）被认为是维持认知功能和减轻抑郁的有效非药物疗法。</p></div>
+      <div class="effect-item"><div class="ei">📚</div><p><strong>口述历史保存</strong> — 每个人的人生就是历史。用普通市民声音记录的人生故事成为社会珍贵的文化遗产。</p></div>
+      <div class="effect-item"><div class="ei">🌏</div><p><strong>连接海外家人</strong> — 无论您在世界的哪个地方，都可以用当地时区查阅记录。</p></div>
+      <div class="effect-item"><div class="ei">💝</div><p><strong>永远留存的声音</strong> — 即使挚爱之人离世，他们的声音和故事也将永远陪伴家人身边。</p></div>
+    </div>`,
+  who_content:`<h2 class="section-title">连接<br>所有世代</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="wi">👴</div><h3>老年人本人</h3><p>希望记录自己人生故事的人。希望预防认知症的人。</p></div>
+      <div class="who-card"><div class="wi">👨‍👩‍👧</div><h3>子女及家人</h3><p>希望为父母记录故事的人。希望随时听到父母声音的人。</p></div>
+      <div class="who-card"><div class="wi">🏥</div><h3>养老机构</h3><p>可作为入住老人的回忆疗法项目使用。</p></div>
+      <div class="who-card"><div class="wi">✈️</div><h3>海外家人</h3><p>即使在远方，也可以随时查阅父母的语音记录。</p></div>
+    </div>`,
+  security_content:`<h2 class="section-title">珍贵的记录，<br>安全保管</h2>
+    <div class="sec-grid">
+      <div class="sec-card"><div class="si">🔐</div><h3>五重监护人验证</h3><p>用户邮箱·生日，监护人邮箱·生日，4位密码 — 五项全部匹配才能访问。</p></div>
+      <div class="sec-card"><div class="si">☁️</div><h3>云端加密存储</h3><p>所有语音文件都加密存储在Supabase云端。</p></div>
+      <div class="sec-card"><div class="si">⚡</div><h3>即时访问封锁</h3><p>删除监护人的瞬间，该监护人的访问立即被封锁。无需等待。</p></div>
+      <div class="sec-card"><div class="si">🌐</div><h3>自动时区检测</h3><p>无论从哪里连接，日期/时间都自动以设备本地时间显示。</p></div>
+    </div>
+    <div style="margin-top:20px;background:#f0fdf4;border:1.5px solid #86efac;border-radius:16px;padding:24px 22px;">
+      <p style="font-size:22px;margin-bottom:10px;">🛡️</p>
+      <h3 style="font-size:16px;font-weight:800;color:#14532d;margin-bottom:10px;">录音内容绝对不会被查阅</h3>
+      <p style="font-size:14px;color:#166534;line-height:1.75;margin:0;">在此程序中录制的内容<strong>管理员绝对无法查阅</strong>，运行此程序不会产生任何窃听风险。请放心使用。<br><br>如果您对此有任何顾虑，<strong>请勿使用本服务。</strong></p>
+    </div>`,
+  tab_signup:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>访问网站</h4><p>点击下方"前往服务"按钮访问网站。</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>选择注册</h4><p>点击登录界面下方的<strong>"注册"</strong>链接。</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>输入信息</h4><p>输入姓名（选填）、<strong>邮箱地址</strong>、<strong>出生日期</strong>（例：19510208）、密码（8位以上）。</p><div class="step-tip">⚠️ 请注意：忘记密码后无法重置，请妥善保管。</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>确认弹窗</h4><p>点击"注册"后，会弹出确认邮箱和出生日期的窗口。点击<strong>"正确，立即注册"</strong>完成注册。</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>注册完成</h4><p>注册完成后将进入首页。可以开始录音了！</p></div></div>
+  </div>`,
+  tab_record:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>选择问题</h4><p>点击首页的<strong>"开始今天的故事"</strong>。从71个问题中选择1至30个今天要录音的问题。</p><div class="step-tip">💡 提前设置收藏(⭐)问题，每次选择时更方便。</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>选择保存方式</h4><p>录音前选择两种保存方式之一：</p><p style="margin-top:8px;">📱 <strong>保存到手机</strong> — 直接下载到设备，不上传至服务器。<br>☁️ <strong>保存到voice-diary</strong> — 云端保存，连续播放、监护人查阅、任何设备均可访问。</p><div class="step-tip">⚠️ 选择<strong>保存到手机</strong>将无法使用连续播放和监护人查阅功能。</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>听问题并录音</h4><p>TTS朗读问题后，点击麦克风按钮开始录音。回答完毕后停止，不满意可重新录制。</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>保存</h4><p>录完所有问题后点击保存按钮。<br>· <strong>手机保存</strong>：显示各录音文件的下载界面。<br>· <strong>云端保存</strong>：自动上传至服务器。</p></div></div>
+  </div>`,
+  tab_listen:`<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:12px 16px;margin-bottom:20px;"><p style="font-size:13px;color:#b91c1c;margin:0;">⚠️ 连续播放仅适用于选择<strong>"保存到voice-diary"</strong>上传到云端的录音。选择<strong>"保存到手机"</strong>的文件无法使用此功能。</p></div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>打开我的记录</h4><p>点击底部菜单的<strong>"记录(📋)"</strong>。按日期显示录音列表。</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>选择录音</h4><p>点击想要聆听的日期的录音。</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>选择播放方式</h4><p>有两种播放方式：</p><p style="margin-top:8px;"><strong>▶ 全部连续播放</strong> — 连续播放所有回答<br><strong>🗣 带问题一起听</strong> — TTS先朗读问题，再播放回答</p><div class="step-tip">💡 与家人一起听时推荐"带问题一起听"。</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>自由讲述标签</h4><p>我的记录中的<strong>"自由讲述"</strong>标签汇集了所有自由格式录音，可一起聆听。</p></div></div>
+  </div>`,
+  tab_setting:`<div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>打开设置</h4><p>点击底部菜单的<strong>"设置(⚙️)"</strong>。</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>查看存储空间</h4><p>设置界面顶部以进度条显示当前<strong>云端存储空间</strong>使用情况。</p><div class="step-tip">☁️ 显示的容量是选择<strong>"保存到voice-diary"</strong>时使用的云端容量。<br>📱 选择<strong>"保存到手机"</strong>直接保存到设备，无容量限制。<br>💡 1MB约可录制<strong>1分30秒</strong>的音频。</div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>设置出生日期</h4><p>输入监护人登录所需的出生日期。（例：19510208）</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>家人管理</h4><p>可添加或删除监护人。删除后立即封锁该监护人的访问。</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>收藏问题</h4><p>将常用问题设为收藏，下次可快速选择。</p></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><h4>修改密码</h4><p>可在此修改登录密码。</p></div></div>
+  </div>`,
+  tab_guardian:`<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 16px;margin-bottom:20px;"><p style="font-size:13px;color:#1e40af;margin:0;">💡 <strong>监护人注册为可选项</strong>，非必填，需要的用户才需设置。</p></div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>先设置出生日期</h4><p>在<strong>设置(⚙️)</strong> → <strong>"出生日期"</strong>中输入并保存出生日期。</p><div class="step-tip">⚠️ 未设置出生日期则无法添加监护人。</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>添加监护人</h4><p>进入设置 → <strong>"家人管理"</strong>，输入监护人的姓名、邮箱、出生日期（例：19910812）和4位密码并添加。</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>确认弹窗</h4><p>会弹出确认信息和密码的窗口。<strong>请务必记录密码！</strong></p><div class="step-tip">⚠️ 忘记密码后无法重置，请妥善保管。</div><div class="step-tip">💡 请直接将此密码告知监护人。</div></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>监护人登录方法</h4><p>在登录页面底部点击<strong>"以监护人身份登录"</strong>，然后输入以下5项：</p><p style="margin-top:8px;">① 用户邮箱 &nbsp;② 用户出生日期<br>③ 监护人邮箱 &nbsp;④ 监护人出生日期<br>⑤ 注册时设置的4位密码</p><div class="step-tip">🔒 5项全部匹配才能登录。</div></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>监护人查阅界面</h4><p>登录成功后，显示<strong>"正在查看用户的记录"</strong>横幅和录音列表。监护人只能查阅录音，无法录音或更改设置。</p></div></div>
+  </div>`,
+},
 };
 
-const HTML_LANG = { ko:'ko', ja:'ja', en:'en', es:'es', 'zh-hans':'zh-Hans', 'zh-hant':'zh-Hant' };
-
-const T = {
-// ════════════════════════════════════════════════════════════════
-ko: {
-  page_title: '기억을 꼭 붙잡아!! — 찬란했던 나의 이야기',
-  nav_back: '← Ohana 포털로',
-  hero_badge: 'VOICE DIARY · 음성 일기',
-  hero_h1: '기억을 꼭<br><span>붙잡아!!</span>',
-  hero_sub: '찬란했던 나의 이야기<br>목소리로 기록하고, 나를 돌아보며, 가족과 영원히 간직하다',
-  hero_cta: '🎙️ 지금 바로 시작하기',
-  hero_scroll: '▼ 아래로 스크롤',
-  why_label: 'WHY · 왜 이 서비스인가',
-  tab1: '① 회원가입',
-  tab2: '② 녹음하기',
-  tab3: '③ 연속 듣기',
-  tab4: '④ 설정',
-  tab5: '⑤ 보호자 설정',
-  final_title: '지금 바로 시작하세요',
-  final_desc: '오늘의 한 마디가 쌓여 나만의 자서전이 됩니다.<br>소중한 분의 목소리를 지금부터 기록하세요. 무료로 시작할 수 있습니다.',
-  final_btn: '🎙️ 기억을 꼭 붙잡아!! 시작하기',
-  floating_btn: '서비스 바로가기',
-},
-// ════════════════════════════════════════════════════════════════
-ja: {
-  page_title: '記憶をしっかりつかもう！！— 輝かしかった私の物語',
-  nav_back: '← Ohanaポータルへ',
-  hero_badge: 'VOICE DIARY · 音声日記',
-  hero_h1: '記憶を<br><span>つかもう！！</span>',
-  hero_sub: '輝かしかった私の物語<br>声で記録し、自分を振り返り、家族と永遠に大切にする',
-  hero_cta: '🎙️ 今すぐ始める',
-  hero_scroll: '▼ スクロールして続きを見る',
-  why_label: 'WHY · なぜこのサービスなのか',
-  tab1: '① アカウント登録',
-  tab2: '② 録音する',
-  tab3: '③ 連続再生',
-  tab4: '④ 設定',
-  tab5: '⑤ 保護者の設定',
-  final_title: '今すぐ始めましょう',
-  final_desc: '今日の一言が積み重なって、私だけの自伝が完成します。<br>大切な方の声を今から記録してください。無料でお始めいただけます。',
-  final_btn: '🎙️ 記憶をしっかりつかもう！！を始める',
-  floating_btn: 'サービスへ',
-},
-// ════════════════════════════════════════════════════════════════
-en: {
-  page_title: 'Hold On to Your Memories!! — The Story of My Brilliant Life',
-  nav_back: '← Back to Ohana Portal',
-  hero_badge: 'VOICE DIARY · Voice Journal',
-  hero_h1: 'Hold On to<br><span>Your Memories!!</span>',
-  hero_sub: 'The story of my brilliant life<br>Record in your own voice, reflect on yourself, and cherish forever with family',
-  hero_cta: '🎙️ Start Now',
-  hero_scroll: '▼ Scroll down',
-  why_label: 'WHY · Why This Service',
-  tab1: '① Sign Up',
-  tab2: '② Recording',
-  tab3: '③ Continuous Playback',
-  tab4: '④ Settings',
-  tab5: '⑤ Guardian Setup',
-  final_title: 'Start Today',
-  final_desc: 'Each word you speak builds your own autobiography.<br>Start recording your precious voice now. It\'s free.',
-  final_btn: '🎙️ Start Hold On to Your Memories!!',
-  floating_btn: 'Go to Service',
-},
-// ════════════════════════════════════════════════════════════════
-es: {
-  page_title: '¡¡Aferra tus Recuerdos!! — La historia de mi brillante vida',
-  nav_back: '← Volver al portal Ohana',
-  hero_badge: 'VOICE DIARY · Diario de Voz',
-  hero_h1: '¡¡Aferra<br><span>tus Recuerdos!!</span>',
-  hero_sub: 'La historia de mi brillante vida<br>Graba con tu voz, reflexiona sobre ti mismo y comparte para siempre con tu familia',
-  hero_cta: '🎙️ Comenzar ahora',
-  hero_scroll: '▼ Desplázate hacia abajo',
-  why_label: 'WHY · Por qué este servicio',
-  tab1: '① Registro',
-  tab2: '② Grabación',
-  tab3: '③ Reproducción continua',
-  tab4: '④ Configuración',
-  tab5: '⑤ Configurar tutor',
-  final_title: 'Empiece hoy',
-  final_desc: 'Cada palabra que dice construye su propia autobiografía.<br>Comience a grabar su preciosa voz ahora. Es gratuito.',
-  final_btn: '🎙️ Comenzar ¡¡Aferra tus Recuerdos!!',
-  floating_btn: 'Ir al servicio',
-},
-// ════════════════════════════════════════════════════════════════
-'zh-hans': {
-  page_title: '紧握记忆！！— 我辉煌人生的故事',
-  nav_back: '← 返回Ohana门户',
-  hero_badge: 'VOICE DIARY · 语音日记',
-  hero_h1: '紧握<br><span>记忆！！</span>',
-  hero_sub: '我辉煌人生的故事<br>用声音记录，回顾自己，与家人永远珍藏',
-  hero_cta: '🎙️ 立即开始',
-  hero_scroll: '▼ 向下滚动',
-  why_label: 'WHY · 为什么选择这个服务',
-  tab1: '① 注册',
-  tab2: '② 录音',
-  tab3: '③ 连续播放',
-  tab4: '④ 设置',
-  tab5: '⑤ 监护人设置',
-  final_title: '立即开始',
-  final_desc: '每一句话的积累成就您的自传。<br>现在就开始记录您珍贵的声音吧。免费使用。',
-  final_btn: '🎙️ 开始使用紧握记忆！！',
-  floating_btn: '前往服务',
-},
-// ════════════════════════════════════════════════════════════════
-'zh-hant': {
-  page_title: '緊握記憶！！— 我璀璨人生的故事',
-  nav_back: '← 返回Ohana門戶',
-  hero_badge: 'VOICE DIARY · 語音日記',
-  hero_h1: '緊握<br><span>記憶！！</span>',
-  hero_sub: '我璀璨人生的故事<br>用聲音記錄，回顧自己，與家人永遠珍藏',
-  hero_cta: '🎙️ 立即開始',
-  hero_scroll: '▼ 向下捲動',
-  why_label: 'WHY · 為什麼選擇這個服務',
-  tab1: '① 註冊',
-  tab2: '② 錄音',
-  tab3: '③ 連續播放',
-  tab4: '④ 設定',
-  tab5: '⑤ 監護人設定',
-  final_title: '立即開始',
-  final_desc: '每一句話的積累成就您的自傳。<br>現在就開始記錄您珍貴的聲音吧。免費使用。',
-  final_btn: '🎙️ 開始使用緊握記憶！！',
-  floating_btn: '前往服務',
-},
-}; // end T
-
-// ── 언어 전환기 렌더링 ──
-let langDropOpen = false;
-function renderLangSwitcher(cur) {
-  const el = document.getElementById('lang-switcher');
-  if (!el) return;
-  el.innerHTML = `
-    <button onclick="toggleLangDrop(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1px solid #e7e5e4;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:13px;color:#57534e;">
-      ${LANGS[cur].flag} ${LANGS[cur].name} <span style="font-size:10px;">▾</span>
-    </button>
-    <div id="lang-drop" style="display:${langDropOpen?'block':'none'};position:absolute;right:0;top:calc(100% + 4px);background:white;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.12);overflow:hidden;min-width:150px;z-index:999;">
-      ${Object.entries(LANGS).map(([code,info])=>`
-        <button onclick="setLang('${code}')" style="display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;background:${code===cur?'#fff7ed':'white'};border:none;cursor:pointer;font-size:13px;color:${code===cur?'#ea580c':'#292524'};font-weight:${code===cur?'700':'400'};text-align:left;">
-          ${info.flag} ${info.name} ${code===cur?'✓':''}
-        </button>`).join('')}
-    </div>`;
-}
-
-function toggleLangDrop(e) {
-  e.stopPropagation();
-  langDropOpen = !langDropOpen;
-  const drop = document.getElementById('lang-drop');
-  if (drop) drop.style.display = langDropOpen ? 'block' : 'none';
-}
-
-document.addEventListener('click', () => {
-  langDropOpen = false;
-  const drop = document.getElementById('lang-drop');
-  if (drop) drop.style.display = 'none';
+// 繁體中文 = 简体中文 기반으로 일부 수정
+T['zh-hant'] = Object.assign({}, T['zh-hans'], {
+  page_title:'緊握記憶！！— 我璀璨人生的故事',
+  nav_back:'← 返回Ohana門戶',
+  hero_badge:'VOICE DIARY · 語音日記',
+  hero_h1:'緊握<br><span>記憶！！</span>',
+  hero_sub:'我璀璨人生的故事<br>用聲音記錄，回顧自己，與家人永遠珍藏',
+  hero_cta:'🎙️ 立即開始',
+  hero_scroll:'▼ 向下捲動',
+  why_label:'WHY · 為什麼選擇這個服務',
+  effect_label:'IMPACT · 社會效益',
+  who_label:'FOR WHO · 適合哪些人',
+  howto_label:'HOW TO · 使用方法',
+  howto_title:'第一次使用？<br>一起開始吧',
+  howto_sub:'點擊下方標籤查看各功能的使用方法。',
+  sec_label:'SECURITY · 安全保障',
+  tab1:'① 註冊', tab2:'② 錄音', tab3:'③ 連續播放', tab4:'④ 設定', tab5:'⑤ 監護人設定',
+  final_title:'立即開始',
+  final_desc:'每一句話的積累成就您的自傳。<br>現在就開始記錄您珍貴的聲音吧。免費使用。',
+  final_btn:'🎙️ 開始使用緊握記憶！！',
+  floating_btn:'前往服務',
 });
 
-// ── 언어 적용 ──
-function setLang(lang) {
-  if (!T[lang]) lang = 'ko';
-  localStorage.setItem('vd_intro_lang', lang);
-  document.getElementById('html-root').lang = HTML_LANG[lang] || lang;
-  document.getElementById('page-title').textContent = T[lang].page_title || T.ko.page_title;
-  document.getElementById('nav-back').innerHTML = T[lang].nav_back || T.ko.nav_back;
+// ── 언어 전환기 ──
+let _langOpen=false;
+function renderLangSwitcher(cur){
+  const el=document.getElementById('lang-switcher');if(!el)return;
+  el.innerHTML=`<button onclick="toggleLD(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1px solid #e7e5e4;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:13px;color:#57534e;">${LANGS[cur].flag} ${LANGS[cur].name} <span style="font-size:10px;">▾</span></button>
+  <div id="ldrop" style="display:none;position:absolute;right:0;top:calc(100% + 4px);background:white;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.12);overflow:hidden;min-width:150px;z-index:999;">
+  ${Object.entries(LANGS).map(([c,i])=>`<button onclick="setLang('${c}')" style="display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;background:${c===cur?'#fff7ed':'white'};border:none;cursor:pointer;font-size:13px;color:${c===cur?'#ea580c':'#292524'};font-weight:${c===cur?700:400};text-align:left;">${i.flag} ${i.name}${c===cur?' ✓':''}</button>`).join('')}</div>`;
+}
+function toggleLD(e){e.stopPropagation();_langOpen=!_langOpen;const d=document.getElementById('ldrop');if(d)d.style.display=_langOpen?'block':'none';}
+document.addEventListener('click',()=>{_langOpen=false;const d=document.getElementById('ldrop');if(d)d.style.display='none';});
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    const val = T[lang][key] || T.ko[key];
-    if (val !== undefined) el.innerHTML = val;
+function setLang(lang){
+  if(!T[lang])lang='ko';
+  localStorage.setItem('vd_intro_lang',lang);
+  document.getElementById('html-root').lang={ko:'ko',ja:'ja',en:'en',es:'es','zh-hans':'zh-Hans','zh-hant':'zh-Hant'}[lang]||lang;
+  const titleEl=document.getElementById('page-title');
+  if(titleEl)titleEl.textContent=T[lang].page_title||T.ko.page_title;
+  const backEl=document.getElementById('nav-back');
+  if(backEl)backEl.innerHTML=T[lang].nav_back||T.ko.nav_back;
+  // data-i18n 단순 교체
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.dataset.i18n;
+    const val=T[lang][key]!==undefined?T[lang][key]:T.ko[key];
+    if(val!==undefined)el.innerHTML=val;
   });
-
-  langDropOpen = false;
-  renderLangSwitcher(lang);
+  // data-i18n-block 교체
+  document.querySelectorAll('[data-i18n-block]').forEach(el=>{
+    const key=el.dataset.i18nBlock;
+    const val=T[lang][key]!==undefined?T[lang][key]:T.ko[key];
+    if(val!==undefined)el.innerHTML=val;
+  });
+  _langOpen=false;renderLangSwitcher(lang);
 }
 
-// ── 탭 전환 ──
-function showTab(name) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
+function showTab(name){
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
   event.target.classList.add('active');
 }
 
-// ── 초기화 ──
-(function init() {
-  const saved = localStorage.getItem('vd_intro_lang') || 'ko';
+let _floatOpen = false;
+function toggleFloat(e){
+  e.stopPropagation();
+  _floatOpen = !_floatOpen;
+  const popup = document.getElementById('fl-popup');
+  const arrow = document.getElementById('fl-arrow');
+  popup.classList.toggle('open', _floatOpen);
+  arrow.textContent = _floatOpen ? '▼' : '▲';
+}
+document.addEventListener('click', () => {
+  _floatOpen = false;
+  const popup = document.getElementById('fl-popup');
+  const arrow = document.getElementById('fl-arrow');
+  if(popup) popup.classList.remove('open');
+  if(arrow) arrow.textContent = '▲';
+});
+
+(function init(){
+  const saved=localStorage.getItem('vd_intro_lang')||'ko';
   renderLangSwitcher(saved);
-  if (saved !== 'ko') setLang(saved);
+  if(saved!=='ko')setLang(saved);
+  else renderLangSwitcher('ko');
 })();
 </script>
-
-</body>
-</html>
-
-
 </body>
 </html>
