@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>기억을 꼭 붙잡아!! — 찬란했던 나의 이야기</title>
+  <title id="page-title">기억을 꼭 붙잡아!! — 찬란했던 나의 이야기</title>
   <meta name="description" content="치매 예방과 생애 기억 보존을 위한 음성 녹음 서비스. 소중한 분의 목소리로 기록된 인생 이야기를 언제든 다시 들을 수 있습니다.">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -365,26 +365,29 @@
 <!-- 네비게이션 -->
 <nav class="nav">
   <span class="nav-logo">🎙️ 기억을 꼭 붙잡아!!</span>
-  <a href="https://ohana-portal.vercel.app" class="nav-back">← Ohana 포털로</a>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <div id="lang-switcher" style="position:relative;"></div>
+    <a href="https://ohana-portal.vercel.app" class="nav-back" id="nav-back">← Ohana 포털로</a>
+  </div>
 </nav>
 
 <!-- 히어로 -->
 <section class="hero">
   <div class="container">
-    <div class="hero-badge">VOICE DIARY · 음성 일기</div>
-    <h1>기억을 꼭<br><span>붙잡아!!</span></h1>
-    <p class="hero-sub">찬란했던 나의 이야기<br>목소리로 기록하고, 나를 돌아보며, 가족과 영원히 간직하다</p>
+    <div class="hero-badge" data-i18n="hero_badge">VOICE DIARY · 음성 일기</div>
+    <h1 data-i18n="hero_h1">기억을 꼭<br><span>붙잡아!!</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub">찬란했던 나의 이야기<br>목소리로 기록하고, 나를 돌아보며, 가족과 영원히 간직하다</p>
     <a href="https://voice-diary-phi-two.vercel.app" class="hero-cta">
-      🎙️ 지금 바로 시작하기
+      <span data-i18n="hero_cta">🎙️ 지금 바로 시작하기</span>
     </a>
-    <p class="hero-scroll">▼ 아래로 스크롤</p>
+    <p class="hero-scroll" data-i18n="hero_scroll">▼ 아래로 스크롤</p>
   </div>
 </section>
 
 <!-- 의의 & 필요성 -->
 <section class="meaning">
   <div class="container">
-    <div class="section-label">WHY · 왜 이 서비스인가</div>
+    <div class="section-label" data-i18n="why_label">WHY · 왜 이 서비스인가</div>
     <h2 class="section-title">나의 목소리로<br>나를 발견합니다</h2>
     <p class="section-desc">
       말한다는 것은 단순히 기록을 남기는 행위가 아닙니다.
@@ -517,11 +520,11 @@
 
     <!-- 탭 버튼 -->
     <div class="howto-tabs">
-      <button class="tab-btn active" onclick="showTab('signup')">① 회원가입</button>
-      <button class="tab-btn" onclick="showTab('record')">② 녹음하기</button>
-      <button class="tab-btn" onclick="showTab('listen')">③ 연속 듣기</button>
-      <button class="tab-btn" onclick="showTab('setting')">④ 설정</button>
-      <button class="tab-btn" onclick="showTab('guardian')">⑤ 보호자 설정</button>
+      <button class="tab-btn active" onclick="showTab('signup')" data-i18n="tab1">① 회원가입</button>
+      <button class="tab-btn" onclick="showTab('record')" data-i18n="tab2">② 녹음하기</button>
+      <button class="tab-btn" onclick="showTab('listen')" data-i18n="tab3">③ 연속 듣기</button>
+      <button class="tab-btn" onclick="showTab('setting')" data-i18n="tab4">④ 설정</button>
+      <button class="tab-btn" onclick="showTab('guardian')" data-i18n="tab5">⑤ 보호자 설정</button>
     </div>
 
     <!-- 회원가입 -->
@@ -804,10 +807,10 @@
 <!-- 최종 CTA -->
 <section class="final-cta">
   <div class="container">
-    <h2>지금 바로 시작하세요</h2>
-    <p>오늘의 한 마디가 쌓여 나만의 자서전이 됩니다.<br>소중한 분의 목소리를 지금부터 기록하세요. 무료로 시작할 수 있습니다.</p>
+    <h2 data-i18n="final_title">지금 바로 시작하세요</h2>
+    <p data-i18n="final_desc">오늘의 한 마디가 쌓여 나만의 자서전이 됩니다.<br>소중한 분의 목소리를 지금부터 기록하세요. 무료로 시작할 수 있습니다.</p>
     <a href="https://voice-diary-phi-two.vercel.app" class="final-btn">
-      🎙️ 기억을 꼭 붙잡아!! 시작하기
+      <span data-i18n="final_btn">🎙️ 기억을 꼭 붙잡아!! 시작하기</span>
     </a>
   </div>
 </section>
@@ -816,20 +819,213 @@
 <div class="floating">
   <a href="https://voice-diary-phi-two.vercel.app">
     <div class="pulse"></div>
-    서비스 바로가기
+    <span data-i18n="floating_btn">서비스 바로가기</span>
   </a>
 </div>
 
 <script>
+// ── 언어 전환 시스템 ──────────────────────────────────────────────
+const LANGS = {
+  ko: { flag: '🇰🇷', name: '한국어' },
+  ja: { flag: '🇯🇵', name: '日本語' },
+  en: { flag: '🇺🇸', name: 'English' },
+  es: { flag: '🇪🇸', name: 'Español' },
+  'zh-hans': { flag: '🇨🇳', name: '简体中文' },
+  'zh-hant': { flag: '🇹🇼', name: '繁體中文' },
+};
+
+const HTML_LANG = { ko:'ko', ja:'ja', en:'en', es:'es', 'zh-hans':'zh-Hans', 'zh-hant':'zh-Hant' };
+
+const T = {
+// ════════════════════════════════════════════════════════════════
+ko: {
+  page_title: '기억을 꼭 붙잡아!! — 찬란했던 나의 이야기',
+  nav_back: '← Ohana 포털로',
+  hero_badge: 'VOICE DIARY · 음성 일기',
+  hero_h1: '기억을 꼭<br><span>붙잡아!!</span>',
+  hero_sub: '찬란했던 나의 이야기<br>목소리로 기록하고, 나를 돌아보며, 가족과 영원히 간직하다',
+  hero_cta: '🎙️ 지금 바로 시작하기',
+  hero_scroll: '▼ 아래로 스크롤',
+  why_label: 'WHY · 왜 이 서비스인가',
+  tab1: '① 회원가입',
+  tab2: '② 녹음하기',
+  tab3: '③ 연속 듣기',
+  tab4: '④ 설정',
+  tab5: '⑤ 보호자 설정',
+  final_title: '지금 바로 시작하세요',
+  final_desc: '오늘의 한 마디가 쌓여 나만의 자서전이 됩니다.<br>소중한 분의 목소리를 지금부터 기록하세요. 무료로 시작할 수 있습니다.',
+  final_btn: '🎙️ 기억을 꼭 붙잡아!! 시작하기',
+  floating_btn: '서비스 바로가기',
+},
+// ════════════════════════════════════════════════════════════════
+ja: {
+  page_title: '記憶をしっかりつかもう！！— 輝かしかった私の物語',
+  nav_back: '← Ohanaポータルへ',
+  hero_badge: 'VOICE DIARY · 音声日記',
+  hero_h1: '記憶を<br><span>つかもう！！</span>',
+  hero_sub: '輝かしかった私の物語<br>声で記録し、自分を振り返り、家族と永遠に大切にする',
+  hero_cta: '🎙️ 今すぐ始める',
+  hero_scroll: '▼ スクロールして続きを見る',
+  why_label: 'WHY · なぜこのサービスなのか',
+  tab1: '① アカウント登録',
+  tab2: '② 録音する',
+  tab3: '③ 連続再生',
+  tab4: '④ 設定',
+  tab5: '⑤ 保護者の設定',
+  final_title: '今すぐ始めましょう',
+  final_desc: '今日の一言が積み重なって、私だけの自伝が完成します。<br>大切な方の声を今から記録してください。無料でお始めいただけます。',
+  final_btn: '🎙️ 記憶をしっかりつかもう！！を始める',
+  floating_btn: 'サービスへ',
+},
+// ════════════════════════════════════════════════════════════════
+en: {
+  page_title: 'Hold On to Your Memories!! — The Story of My Brilliant Life',
+  nav_back: '← Back to Ohana Portal',
+  hero_badge: 'VOICE DIARY · Voice Journal',
+  hero_h1: 'Hold On to<br><span>Your Memories!!</span>',
+  hero_sub: 'The story of my brilliant life<br>Record in your own voice, reflect on yourself, and cherish forever with family',
+  hero_cta: '🎙️ Start Now',
+  hero_scroll: '▼ Scroll down',
+  why_label: 'WHY · Why This Service',
+  tab1: '① Sign Up',
+  tab2: '② Recording',
+  tab3: '③ Continuous Playback',
+  tab4: '④ Settings',
+  tab5: '⑤ Guardian Setup',
+  final_title: 'Start Today',
+  final_desc: 'Each word you speak builds your own autobiography.<br>Start recording your precious voice now. It\'s free.',
+  final_btn: '🎙️ Start Hold On to Your Memories!!',
+  floating_btn: 'Go to Service',
+},
+// ════════════════════════════════════════════════════════════════
+es: {
+  page_title: '¡¡Aferra tus Recuerdos!! — La historia de mi brillante vida',
+  nav_back: '← Volver al portal Ohana',
+  hero_badge: 'VOICE DIARY · Diario de Voz',
+  hero_h1: '¡¡Aferra<br><span>tus Recuerdos!!</span>',
+  hero_sub: 'La historia de mi brillante vida<br>Graba con tu voz, reflexiona sobre ti mismo y comparte para siempre con tu familia',
+  hero_cta: '🎙️ Comenzar ahora',
+  hero_scroll: '▼ Desplázate hacia abajo',
+  why_label: 'WHY · Por qué este servicio',
+  tab1: '① Registro',
+  tab2: '② Grabación',
+  tab3: '③ Reproducción continua',
+  tab4: '④ Configuración',
+  tab5: '⑤ Configurar tutor',
+  final_title: 'Empiece hoy',
+  final_desc: 'Cada palabra que dice construye su propia autobiografía.<br>Comience a grabar su preciosa voz ahora. Es gratuito.',
+  final_btn: '🎙️ Comenzar ¡¡Aferra tus Recuerdos!!',
+  floating_btn: 'Ir al servicio',
+},
+// ════════════════════════════════════════════════════════════════
+'zh-hans': {
+  page_title: '紧握记忆！！— 我辉煌人生的故事',
+  nav_back: '← 返回Ohana门户',
+  hero_badge: 'VOICE DIARY · 语音日记',
+  hero_h1: '紧握<br><span>记忆！！</span>',
+  hero_sub: '我辉煌人生的故事<br>用声音记录，回顾自己，与家人永远珍藏',
+  hero_cta: '🎙️ 立即开始',
+  hero_scroll: '▼ 向下滚动',
+  why_label: 'WHY · 为什么选择这个服务',
+  tab1: '① 注册',
+  tab2: '② 录音',
+  tab3: '③ 连续播放',
+  tab4: '④ 设置',
+  tab5: '⑤ 监护人设置',
+  final_title: '立即开始',
+  final_desc: '每一句话的积累成就您的自传。<br>现在就开始记录您珍贵的声音吧。免费使用。',
+  final_btn: '🎙️ 开始使用紧握记忆！！',
+  floating_btn: '前往服务',
+},
+// ════════════════════════════════════════════════════════════════
+'zh-hant': {
+  page_title: '緊握記憶！！— 我璀璨人生的故事',
+  nav_back: '← 返回Ohana門戶',
+  hero_badge: 'VOICE DIARY · 語音日記',
+  hero_h1: '緊握<br><span>記憶！！</span>',
+  hero_sub: '我璀璨人生的故事<br>用聲音記錄，回顧自己，與家人永遠珍藏',
+  hero_cta: '🎙️ 立即開始',
+  hero_scroll: '▼ 向下捲動',
+  why_label: 'WHY · 為什麼選擇這個服務',
+  tab1: '① 註冊',
+  tab2: '② 錄音',
+  tab3: '③ 連續播放',
+  tab4: '④ 設定',
+  tab5: '⑤ 監護人設定',
+  final_title: '立即開始',
+  final_desc: '每一句話的積累成就您的自傳。<br>現在就開始記錄您珍貴的聲音吧。免費使用。',
+  final_btn: '🎙️ 開始使用緊握記憶！！',
+  floating_btn: '前往服務',
+},
+}; // end T
+
+// ── 언어 전환기 렌더링 ──
+let langDropOpen = false;
+function renderLangSwitcher(cur) {
+  const el = document.getElementById('lang-switcher');
+  if (!el) return;
+  el.innerHTML = `
+    <button onclick="toggleLangDrop(event)" style="display:flex;align-items:center;gap:5px;background:none;border:1px solid #e7e5e4;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:13px;color:#57534e;">
+      ${LANGS[cur].flag} ${LANGS[cur].name} <span style="font-size:10px;">▾</span>
+    </button>
+    <div id="lang-drop" style="display:${langDropOpen?'block':'none'};position:absolute;right:0;top:calc(100% + 4px);background:white;border:1px solid #e7e5e4;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.12);overflow:hidden;min-width:150px;z-index:999;">
+      ${Object.entries(LANGS).map(([code,info])=>`
+        <button onclick="setLang('${code}')" style="display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;background:${code===cur?'#fff7ed':'white'};border:none;cursor:pointer;font-size:13px;color:${code===cur?'#ea580c':'#292524'};font-weight:${code===cur?'700':'400'};text-align:left;">
+          ${info.flag} ${info.name} ${code===cur?'✓':''}
+        </button>`).join('')}
+    </div>`;
+}
+
+function toggleLangDrop(e) {
+  e.stopPropagation();
+  langDropOpen = !langDropOpen;
+  const drop = document.getElementById('lang-drop');
+  if (drop) drop.style.display = langDropOpen ? 'block' : 'none';
+}
+
+document.addEventListener('click', () => {
+  langDropOpen = false;
+  const drop = document.getElementById('lang-drop');
+  if (drop) drop.style.display = 'none';
+});
+
+// ── 언어 적용 ──
+function setLang(lang) {
+  if (!T[lang]) lang = 'ko';
+  localStorage.setItem('vd_intro_lang', lang);
+  document.getElementById('html-root').lang = HTML_LANG[lang] || lang;
+  document.getElementById('page-title').textContent = T[lang].page_title || T.ko.page_title;
+  document.getElementById('nav-back').innerHTML = T[lang].nav_back || T.ko.nav_back;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const val = T[lang][key] || T.ko[key];
+    if (val !== undefined) el.innerHTML = val;
+  });
+
+  langDropOpen = false;
+  renderLangSwitcher(lang);
+}
+
+// ── 탭 전환 ──
 function showTab(name) {
-  // 모든 탭 숨기기
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-  // 선택한 탭 보이기
   document.getElementById('tab-' + name).classList.add('active');
   event.target.classList.add('active');
 }
+
+// ── 초기화 ──
+(function init() {
+  const saved = localStorage.getItem('vd_intro_lang') || 'ko';
+  renderLangSwitcher(saved);
+  if (saved !== 'ko') setLang(saved);
+})();
 </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
