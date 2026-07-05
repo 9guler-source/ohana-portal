@@ -612,9 +612,9 @@
     <div class="hero-badge" data-i18n="hero_badge">VOICE DIARY · 음성 일기</div>
     <h1 data-i18n="hero_h1">기억을 꼭<br><span>붙잡아!!</span></h1>
     <p class="hero-sub" data-i18n="hero_sub">찬란했던 나의 이야기<br>목소리로 기록하고, 나를 돌아보며, 가족과 영원히 간직하다</p>
-    <a href="https://voice-diary-phi-two.vercel.app" class="hero-cta">
-      <span data-i18n="hero_cta">🎙️ 지금 바로 시작하기</span>
-    </a>
+    <button onclick="showServiceModal()" class="hero-cta" style="border:none;cursor:pointer;">
+      <span data-i18n="hero_cta">🎯 서비스 선택하기</span>
+    </button>
     <p class="hero-scroll" data-i18n="hero_scroll">▼ 아래로 스크롤</p>
   </div>
 </section>
@@ -1102,15 +1102,41 @@
   </div>
 </section>
 
+<!-- 서비스 선택 모달 -->
+<div id="service-modal" onclick="hideServiceModal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:10000;align-items:center;justify-content:center;padding:20px;">
+  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:24px;padding:32px 28px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3);position:relative;">
+    <button onclick="hideServiceModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#a8a29e;line-height:1;">✕</button>
+    <p style="font-size:11px;font-weight:800;letter-spacing:2px;color:#ea580c;text-transform:uppercase;margin-bottom:12px;" data-i18n="choose_service">서비스 선택</p>
+    <h3 style="font-size:20px;font-weight:900;color:#1c1917;margin-bottom:6px;" data-i18n="choose_service_sub">어떤 버전으로 시작하시겠어요?</h3>
+    <p style="font-size:13px;color:#78716c;margin-bottom:24px;" data-i18n="choose_service_desc">두 버전 모두 동일한 71개 문항으로 구성되어 있습니다</p>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <a href="https://ephemeral-medovik-861dea.netlify.app" style="display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;padding:18px 20px;border-radius:16px;text-decoration:none;box-shadow:0 4px 16px rgba(16,185,129,0.35);">
+        <span style="font-size:28px;">🛡️</span>
+        <div>
+          <p style="font-weight:800;font-size:15px;margin:0;" data-i18n="privacy_ver">프라이버시 버전</p>
+          <p style="font-size:12px;opacity:.85;margin:2px 0 0;" data-i18n="privacy_ver_desc">로그인 없음 · 서버 업로드 없음 · 내 기기에만 저장</p>
+        </div>
+      </a>
+      <a href="https://voice-diary-phi-two.vercel.app" style="display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#ea580c,#c2410c);color:#fff;padding:18px 20px;border-radius:16px;text-decoration:none;box-shadow:0 4px 16px rgba(234,88,12,0.35);">
+        <span style="font-size:28px;">☁️</span>
+        <div>
+          <p style="font-weight:800;font-size:15px;margin:0;" data-i18n="cloud_ver">클라우드 버전</p>
+          <p style="font-size:12px;opacity:.85;margin:2px 0 0;" data-i18n="cloud_ver_desc">로그인 필요 · 클라우드 저장 · 보호자 공유 가능</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- 플로팅 버튼 (두 버전 선택) -->
 <div class="floating-wrap">
   <div class="fl-popup" id="fl-popup">
-    <a href="https://ephemeral-medovik-861dea.netlify.app" class="fl-opt fl-privacy">🛡️ 프라이버시 버전</a>
-    <a href="https://voice-diary-phi-two.vercel.app" class="fl-opt fl-cloud">☁️ 클라우드 버전</a>
+    <a href="https://ephemeral-medovik-861dea.netlify.app" class="fl-opt fl-privacy" data-i18n="privacy_ver">🛡️ 프라이버시 버전</a>
+    <a href="https://voice-diary-phi-two.vercel.app" class="fl-opt fl-cloud" data-i18n="cloud_ver">☁️ 클라우드 버전</a>
   </div>
   <button class="fl-main-btn" onclick="toggleFloat(event)">
     <div class="fl-pulse"></div>
-    <span id="fl-label">서비스 선택</span>
+    <span id="fl-label" data-i18n="floating_btn">서비스 선택</span>
     <span id="fl-arrow">▲</span>
   </button>
 </div>
@@ -1129,7 +1155,15 @@ ko:{
   hero_badge:'VOICE DIARY · 음성 일기',
   hero_h1:'기억을 꼭<br><span>붙잡아!!</span>',
   hero_sub:'찬란했던 나의 이야기<br>목소리로 기록하고, 나를 돌아보며, 가족과 영원히 간직하다',
-  hero_cta:'🎙️ 지금 바로 시작하기',
+  hero_cta:'🎯 서비스 선택하기',
+  choose_service:'서비스 선택',
+  choose_service_sub:'어떤 버전으로 시작하시겠어요?',
+  choose_service_desc:'두 버전 모두 동일한 71개 문항으로 구성되어 있습니다',
+  privacy_ver:'🛡️ 프라이버시 버전',
+  privacy_ver_desc:'로그인 없음 · 서버 업로드 없음 · 내 기기에만 저장',
+  cloud_ver:'☁️ 클라우드 버전',
+  cloud_ver_desc:'로그인 필요 · 클라우드 저장 · 보호자 공유 가능',
+  floating_btn:'서비스 선택',
   hero_scroll:'▼ 아래로 스크롤',
   why_label:'WHY · 왜 이 서비스인가',
   effect_label:'IMPACT · 사회적 효과',
@@ -1142,7 +1176,7 @@ ko:{
   final_title:'지금 바로 시작하세요',
   final_desc:'오늘의 한 마디가 쌓여 나만의 자서전이 됩니다.<br>소중한 분의 목소리를 지금부터 기록하세요. 무료로 시작할 수 있습니다.',
   final_btn:'🎙️ 기억을 꼭 붙잡아!! 시작하기',
-  floating_btn:'서비스 바로가기',
+  _removed:'',
 },
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  日本語                                                       ║
@@ -1153,7 +1187,15 @@ ja:{
   hero_badge:'VOICE DIARY · 音声日記',
   hero_h1:'記憶を<br><span>しっかりつかもう！！</span>',
   hero_sub:'輝かしかった私の物語<br>声で記録し、自分を振り返り、家族と永遠に大切にする',
-  hero_cta:'🎙️ 今すぐ始める',
+  hero_cta:'🎯 サービスを選ぶ',
+  choose_service:'サービス選択',
+  choose_service_sub:'どちらのバージョンで始めますか？',
+  choose_service_desc:'両バージョンとも同じ71問で構成されています',
+  privacy_ver:'🛡️ プライバシー版',
+  privacy_ver_desc:'ログイン不要・サーバー不使用・端末のみに保存',
+  cloud_ver:'☁️ クラウド版',
+  cloud_ver_desc:'ログイン必要・クラウド保存・保護者共有可能',
+  floating_btn:'サービス選択',
   hero_scroll:'▼ スクロールして続きを見る',
   why_label:'WHY · なぜこのサービスなのか',
   effect_label:'IMPACT · 社会的な効果',
@@ -1257,7 +1299,15 @@ en:{
   hero_badge:'VOICE DIARY · Voice Journal',
   hero_h1:'Hold On to<br><span>Your Memories!!</span>',
   hero_sub:'The story of my brilliant life<br>Record in your voice, reflect on yourself, and cherish forever with family',
-  hero_cta:'🎙️ Start Now',
+  hero_cta:'🎯 Choose a Service',
+  choose_service:'Choose Service',
+  choose_service_sub:'Which version would you like to use?',
+  choose_service_desc:'Both versions feature the same 71 questions',
+  privacy_ver:'🛡️ Privacy Version',
+  privacy_ver_desc:'No login · No server upload · Saved only on your device',
+  cloud_ver:'☁️ Cloud Version',
+  cloud_ver_desc:'Login required · Cloud storage · Guardian sharing available',
+  floating_btn:'Choose Service',
   hero_scroll:'▼ Scroll down',
   why_label:'WHY · Why This Service',
   effect_label:'IMPACT · Social Impact',
@@ -1361,7 +1411,15 @@ es:{
   hero_badge:'VOICE DIARY · Diario de Voz',
   hero_h1:'¡¡Aferra<br><span>tus Recuerdos!!</span>',
   hero_sub:'La historia de mi brillante vida<br>Graba con tu voz, reflexiona y comparte para siempre con tu familia',
-  hero_cta:'🎙️ Comenzar ahora',
+  hero_cta:'🎯 Elegir servicio',
+  choose_service:'Elegir servicio',
+  choose_service_sub:'¿Qué versión desea utilizar?',
+  choose_service_desc:'Ambas versiones tienen las mismas 71 preguntas',
+  privacy_ver:'🛡️ Versión privada',
+  privacy_ver_desc:'Sin login · Sin subida al servidor · Solo en tu dispositivo',
+  cloud_ver:'☁️ Versión nube',
+  cloud_ver_desc:'Login necesario · Almacenamiento en nube · Compartir con tutor',
+  floating_btn:'Elegir servicio',
   hero_scroll:'▼ Desplázate hacia abajo',
   why_label:'WHY · Por qué este servicio',
   effect_label:'IMPACT · Impacto social',
@@ -1465,7 +1523,15 @@ es:{
   hero_badge:'VOICE DIARY · 语音日记',
   hero_h1:'紧握<br><span>记忆！！</span>',
   hero_sub:'我辉煌人生的故事<br>用声音记录，回顾自己，与家人永远珍藏',
-  hero_cta:'🎙️ 立即开始',
+  hero_cta:'🎯 选择服务',
+  choose_service:'选择服务',
+  choose_service_sub:'您想使用哪个版本？',
+  choose_service_desc:'两个版本均包含相同的71个问题',
+  privacy_ver:'🛡️ 隐私版',
+  privacy_ver_desc:'无需登录 · 不上传至服务器 · 仅保存在您的设备上',
+  cloud_ver:'☁️ 云端版',
+  cloud_ver_desc:'需要登录 · 云端存储 · 可与监护人共享',
+  floating_btn:'选择服务',
   hero_scroll:'▼ 向下滚动',
   why_label:'WHY · 为什么选择这个服务',
   effect_label:'IMPACT · 社会效益',
@@ -1564,6 +1630,15 @@ es:{
 
 // 繁體中文 = 简体中文 기반으로 일부 수정
 T['zh-hant'] = Object.assign({}, T['zh-hans'], {
+  hero_cta:'🎯 選擇服務',
+  choose_service:'選擇服務',
+  choose_service_sub:'您想使用哪個版本？',
+  choose_service_desc:'兩個版本均包含相同的71個問題',
+  privacy_ver:'🛡️ 隱私版',
+  privacy_ver_desc:'無需登入 · 不上傳至伺服器 · 僅儲存在您的裝置上',
+  cloud_ver:'☁️ 雲端版',
+  cloud_ver_desc:'需要登入 · 雲端儲存 · 可與監護人共享',
+  floating_btn:'選擇服務',
   page_title:'緊握記憶！！— 我璀璨人生的故事',
   nav_back:'← 返回Ohana門戶',
   hero_badge:'VOICE DIARY · 語音日記',
@@ -1618,6 +1693,18 @@ function setLang(lang){
   });
   _langOpen=false;renderLangSwitcher(lang);
 }
+
+function showServiceModal(){
+  const m=document.getElementById('service-modal');
+  m.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function hideServiceModal(){
+  const m=document.getElementById('service-modal');
+  m.style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') hideServiceModal(); });
 
 function showTab(name){
   document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
