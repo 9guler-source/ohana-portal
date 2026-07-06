@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ohana</title>
+<title id="page-title">Ohana</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -41,6 +41,11 @@ header{position:relative;z-index:10;text-align:center;padding:5rem 2rem 3rem}
 .card-voice:hover{border-color:rgba(232,168,64,0.7);box-shadow:0 20px 60px rgba(0,0,0,0.45),0 0 55px rgba(232,168,64,0.22),0 0 0 1px rgba(232,168,64,0.25)}
 .card-badge{position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;padding:0.22rem 0.55rem;border-radius:20px;background:rgba(232,168,64,0.18);border:0.5px solid rgba(232,168,64,0.55);color:#E8A840}
 footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.75rem;letter-spacing:0.15em;color:rgba(248,246,240,0.2);text-transform:uppercase}
+/* 언어 선택 */
+#lang-select{appearance:none;-webkit-appearance:none;background:rgba(212,168,67,0.08);border:0.5px solid rgba(212,168,67,0.45);color:#D4A843;border-radius:8px;padding:0.3rem 0.75rem;font-size:0.78rem;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.05em;outline:none;text-align:center;backdrop-filter:blur(4px);transition:background 0.2s}
+#lang-select:hover{background:rgba(212,168,67,0.15)}
+#lang-select option{background:#1B2456;color:#F8F6F0}
+.lang-wrap{display:flex;gap:0.5rem;justify-content:center;align-items:center;margin-top:1.5rem}
 </style>
 </head>
 <body>
@@ -48,7 +53,7 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
 <header>
   <div class="ohana-wordmark">Ohana</div>
   <div class="ohana-sub">ʻOhana — Family · 가족 · 仲間</div>
-  <p class="ohana-desc">
+  <p class="ohana-desc" id="ohana-desc">
     <em>오하나는 다름을 존중하고, 환영하고, <br>함께 성장하는 운명공동체입니다.</em>
     <br><br>
     오하나는 가족을 뜻하는 하와이어입니다.<br>
@@ -58,13 +63,15 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
     열린 마음으로 서로를 따뜻하게 환영합니다.<br>
     가족의 문제를 합리적으로 해결하고<br> 함께 성장합니다.
   </p>
-  <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1.5rem">
-    <a href="index.html" style="font-size:0.75rem;padding:0.3rem 0.7rem;border-radius:6px;border:0.5px solid rgba(212,168,67,0.4);color:#D4A843;text-decoration:none">KO</a>
-    <a href="index-en.html" style="font-size:0.75rem;padding:0.3rem 0.7rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">EN</a>
-    <a href="index-ja.html" style="font-size:0.75rem;padding:0.3rem 0.7rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">JA</a>
-    <a href="index-es.html" style="font-size:0.75rem;padding:0.3rem 0.7rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">ES</a>
-    <a href="index-zh-hans.html" style="font-size:0.75rem;padding:0.3rem 0.7rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">简</a>
-    <a href="index-zh-hant.html" style="font-size:0.75rem;padding:0.3rem 0.7rem;border-radius:6px;border:0.5px solid rgba(255,255,255,0.2);color:rgba(248,246,240,0.6);text-decoration:none">繁</a>
+  <div class="lang-wrap">
+    <select id="lang-select" onchange="setLang(this.value)">
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="en">🇺🇸 English</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="zh-hans">🇨🇳 简体中文</option>
+      <option value="zh-hant">🇹🇼 繁體中文</option>
+    </select>
   </div>
 </header>
 <div class="divider">
@@ -73,92 +80,219 @@ footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.7
   <div class="divider-line"></div>
 </div>
 <section class="cards">
+  <!-- 01 -->
   <a class="card card-who" href="https://personality-app-fawn.vercel.app" target="_self">
-    <div class="card-number">01 — 자아탐구</div>
+    <div class="card-number" data-i18n="c01_num">01 — 자아탐구</div>
     <div class="card-icon">◎</div>
-    <div class="card-title">나는 누구인가</div>
+    <div class="card-title" data-i18n="c01_title">나는 누구인가</div>
     <div class="card-subtitle">Who Am I</div>
-    <div class="card-desc">빅파이브 성격 모델, VIA 강점 검사, 에니어그램, 애착 유형까지. 네 개의 렌즈로 나를 깊이 들여다보는 성격 탐구 여정.</div>
-    <span class="card-cta">탐구 시작하기 →</span>
+    <div class="card-desc" data-i18n="c01_desc">빅파이브 성격 모델, VIA 강점 검사, 에니어그램, 애착 유형까지. 네 개의 렌즈로 나를 깊이 들여다보는 성격 탐구 여정.</div>
+    <span class="card-cta" data-i18n="c01_cta">탐구 시작하기 →</span>
   </a>
+  <!-- 02 -->
   <a class="card card-survey" href="https://life-survey-one.vercel.app/" target="_self">
-    <div class="card-number">02 — 성찰</div>
+    <div class="card-number" data-i18n="c02_num">02 — 성찰</div>
     <div class="card-icon">◇</div>
-    <div class="card-title">SYS 인생 항해 점검표</div>
-    <div class="card-subtitle">나의 인생 나침반</div>
-    <div class="card-desc">지나온 길을 돌아보고 앞으로의 항로를 그려보는 40문항의 인생 점검 도구. 9개 언어를 지원하며, 결과를 AI 챗봇에 붙여넣으면 깊이 있는 해석을 받아볼 수 있습니다.</div>
-    <span class="card-cta">나침반 펼치기 →</span>
+    <div class="card-title" data-i18n="c02_title">SYS 인생 항해 점검표</div>
+    <div class="card-subtitle" data-i18n="c02_sub">나의 인생 나침반</div>
+    <div class="card-desc" data-i18n="c02_desc">지나온 길을 돌아보고 앞으로의 항로를 그려보는 40문항의 인생 점검 도구. 9개 언어를 지원하며, 결과를 AI 챗봇에 붙여넣으면 깊이 있는 해석을 받아볼 수 있습니다.</div>
+    <span class="card-cta" data-i18n="c02_cta">나침반 펼치기 →</span>
   </a>
+  <!-- 03 -->
   <a class="card card-science" href="./science/index.html" target="_self">
-    <div class="card-number">03 — 과학</div>
+    <div class="card-number" data-i18n="c03_num">03 — 과학</div>
     <div class="card-icon">✦</div>
-    <div class="card-title">빛과 원소의 세상</div>
+    <div class="card-title" data-i18n="c03_title">빛과 원소의 세상</div>
     <div class="card-subtitle">Elements & Light</div>
-    <div class="card-desc">세상의 구성 원리를 찾아서. 유기화학과 빛의 물리학을 탐험하다.</div>
-    <span class="card-cta">탐험하기 →</span>
+    <div class="card-desc" data-i18n="c03_desc">세상의 구성 원리를 찾아서. 유기화학과 빛의 물리학을 탐험하다.</div>
+    <span class="card-cta" data-i18n="c03_cta">탐험하기 →</span>
   </a>
+  <!-- 04 -->
   <a class="card card-learn" href="./learn/index.html" target="_self">
-    <div class="card-number">04 — 학습</div>
+    <div class="card-number" data-i18n="c04_num">04 — 학습</div>
     <div class="card-icon">◈</div>
-    <div class="card-title">학습 천국</div>
+    <div class="card-title" data-i18n="c04_title">학습 천국</div>
     <div class="card-subtitle">Learning Paradise</div>
-    <div class="card-desc">반도체·논리회로·AI·로봇 공학까지. 지식의 깊이를 더하는 6개의 학습 허브.</div>
-    <span class="card-cta">학습하러 가기 →</span>
+    <div class="card-desc" data-i18n="c04_desc">반도체·논리회로·AI·로봇 공학까지. 지식의 깊이를 더하는 6개의 학습 허브.</div>
+    <span class="card-cta" data-i18n="c04_cta">학습하러 가기 →</span>
   </a>
+  <!-- 05 -->
   <a class="card card-portal" href="https://companero-hub.vercel.app" target="_self">
-    <div class="card-number">05 — 연결</div>
+    <div class="card-number" data-i18n="c05_num">05 — 연결</div>
     <div class="card-icon">⟐</div>
     <div class="card-title">Compañero</div>
-    <div class="card-subtitle">공항 Portal</div>
-    <div class="card-desc">공항에서 만나는 동반자. 낯선 여행지에서도 혼자가 아닌 함께하는 경험 — 공항 여행자를 위한 스마트 포털.</div>
-    <span class="card-cta">포털 입장하기 →</span>
+    <div class="card-subtitle" data-i18n="c05_sub">공항 Portal</div>
+    <div class="card-desc" data-i18n="c05_desc">공항에서 만나는 동반자. 낯선 여행지에서도 혼자가 아닌 함께하는 경험 — 공항 여행자를 위한 스마트 포털.</div>
+    <span class="card-cta" data-i18n="c05_cta">포털 입장하기 →</span>
   </a>
+  <!-- 06 -->
   <div class="card card-wwvs" onclick="location.href='wwvs.html'" role="button" tabindex="0">
-    <div class="card-number">06 — 민주주의</div>
+    <div class="card-number" data-i18n="c06_num">06 — 민주주의</div>
     <div class="card-icon">✦</div>
     <div class="card-title">Who Whom</div>
     <div class="card-subtitle">Voting System</div>
-    <div class="card-desc">믿어달라 말하지 않습니다. 직접 확인하세요. 비밀은 지키되 결과는 누구나 검증할 수 있는 차세대 전자투표 시스템.</div>
-    <span class="card-cta">자세히 보기 →</span>
+    <div class="card-desc" data-i18n="c06_desc">믿어달라 말하지 않습니다. 직접 확인하세요. 비밀은 지키되 결과는 누구나 검증할 수 있는 차세대 전자투표 시스템.</div>
+    <span class="card-cta" data-i18n="c06_cta">자세히 보기 →</span>
   </div>
+  <!-- 07 -->
   <a class="card card-robot" href="https://robot-match-portal.vercel.app/match" target="_self">
-    <div class="card-number">07 — 동반자</div>
+    <div class="card-number" data-i18n="c07_num">07 — 동반자</div>
     <div class="card-icon">⬡</div>
-    <div class="card-title">나에게 맞는 동반 로봇 찾기</div>
+    <div class="card-title" data-i18n="c07_title">나에게 맞는 동반 로봇 찾기</div>
     <div class="card-subtitle">Robot Match</div>
-    <div class="card-desc">11단계 설문으로 나에게 맞는 로봇을 찾아주는 서비스.</div>
-    <span class="card-cta">로봇 찾으러 가기 →</span>
+    <div class="card-desc" data-i18n="c07_desc">11단계 설문으로 나에게 맞는 로봇을 찾아주는 서비스.</div>
+    <span class="card-cta" data-i18n="c07_cta">로봇 찾으러 가기 →</span>
   </a>
+  <!-- 08 -->
   <a class="card card-robot-builder" href="https://astonishing-nasturtium-ad7d7c.netlify.app" target="_self">
-    <div class="card-number">08 — 설계</div>
+    <div class="card-number" data-i18n="c08_num">08 — 설계</div>
     <div class="card-icon">🤖</div>
-    <div class="card-title">나의 동반자 로봇 만들기</div>
+    <div class="card-title" data-i18n="c08_title">나의 동반자 로봇 만들기</div>
     <div class="card-subtitle">Build My Companion Robot</div>
-    <div class="card-desc">나만의 로봇을 직접 설계하다. 17개 카테고리, 160가지 옵션으로 완성하는 나만의 동반자.</div>
-    <span class="card-cta">설계하러 가기 →</span>
+    <div class="card-desc" data-i18n="c08_desc">나만의 로봇을 직접 설계하다. 17개 카테고리, 160가지 옵션으로 완성하는 나만의 동반자.</div>
+    <span class="card-cta" data-i18n="c08_cta">설계하러 가기 →</span>
   </a>
+  <!-- 09 -->
   <a class="card card-registry" href="https://sys-robot-registry.vercel.app" target="_self">
-    <div class="card-number">09 — 등기</div>
+    <div class="card-number" data-i18n="c09_num">09 — 등기</div>
     <div class="card-icon">🤖</div>
-    <div class="card-title">SYS 로봇 등기소</div>
+    <div class="card-title" data-i18n="c09_title">SYS 로봇 등기소</div>
     <div class="card-subtitle">Robot Internet Registry</div>
-    <div class="card-desc">로봇 소유권을 공식 등록하고 증명하는 인터넷 등기 시스템</div>
-    <span class="card-cta">등록하러 가기 →</span>
+    <div class="card-desc" data-i18n="c09_desc">로봇 소유권을 공식 등록하고 증명하는 인터넷 등기 시스템</div>
+    <span class="card-cta" data-i18n="c09_cta">등록하러 가기 →</span>
   </a>
+  <!-- 10 -->
   <a class="card card-voice" href="./voice-diary-intro.html" target="_self">
-    <div class="card-badge">🆕 NEW</div>
-    <div class="card-number">10 — 기억</div>
+    <div class="card-badge" data-i18n="c10_badge">🆕 NEW</div>
+    <div class="card-number" data-i18n="c10_num">10 — 기억</div>
     <div class="card-icon">🎙️</div>
-    <div class="card-title">기억을 꼭 붙잡아!! 🤬💢</div>
-    <div class="card-subtitle">찬란했던 나의 이야기</div>
-    <div class="card-desc">치매 예방 · 음성 기억 보존<br><br>기억이 흐려지기 전에, 지금 목소리로 남겨두세요.</div>
-    <span class="card-cta">가물가물할 때 꼭 들어보세요 →</span>
+    <div class="card-title" data-i18n="c10_title">기억을 꼭 붙잡아!!</div>
+    <div class="card-subtitle" data-i18n="c10_sub">찬란했던 나의 이야기</div>
+    <div class="card-desc" data-i18n="c10_desc">치매 예방 · 음성 기억 보존<br><br>기억이 흐려지기 전에, 지금 목소리로 남겨두세요.</div>
+    <span class="card-cta" data-i18n="c10_cta">가물가물할 때 꼭 들어보세요 →</span>
   </a>
 </section>
 <footer>© 2026 Ohana · All rights reserved
   <p style="margin-top:1.2rem;font-size:11px;letter-spacing:0.05em;text-transform:none;color:rgba(248,246,240,0.35);font-weight:300">© 2026 Young Sohk Song (宋映錫 · 송영석). All rights reserved.</p>
 </footer>
+
 <script>
+// ══ 다국어 번역 ══════════════════════════════════════════════════
+const HTML_LANG={ko:'ko',ja:'ja',en:'en',es:'es','zh-hans':'zh-Hans','zh-hant':'zh-Hant'};
+
+const T={
+// ── 한국어 ───────────────────────────────────────────────────────
+ko:{
+  ohana_desc:`<em>오하나는 다름을 존중하고, 환영하고, <br>함께 성장하는 운명공동체입니다.</em><br><br>오하나는 가족을 뜻하는 하와이어입니다.<br>혈연, 국가, 생김, 문화, 가치관 등이 달라도<br>본래 모두는 다 연결되어 있는 운명공동체,<br> 가족입니다.<br>가족구성원은 각자의 개성을 존중하고<br> 자기답게 살도록 응원합니다.<br>열린 마음으로 서로를 따뜻하게 환영합니다.<br>가족의 문제를 합리적으로 해결하고<br> 함께 성장합니다.`,
+  c01_num:'01 — 자아탐구', c01_title:'나는 누구인가', c01_desc:'빅파이브 성격 모델, VIA 강점 검사, 에니어그램, 애착 유형까지. 네 개의 렌즈로 나를 깊이 들여다보는 성격 탐구 여정.', c01_cta:'탐구 시작하기 →',
+  c02_num:'02 — 성찰', c02_title:'SYS 인생 항해 점검표', c02_sub:'나의 인생 나침반', c02_desc:'지나온 길을 돌아보고 앞으로의 항로를 그려보는 40문항의 인생 점검 도구. 9개 언어를 지원하며, 결과를 AI 챗봇에 붙여넣으면 깊이 있는 해석을 받아볼 수 있습니다.', c02_cta:'나침반 펼치기 →',
+  c03_num:'03 — 과학', c03_title:'빛과 원소의 세상', c03_desc:'세상의 구성 원리를 찾아서. 유기화학과 빛의 물리학을 탐험하다.', c03_cta:'탐험하기 →',
+  c04_num:'04 — 학습', c04_title:'학습 천국', c04_desc:'반도체·논리회로·AI·로봇 공학까지. 지식의 깊이를 더하는 6개의 학습 허브.', c04_cta:'학습하러 가기 →',
+  c05_num:'05 — 연결', c05_sub:'공항 Portal', c05_desc:'공항에서 만나는 동반자. 낯선 여행지에서도 혼자가 아닌 함께하는 경험 — 공항 여행자를 위한 스마트 포털.', c05_cta:'포털 입장하기 →',
+  c06_num:'06 — 민주주의', c06_desc:'믿어달라 말하지 않습니다. 직접 확인하세요. 비밀은 지키되 결과는 누구나 검증할 수 있는 차세대 전자투표 시스템.', c06_cta:'자세히 보기 →',
+  c07_num:'07 — 동반자', c07_title:'나에게 맞는 동반 로봇 찾기', c07_desc:'11단계 설문으로 나에게 맞는 로봇을 찾아주는 서비스.', c07_cta:'로봇 찾으러 가기 →',
+  c08_num:'08 — 설계', c08_title:'나의 동반자 로봇 만들기', c08_desc:'나만의 로봇을 직접 설계하다. 17개 카테고리, 160가지 옵션으로 완성하는 나만의 동반자.', c08_cta:'설계하러 가기 →',
+  c09_num:'09 — 등기', c09_title:'SYS 로봇 등기소', c09_desc:'로봇 소유권을 공식 등록하고 증명하는 인터넷 등기 시스템', c09_cta:'등록하러 가기 →',
+  c10_badge:'🆕 NEW', c10_num:'10 — 기억', c10_title:'기억을 꼭 붙잡아!!', c10_sub:'찬란했던 나의 이야기', c10_desc:'치매 예방 · 음성 기억 보존<br><br>기억이 흐려지기 전에, 지금 목소리로 남겨두세요.', c10_cta:'가물가물할 때 꼭 들어보세요 →',
+},
+// ── 日本語 ───────────────────────────────────────────────────────
+ja:{
+  ohana_desc:`<em>オハナは、違いを尊重し、歓迎し、<br>ともに成長する運命共同体です。</em><br><br>オハナはハワイ語で「家族」を意味します。<br>血縁、国籍、見た目、文化、価値観が違っていても<br>本来すべての人は繋がっている運命共同体、<br>家族です。<br>家族の一員はそれぞれの個性を尊重し、<br>自分らしく生きるよう応援します。<br>開かれた心で互いを温かく歓迎します。<br>家族の課題を合理的に解決し、<br>ともに成長します。`,
+  c01_num:'01 — 自己探求', c01_title:'私は誰か', c01_desc:'ビッグファイブ性格モデル、VIA強み検査、エニアグラム、愛着スタイルまで。4つのレンズで自分を深く見つめる性格探求の旅。', c01_cta:'探求を始める →',
+  c02_num:'02 — 内省', c02_title:'SYS 人生航海チェックリスト', c02_sub:'私の人生の羅針盤', c02_desc:'歩んできた道を振り返り、これからの航路を描く40問の人生点検ツール。9言語対応。結果をAIチャットボットに貼り付けると深い解釈が得られます。', c02_cta:'羅針盤を開く →',
+  c03_num:'03 — 科学', c03_title:'光と元素の世界', c03_desc:'世界の構成原理を求めて。有機化学と光の物理学を探検する。', c03_cta:'探検する →',
+  c04_num:'04 — 学習', c04_title:'学習天国', c04_desc:'半導体・論理回路・AI・ロボット工学まで。知識の深みを増す6つの学習ハブ。', c04_cta:'学びに行く →',
+  c05_num:'05 — 繋がり', c05_sub:'空港ポータル', c05_desc:'空港で出会う仲間。見知らぬ旅先でも一人じゃない — 空港旅行者のためのスマートポータル。', c05_cta:'ポータルへ →',
+  c06_num:'06 — 民主主義', c06_desc:'信じてほしいとは言いません。直接確認してください。秘密は守りながら、誰でも結果を検証できる次世代電子投票システム。', c06_cta:'詳しく見る →',
+  c07_num:'07 — 相棒', c07_title:'私に合う相棒ロボットを探す', c07_desc:'11段階アンケートで、あなたに合うロボットを見つけるサービス。', c07_cta:'ロボットを探す →',
+  c08_num:'08 — 設計', c08_title:'私の相棒ロボットを作る', c08_desc:'自分だけのロボットを設計する。17のカテゴリ、160の選択肢で完成するあなただけの相棒。', c08_cta:'設計する →',
+  c09_num:'09 — 登記', c09_title:'SYS ロボット登記所', c09_desc:'ロボットの所有権を公式に登録・証明するインターネット登記システム。', c09_cta:'登録する →',
+  c10_badge:'🆕 NEW', c10_num:'10 — 記憶', c10_title:'記憶をしっかりつかもう!!', c10_sub:'輝かしかった私の物語', c10_desc:'認知症予防 · 音声記憶保存<br><br>記憶が薄れる前に、今の声で残しておきましょう。', c10_cta:'忘れる前にぜひ聴いてみて →',
+},
+// ── English ──────────────────────────────────────────────────────
+en:{
+  ohana_desc:`<em>Ohana is a community of destiny that respects difference,<br>welcomes, and grows together.</em><br><br>Ohana is the Hawaiian word for family.<br>No matter how different our bloodlines, nations,<br>appearances, cultures, or values —<br>we are all connected as one destined community, a family.<br>Family members respect each other's individuality<br>and encourage one another to live authentically.<br>We welcome each other warmly with open hearts.<br>We solve family challenges with reason<br>and grow together.`,
+  c01_num:'01 — Self-Discovery', c01_title:'Who Am I', c01_desc:'Big Five personality model, VIA strengths assessment, Enneagram, and attachment styles — a journey of deep self-exploration through four lenses.', c01_cta:'Start Exploring →',
+  c02_num:'02 — Reflection', c02_title:'SYS Life Navigation', c02_sub:'My Life Compass', c02_desc:'Reflect on the road traveled and chart the course ahead — a 40-question life review tool in 9 languages. Paste your results into an AI chatbot for in-depth interpretation.', c02_cta:'Open My Compass →',
+  c03_num:'03 — Science', c03_title:'World of Light & Elements', c03_desc:'In search of the principles that compose the world. Exploring organic chemistry and the physics of light.', c03_cta:'Explore →',
+  c04_num:'04 — Learning', c04_title:'Learning Paradise', c04_desc:'From semiconductors to logic circuits, AI, and robotics — six learning hubs to deepen your knowledge.', c04_cta:'Go Learn →',
+  c05_num:'05 — Connection', c05_sub:'Airport Portal', c05_desc:"Your companion at the airport. A smart portal for travelers — so you're never alone even in unfamiliar destinations.", c05_cta:'Enter Portal →',
+  c06_num:'06 — Democracy', c06_desc:"We don't ask you to trust us — verify it yourself. A next-generation e-voting system where secrets are kept but results can be verified by anyone.", c06_cta:'Learn More →',
+  c07_num:'07 — Companion', c07_title:'Find My Companion Robot', c07_desc:'An 11-step survey service to find the robot that matches you.', c07_cta:'Find My Robot →',
+  c08_num:'08 — Design', c08_title:'Build My Companion Robot', c08_desc:'Design your own robot. 17 categories, 160 options to complete your one-of-a-kind companion.', c08_cta:'Start Designing →',
+  c09_num:'09 — Registry', c09_title:'SYS Robot Registry', c09_desc:'An internet registry system for officially registering and certifying robot ownership.', c09_cta:'Register Now →',
+  c10_badge:'🆕 NEW', c10_num:'10 — Memory', c10_title:'Hold On to Your Memories!!', c10_sub:'The Story of My Brilliant Life', c10_desc:'Dementia prevention · Voice memory preservation<br><br>Before memories fade — leave them in your voice, today.', c10_cta:'Listen before it fades →',
+},
+// ── Español ──────────────────────────────────────────────────────
+es:{
+  ohana_desc:`<em>Ohana es una comunidad del destino que respeta la diferencia,<br>da la bienvenida y crece junta.</em><br><br>Ohana es la palabra hawaiana para familia.<br>Sin importar cuán diferentes sean nuestros orígenes,<br>naciones, apariencias, culturas o valores —<br>todos estamos conectados como una comunidad del destino, una familia.<br>Los miembros de la familia respetan la individualidad de cada uno<br>y se alientan mutuamente a vivir auténticamente.<br>Nos damos la bienvenida calurosamente con corazones abiertos.<br>Resolvemos los desafíos de la familia con razón<br>y crecemos juntos.`,
+  c01_num:'01 — Autodescubrimiento', c01_title:'¿Quién soy yo?', c01_desc:'Modelo de las Cinco Grandes, evaluación VIA, Eneagrama y estilos de apego — un viaje de exploración de la personalidad a través de cuatro lentes.', c01_cta:'Comenzar a Explorar →',
+  c02_num:'02 — Reflexión', c02_title:'SYS Navegación Vital', c02_sub:'Mi Brújula de Vida', c02_desc:'Reflexione sobre el camino recorrido y trace el rumbo a seguir — una herramienta de 40 preguntas en 9 idiomas. Pegue sus resultados en un chatbot de IA para una interpretación profunda.', c02_cta:'Abrir Brújula →',
+  c03_num:'03 — Ciencia', c03_title:'El Mundo de la Luz y Elementos', c03_desc:'En busca de los principios que componen el mundo. Explorando la química orgánica y la física de la luz.', c03_cta:'Explorar →',
+  c04_num:'04 — Aprendizaje', c04_title:'Paraíso del Aprendizaje', c04_desc:'Desde semiconductores hasta circuitos lógicos, IA y robótica — seis hubs de aprendizaje para profundizar en el conocimiento.', c04_cta:'Ir a Aprender →',
+  c05_num:'05 — Conexión', c05_sub:'Portal de Aeropuerto', c05_desc:'Tu compañero en el aeropuerto. Un portal inteligente para viajeros — para que nunca estés solo en destinos desconocidos.', c05_cta:'Entrar al Portal →',
+  c06_num:'06 — Democracia', c06_desc:'No pedimos que confíes — compruébalo tú mismo. Un sistema de votación electrónica de próxima generación donde los secretos se guardan pero los resultados puede verificarlos cualquiera.', c06_cta:'Ver Más →',
+  c07_num:'07 — Compañero', c07_title:'Encontrar mi Robot Compañero', c07_desc:'Un servicio de encuesta de 11 pasos para encontrar el robot que te corresponde.', c07_cta:'Encontrar mi Robot →',
+  c08_num:'08 — Diseño', c08_title:'Construir mi Robot Compañero', c08_desc:'Diseña tu propio robot. 17 categorías y 160 opciones para completar tu compañero único.', c08_cta:'Empezar a Diseñar →',
+  c09_num:'09 — Registro', c09_title:'SYS Registro de Robots', c09_desc:'Un sistema de registro en internet para registrar y certificar oficialmente la propiedad de robots.', c09_cta:'Registrarse →',
+  c10_badge:'🆕 NUEVO', c10_num:'10 — Memoria', c10_title:'¡¡Aferra tus Recuerdos!!', c10_sub:'La Historia de mi Brillante Vida', c10_desc:'Prevención de demencia · Preservación de memoria en voz<br><br>Antes de que los recuerdos se desvanezcan — déjalos en tu voz, hoy.', c10_cta:'Escúchalo antes de olvidar →',
+},
+// ── 简体中文 ─────────────────────────────────────────────────────
+'zh-hans':{
+  ohana_desc:`<em>Ohana是一个尊重差异、相互欢迎、<br>共同成长的命运共同体。</em><br><br>Ohana是夏威夷语中"家人"的意思。<br>无论血缘、国籍、外貌、文化或价值观有多大差异——<br>我们本来都是相互连接的命运共同体，<br>是家人。<br>家庭成员尊重彼此的个性，<br>鼓励对方活出真我。<br>以开放的心态温暖地欢迎彼此。<br>合理解决家庭问题，<br>共同成长。`,
+  c01_num:'01 — 自我探索', c01_title:'我是谁', c01_desc:'大五人格模型、VIA优势评估、九型人格、依附类型。通过四个视角深入了解自己的性格探索之旅。', c01_cta:'开始探索 →',
+  c02_num:'02 — 反思', c02_title:'SYS人生航海清单', c02_sub:'我的人生指南针', c02_desc:'回顾走过的路，规划未来的航向——40问人生盘点工具，支持9种语言。将结果粘贴到AI聊天机器人获得深度解读。', c02_cta:'展开指南针 →',
+  c03_num:'03 — 科学', c03_title:'光与元素的世界', c03_desc:'探寻世界的构成原理。探索有机化学和光的物理学。', c03_cta:'探索 →',
+  c04_num:'04 — 学习', c04_title:'学习天堂', c04_desc:'从半导体到逻辑电路、AI、机器人工程——6个学习中心，加深您的知识深度。', c04_cta:'去学习 →',
+  c05_num:'05 — 连接', c05_sub:'机场门户', c05_desc:'机场遇见的伙伴。在陌生目的地也不孤单——为机场旅行者打造的智能门户。', c05_cta:'进入门户 →',
+  c06_num:'06 — 民主', c06_desc:'我们不要求您信任——请亲自验证。保密的同时，任何人都可以验证结果的新一代电子投票系统。', c06_cta:'了解更多 →',
+  c07_num:'07 — 伴侣', c07_title:'找到我的伴侣机器人', c07_desc:'通过11步调查找到适合您的机器人服务。', c07_cta:'找我的机器人 →',
+  c08_num:'08 — 设计', c08_title:'打造我的伴侣机器人', c08_desc:'亲自设计您的机器人。17个类别，160种选项，打造您独一无二的伴侣。', c08_cta:'开始设计 →',
+  c09_num:'09 — 登记', c09_title:'SYS机器人登记处', c09_desc:'正式登记和证明机器人所有权的网络登记系统。', c09_cta:'立即注册 →',
+  c10_badge:'🆕 最新', c10_num:'10 — 记忆', c10_title:'紧握记忆!!', c10_sub:'我辉煌人生的故事', c10_desc:'预防认知症 · 语音记忆保存<br><br>在记忆模糊之前，用声音留下今天的故事。', c10_cta:'在遗忘前聆听 →',
+},
+// ── 繁體中文 ─────────────────────────────────────────────────────
+'zh-hant':{
+  ohana_desc:`<em>Ohana是一個尊重差異、相互歡迎、<br>共同成長的命運共同體。</em><br><br>Ohana是夏威夷語中「家人」的意思。<br>無論血緣、國籍、外貌、文化或價值觀有多大差異——<br>我們本來都是相互連接的命運共同體，<br>是家人。<br>家庭成員尊重彼此的個性，<br>鼓勵對方活出真我。<br>以開放的心態溫暖地歡迎彼此。<br>合理解決家庭問題，<br>共同成長。`,
+  c01_num:'01 — 自我探索', c01_title:'我是誰', c01_desc:'大五人格模型、VIA優勢評估、九型人格、依附類型。透過四個視角深入了解自己的性格探索之旅。', c01_cta:'開始探索 →',
+  c02_num:'02 — 反思', c02_title:'SYS人生航海清單', c02_sub:'我的人生指南針', c02_desc:'回顧走過的路，規劃未來的航向——40問人生盤點工具，支援9種語言。將結果貼到AI聊天機器人獲得深度解讀。', c02_cta:'展開指南針 →',
+  c03_num:'03 — 科學', c03_title:'光與元素的世界', c03_desc:'探尋世界的構成原理。探索有機化學和光的物理學。', c03_cta:'探索 →',
+  c04_num:'04 — 學習', c04_title:'學習天堂', c04_desc:'從半導體到邏輯電路、AI、機器人工程——6個學習中心，加深您的知識深度。', c04_cta:'去學習 →',
+  c05_num:'05 — 連結', c05_sub:'機場門戶', c05_desc:'機場遇見的夥伴。在陌生目的地也不孤單——為機場旅行者打造的智慧門戶。', c05_cta:'進入門戶 →',
+  c06_num:'06 — 民主', c06_desc:'我們不要求您信任——請親自驗證。保密的同時，任何人都可以驗證結果的新一代電子投票系統。', c06_cta:'了解更多 →',
+  c07_num:'07 — 伴侶', c07_title:'找到我的伴侶機器人', c07_desc:'通過11步調查找到適合您的機器人服務。', c07_cta:'找我的機器人 →',
+  c08_num:'08 — 設計', c08_title:'打造我的伴侶機器人', c08_desc:'親自設計您的機器人。17個類別，160種選項，打造您獨一無二的夥伴。', c08_cta:'開始設計 →',
+  c09_num:'09 — 登記', c09_title:'SYS機器人登記處', c09_desc:'正式登記和證明機器人所有權的網路登記系統。', c09_cta:'立即註冊 →',
+  c10_badge:'🆕 最新', c10_num:'10 — 記憶', c10_title:'緊握記憶!!', c10_sub:'我璀璨人生的故事', c10_desc:'預防認知症 · 語音記憶保存<br><br>在記憶模糊之前，用聲音留下今天的故事。', c10_cta:'在遺忘前聆聽 →',
+},
+};
+
+function setLang(lang){
+  if(!T[lang]) lang='ko';
+  localStorage.setItem('ohana_lang', lang);
+  document.getElementById('html-root').lang = HTML_LANG[lang]||lang;
+  // ohana-desc (innerHTML)
+  const desc = document.getElementById('ohana-desc');
+  if(desc) desc.innerHTML = T[lang].ohana_desc || T.ko.ohana_desc;
+  // data-i18n 요소 일괄 교체
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.dataset.i18n;
+    const val = T[lang][key] !== undefined ? T[lang][key] : (T.ko[key]||'');
+    if(val !== undefined) el.innerHTML = val;
+  });
+  // select 동기화
+  const sel = document.getElementById('lang-select');
+  if(sel) sel.value = lang;
+}
+
+// 초기화
+(function(){
+  const saved = localStorage.getItem('ohana_lang') || 'ko';
+  if(saved !== 'ko') setLang(saved);
+  else { const sel=document.getElementById('lang-select'); if(sel) sel.value='ko'; }
+})();
+
+// ══ 별하늘 ═══════════════════════════════════════════════════════
 const canvas=document.getElementById('sky');
 const ctx=canvas.getContext('2d');
 function resize(){canvas.width=window.innerWidth;canvas.height=document.body.scrollHeight}
@@ -171,12 +305,12 @@ for(let i=0;i<120;i++){stars.push({x:Math.random(),y:Math.random(),r:0.4+Math.ra
 const meteors=[];
 function spawnMeteor(){const angle=Math.PI/5+Math.random()*(Math.PI/8);meteors.push({x:Math.random()*0.8+0.05,y:Math.random()*0.25,len:130+Math.random()*200,speed:0.0035+Math.random()*0.004,angle,dx:Math.cos(angle),dy:Math.sin(angle),progress:0,color:Math.random()>0.5?[255,245,220]:[220,180,100]});setTimeout(spawnMeteor,4000+Math.random()*9000)}
 setTimeout(spawnMeteor,1500);
-let t=0;
+let t2=0;
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  t+=0.016;
+  t2+=0.016;
   stars.forEach(s=>{
-    const alpha=s.baseAlpha*(0.45+0.55*Math.sin(t*s.speed*60+s.phase));
+    const alpha=s.baseAlpha*(0.45+0.55*Math.sin(t2*s.speed*60+s.phase));
     const{cr:r,cg:g,cb:b}=s;
     const cx=s.x*canvas.width,cy=s.y*canvas.height;
     if(s.size==='large'){
