@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>특수 상황 외국어 학습 — Situational Language</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050510;color:#F0EEF8;font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;position:relative}
+#sky{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+.nav{position:relative;z-index:10;padding:2rem 2.5rem;display:flex;gap:1.5rem}
+.nav a{font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(232,114,158,0.7);text-decoration:none;transition:color 0.2s ease}
+.nav a:hover{color:#E8729E}
+.nav .sep{color:rgba(240,238,248,0.2)}
+
+header{position:relative;z-index:10;text-align:center;padding:3rem 2rem 2.5rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);font-weight:700;letter-spacing:0.08em;background:linear-gradient(135deg,#E8729E 0%,#6C7AE0 50%,#38BDF8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:0.6rem}
+.page-sub{font-size:0.85rem;letter-spacing:0.3em;color:rgba(232,114,158,0.6);text-transform:uppercase;margin-bottom:0.6rem}
+.page-desc{font-size:0.9rem;color:rgba(240,238,248,0.45);max-width:520px;margin:0 auto;line-height:1.8}
+.divider{display:flex;align-items:center;gap:1rem;max-width:360px;margin:2rem auto}
+.divider-line{flex:1;height:0.5px;background:rgba(232,114,158,0.2)}
+.divider-diamond{width:5px;height:5px;background:#E8729E;transform:rotate(45deg);flex-shrink:0}
+
+.cards{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:1rem 2rem 6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+
+.card{position:relative;background:rgba(255,255,255,0.04);border-radius:22px;padding:2.5rem 2rem;cursor:pointer;transition:transform 0.35s ease,border-color 0.35s ease,background 0.35s ease,box-shadow 0.35s ease;text-decoration:none;color:inherit;display:block;overflow:hidden;backdrop-filter:blur(4px)}
+.card:hover{transform:translateY(-10px);background:rgba(255,255,255,0.07)}
+.card::before{content:'';position:absolute;inset:0;border-radius:22px;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,0.03) 100%);opacity:0;transition:opacity 0.35s ease}
+.card:hover::before{opacity:1}
+
+.card-miai{border:0.5px solid rgba(232,114,158,0.35);--accent:#E8729E;--glow:rgba(232,114,158,0.18);background:linear-gradient(160deg,rgba(232,114,158,0.05),rgba(108,122,224,0.05))}
+.card-miai:hover{border-color:#E8729E;box-shadow:0 24px 64px rgba(0,0,0,0.5),0 0 48px rgba(232,114,158,0.22),0 0 70px rgba(108,122,224,0.12)}
+
+.card-placeholder{border:0.5px dashed rgba(240,238,248,0.15);--accent:rgba(240,238,248,0.35);--glow:transparent}
+.card-placeholder:hover{border-color:rgba(240,238,248,0.3);box-shadow:none;transform:translateY(-4px);cursor:default}
+
+.card-number{font-size:0.68rem;letter-spacing:0.3em;color:var(--accent);margin-bottom:1.5rem;text-transform:uppercase;opacity:0.8}
+.card-icon{width:54px;height:54px;border-radius:14px;border:0.5px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--accent);font-size:1.7rem;background:rgba(255,255,255,0.04)}
+.card-miai .card-icon{background:linear-gradient(135deg,rgba(232,114,158,0.12),rgba(108,122,224,0.12));font-family:'Playfair Display',serif;font-weight:700}
+.card-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:0.4rem;color:#F0EEF8}
+.card-subtitle{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;opacity:0.85}
+.card-desc{font-size:0.87rem;line-height:1.8;color:rgba(240,238,248,0.6);margin-bottom:2rem}
+.card-cta{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border-bottom:0.5px solid var(--accent);padding-bottom:2px;transition:gap 0.2s ease}
+.card:hover .card-cta{gap:0.85rem}
+.card-badge{display:inline-block;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;border-radius:20px;border:0.5px solid var(--accent);color:var(--accent);margin-bottom:1.2rem;opacity:0.7}
+
+footer{position:relative;z-index:10;text-align:center;padding:2rem;font-size:0.73rem;letter-spacing:0.15em;color:rgba(240,238,248,0.18);text-transform:uppercase}
+</style>
+</head>
+<body>
+<canvas id="sky"></canvas>
+
+<nav class="nav">
+  <a href="../index.html">← 학습 천국</a>
+  <span class="sep">|</span>
+  <a href="../../index.html">Ohana</a>
+</nav>
+
+<header>
+  <div class="page-title">특수 상황 외국어 학습</div>
+  <div class="page-sub">Situational Language Practice</div>
+  <div class="page-desc">맞선, 비즈니스, 여행, 의료… 일상 회화를 넘어, 특별한 상황에서 꼭 필요한 외국어를 실전처럼 연습합니다.</div>
+</header>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-diamond"></div>
+  <div class="divider-line"></div>
+</div>
+
+<section class="cards">
+  <a class="card card-miai" href="https://miai-nihongo.vercel.app" target="_blank">
+    <div class="card-number">01 — 맞선</div>
+    <div class="card-badge">🇰🇷🇯🇵 한남일녀</div>
+    <div class="card-icon">縁</div>
+    <div class="card-title">맞선 일본어!</div>
+    <div class="card-subtitle">お見合い日本語 — 200 Questions Practice</div>
+    <div class="card-desc">웃으며 건네는 첫 마디, 그 안에 담긴 진심. 일본 여성과의 맞선 자리, 200가지 질문과 2,000개의 예상 답변으로 미리 그려보는 인연의 첫 대화.</div>
+    <span class="card-cta">학습하기 →</span>
+  </a>
+
+  <div class="card card-placeholder">
+    <div class="card-number">Coming Soon</div>
+    <div class="card-icon" style="opacity:0.3">💼</div>
+    <div class="card-title" style="opacity:0.3">비즈니스 일본어</div>
+    <div class="card-subtitle">Business Japanese</div>
+    <div class="card-desc" style="opacity:0.4">일본 기업과의 회의, 이메일, 프레젠테이션 — 비즈니스 현장에서 빛나는 일본어를 준비합니다.</div>
+  </div>
+
+  <div class="card card-placeholder">
+    <div class="card-number">Coming Soon</div>
+    <div class="card-icon" style="opacity:0.3">✈️</div>
+    <div class="card-title" style="opacity:0.3">여행 영어</div>
+    <div class="card-subtitle">Travel English</div>
+    <div class="card-desc" style="opacity:0.4">공항, 호텔, 레스토랑, 긴급 상황 — 세계 어디서든 자신 있게 소통하는 여행자의 영어.</div>
+  </div>
+</section>
+
+<footer>© 2026 Ohana · Situational Language Practice</footer>
+
+<script>
+const canvas=document.getElementById('sky');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=document.body.scrollHeight}
+resize();
+window.addEventListener('resize',resize);
+
+const stars=[];
+const palette=[[232,114,158],[108,122,224],[56,189,248],[192,132,252],[244,114,182]];
+for(let i=0;i<12;i++){const r=5+Math.random()*8;const c=palette[Math.floor(Math.random()*palette.length)];stars.push({x:Math.random(),y:Math.random(),r,baseAlpha:0.6+Math.random()*0.35,speed:0.004+Math.random()*0.009,phase:Math.random()*Math.PI*2,size:'large',cr:c[0],cg:c[1],cb:c[2]})}
+for(let i=0;i<24;i++){const r=1.5+Math.random()*3.5;const c=palette[Math.floor(Math.random()*palette.length)];stars.push({x:Math.random(),y:Math.random(),r,baseAlpha:0.4+Math.random()*0.45,speed:0.007+Math.random()*0.013,phase:Math.random()*Math.PI*2,size:'mid',cr:c[0],cg:c[1],cb:c[2]})}
+for(let i=0;i<110;i++){stars.push({x:Math.random(),y:Math.random(),r:0.3+Math.random()*1.3,baseAlpha:0.2+Math.random()*0.55,speed:0.01+Math.random()*0.018,phase:Math.random()*Math.PI*2,size:'small',cr:220,cg:210,cb:240})}
+
+const meteors=[];
+function spawnMeteor(){const angle=Math.PI/5+Math.random()*(Math.PI/8);const colors=[[232,114,158],[108,122,224],[56,189,248]];const c=colors[Math.floor(Math.random()*colors.length)];meteors.push({x:Math.random()*0.8+0.05,y:Math.random()*0.25,len:120+Math.random()*190,speed:0.0033+Math.random()*0.004,angle,dx:Math.cos(angle),dy:Math.sin(angle),progress:0,color:c});setTimeout(spawnMeteor,4000+Math.random()*9000)}
+setTimeout(spawnMeteor,1500);
+
+let t=0;
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  t+=0.016;
+  stars.forEach(s=>{
+    const alpha=s.baseAlpha*(0.45+0.55*Math.sin(t*s.speed*60+s.phase));
+    const{cr:r,cg:g,cb:b}=s;
+    const cx=s.x*canvas.width,cy=s.y*canvas.height;
+    if(s.size==='large'){
+      [3.5,2.2,1.4].forEach((mult,i)=>{const gAlpha=alpha*[0.1,0.2,0.42][i];const grd=ctx.createRadialGradient(cx,cy,0,cx,cy,s.r*mult);grd.addColorStop(0,`rgba(${r},${g},${b},${gAlpha})`);grd.addColorStop(1,`rgba(${r},${g},${b},0)`);ctx.beginPath();ctx.arc(cx,cy,s.r*mult,0,Math.PI*2);ctx.fillStyle=grd;ctx.fill()});
+      ctx.beginPath();ctx.arc(cx,cy,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},${alpha})`;ctx.fill();
+      ctx.beginPath();ctx.arc(cx,cy,s.r*0.35,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${alpha*0.65})`;ctx.fill();
+    }else if(s.size==='mid'){
+      const grd=ctx.createRadialGradient(cx,cy,0,cx,cy,s.r*2.5);grd.addColorStop(0,`rgba(${r},${g},${b},${alpha*0.28})`);grd.addColorStop(1,`rgba(${r},${g},${b},0)`);ctx.beginPath();ctx.arc(cx,cy,s.r*2.5,0,Math.PI*2);ctx.fillStyle=grd;ctx.fill();
+      ctx.beginPath();ctx.arc(cx,cy,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},${alpha})`;ctx.fill();
+    }else{ctx.beginPath();ctx.arc(cx,cy,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},${alpha})`;ctx.fill()}
+  });
+  for(let i=meteors.length-1;i>=0;i--){
+    const m=meteors[i];m.progress+=m.speed;
+    if(m.progress>1.3){meteors.splice(i,1);continue}
+    const fade=m.progress<0.25?m.progress/0.25:m.progress>0.75?(1.3-m.progress)/0.55:1;
+    const cx=(m.x+m.dx*m.progress*0.55)*canvas.width,cy=(m.y+m.dy*m.progress*0.55)*canvas.height;
+    const tx=cx-m.dx*m.len,ty=cy-m.dy*m.len;
+    const[r,g,b]=m.color;
+    const grad=ctx.createLinearGradient(tx,ty,cx,cy);
+    grad.addColorStop(0,`rgba(${r},${g},${b},0)`);grad.addColorStop(0.5,`rgba(${r},${g},${b},${0.12*fade})`);grad.addColorStop(1,`rgba(${r},${g},${b},${0.85*fade})`);
+    ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(cx,cy);ctx.strokeStyle=grad;ctx.lineWidth=1.6;ctx.stroke();
+    const hGrd=ctx.createRadialGradient(cx,cy,0,cx,cy,4);hGrd.addColorStop(0,`rgba(${r},${g},${b},${fade})`);hGrd.addColorStop(1,`rgba(${r},${g},${b},0)`);
+    ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fillStyle=hGrd;ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
